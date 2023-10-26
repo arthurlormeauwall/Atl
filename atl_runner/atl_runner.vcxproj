@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)atl_lib/src;$(SolutionDir)sample_project_test/src;$(SolutionDir)AnotherTestModule/src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)atl_lib/src;$(SolutionDir)sample_project_test\test_module\src;$(SolutionDir)sample_project_test\another_test_module\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,7 +138,16 @@
     <ProjectReference Include="..\AnotherTestModule\AnotherTestModule.vcxproj">
       <Project>{d875caa7-bb95-4625-9c07-8f34069e4479}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\atl_lib\atl_lib.vcxproj">
+      <Project>{ae1ef122-1240-493a-bf79-1538703d4a1f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\sample_project_test\another_test_module\AnotherTestModule.vcxproj">
+      <Project>{d875caa7-bb95-4625-9c07-8f34069e4479}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\sample_project_test\sample_project_test.vcxproj">
+      <Project>{111c84be-6691-439a-8870-75dd14f1040e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\sample_project_test\test_module\sample_project_test.vcxproj">
       <Project>{111c84be-6691-439a-8870-75dd14f1040e}</Project>
     </ProjectReference>
   </ItemGroup>
