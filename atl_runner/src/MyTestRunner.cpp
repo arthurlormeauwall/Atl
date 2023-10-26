@@ -1,6 +1,8 @@
 #include "MyTestRunner.h"
 
-DEFINE_MODULES
-	ADD_MODULE(MyTestClass)
-END_MODULES
+void MyTestRunner::addModules() {
+	for (std::shared_ptr<UnitTestController> ut : MyModule::getModule()) {
+		addRunner(ut);
+	}
+}
 

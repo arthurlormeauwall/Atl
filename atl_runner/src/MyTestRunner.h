@@ -1,5 +1,7 @@
 #pragma once
 #include "atl_includes.h" 
-#include "MyTestClass.h"
+#include "ModuleDeclaration.h"
 
-DECLARE_RUNNER_WITH_CONSOLE_OUTPUT
+class MyTestRunner : public AtlController {
+public: MyTestRunner() : AtlController(std::make_shared<ConsoleOutputWriter>()) {} void addModules();
+};

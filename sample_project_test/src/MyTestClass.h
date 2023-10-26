@@ -1,5 +1,8 @@
 #pragma once
 #include "atl_includes.h"
 
-DECLARE_TEST_CLASS("a module", MyTestClass)
+
+class MyTestClass : public UnitTestController {
+public: void addTests();
+};
 
