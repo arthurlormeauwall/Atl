@@ -3,4 +3,4 @@
 #include <string>
 #include <vector>
 
-DECLARE_MODULE(MyModule)
+DECLARE_MODULE(AnotherModule)

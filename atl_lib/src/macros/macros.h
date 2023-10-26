@@ -6,7 +6,7 @@ public:\
 	void addModules();\
 };\
 
-#define ADDING_TEST_CLASS_TO_RUNNER(runnername) void runnername::addModules() {
+#define ADDING_MODULES_TO_RUNNER(runnername) void runnername::addModules() {
 
 #define RUN_ALL_TEST(runnername) runnername testRunner = runnername();\
 testRunner.runAllTests();\
@@ -36,12 +36,13 @@ void className::addTests() \
 
 #define END  }
 
-#define SPECIFY_MODULE(modulename) std::string moduleName = #modulename; 
+#define SPECIFY_MODULE(modulename) static std::string moduleName = #modulename;
+
 #define DECLARE_MODULE(modulename) namespace modulename {\
 std::vector<std::shared_ptr<UnitTestController>> getTestClasses();}\
 
 
-#define START_ADDING_TEST_CLASS_TO_MODULE(modulename) namespace MyModule {\
+#define START_ADDING_TEST_CLASS_TO_MODULE(modulename) namespace modulename {\
 std::vector<std::shared_ptr<UnitTestController>> getTestClasses() {\
 	std::vector<std::shared_ptr<UnitTestController>> ut;\
 
