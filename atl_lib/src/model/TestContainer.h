@@ -2,12 +2,6 @@
 #include "../pch.h"
 #include "TestResultContainer.h"
 
-struct TestClassPath
-{
-	std::string moduleName;
-	std::string testClassName;
-};
-
 struct UnitTest
 {
 	Path path;
