@@ -1,7 +1,6 @@
 #include "MyTestRunner.h"
 
-void MyTestRunner::addModules() {
-	addRunner(std::make_shared<MyTestClass>());
-
-}
+DEFINE_MODULES
+	ADD_MODULE(MyTestClass)
+END_MODULES
 

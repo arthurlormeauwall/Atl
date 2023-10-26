@@ -133,6 +133,7 @@
     <ClCompile Include="src\model\TestResultContainer.cpp" />
     <ClCompile Include="src\presenter\output\ConsoleOutputWriter.cpp" />
     <ClCompile Include="src\presenter\Presenter.cpp" />
+    <ClCompile Include="src\service\assertion\Assertion.cpp" />
     <ClCompile Include="src\service\AtlService.cpp" />
   </ItemGroup>
   <ItemGroup>

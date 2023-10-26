@@ -75,3 +75,8 @@ sharedptr<Result> isEqualToAssertion<T>::getResult(Path path)
 	}
 	return std::make_shared<Result>(pass, message);
 }
+
+template<> 
+sharedptr<Result> isEqualToAssertion<std::string>::getResult(Path path);
+
+

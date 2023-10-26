@@ -180,6 +180,9 @@
   <ItemGroup>
     <ClInclude Include="src\MyClass.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\MyClass.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
