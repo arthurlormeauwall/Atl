@@ -36,5 +36,5 @@ DEFINE_TESTS(MyTestClass)
 			return aresults;
 		}
 	));
-END_TESTS
+END
 

@@ -128,11 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\ModuleDeclaration.h" />
+    <ClInclude Include="src\MyModule.h" />
     <ClInclude Include="src\MyTestClass.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ModuleDeclaration.cpp" />
+    <ClCompile Include="src\MyModule.cpp" />
     <ClCompile Include="src\MyTestClass.cpp" />
   </ItemGroup>
   <ItemGroup>

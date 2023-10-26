@@ -18,7 +18,7 @@
     <ClInclude Include="src\MyTestClass.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\ModuleDeclaration.h">
+    <ClInclude Include="src\MyModule.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,7 +26,7 @@
     <ClCompile Include="src\MyTestClass.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\ModuleDeclaration.cpp">
+    <ClCompile Include="src\MyModule.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
