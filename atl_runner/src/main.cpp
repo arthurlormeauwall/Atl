@@ -1,6 +1,5 @@
 #include "MyTestRunner.h"
 
 int main() {
-	MyTestRunner testRunner = MyTestRunner(); 
-	testRunner.runAllTests();
+	Run_All_Tests(MyRunner)
 }

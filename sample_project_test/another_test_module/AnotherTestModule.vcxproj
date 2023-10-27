@@ -21,9 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4b8f04d4-7642-40f0-91ee-8bc3ee404356}</ProjectGuid>
-    <RootNamespace>atlrunner</RootNamespace>
+    <ProjectGuid>{d875caa7-bb95-4625-9c07-8f34069e4479}</ProjectGuid>
+    <RootNamespace>AnotherTestModule</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>another_test_module</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -40,7 +41,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -104,7 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)atl_lib/src;$(SolutionDir)sample_project_test\test_module\src;$(SolutionDir)sample_project_test\another_test_module\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)atl_lib\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,26 +129,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\AClassUnderTest.cpp" />
+    <ClCompile Include="src\AnotherTestClass.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\MyTestRunner.h" />
+    <ClInclude Include="src\AnotherModule.h" />
+    <ClInclude Include="src\TestClassDeclarations.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AnotherTestModule\AnotherTestModule.vcxproj">
-      <Project>{d875caa7-bb95-4625-9c07-8f34069e4479}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\atl_lib\atl_lib.vcxproj">
       <Project>{ae1ef122-1240-493a-bf79-1538703d4a1f}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\sample_project_test\another_test_module\AnotherTestModule.vcxproj">
-      <Project>{d875caa7-bb95-4625-9c07-8f34069e4479}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\sample_project_test\sample_project_test.vcxproj">
-      <Project>{111c84be-6691-439a-8870-75dd14f1040e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\sample_project_test\test_module\sample_project_test.vcxproj">
-      <Project>{111c84be-6691-439a-8870-75dd14f1040e}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
