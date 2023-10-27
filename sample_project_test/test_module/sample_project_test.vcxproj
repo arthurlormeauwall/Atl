@@ -133,7 +133,6 @@
     <ClInclude Include="src\MyTestClass.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\MyModule.cpp" />
     <ClCompile Include="src\MyTestClass.cpp" />
   </ItemGroup>
   <ItemGroup>

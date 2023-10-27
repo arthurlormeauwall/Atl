@@ -129,7 +129,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\MyTestRunner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\MyTestRunner.h" />

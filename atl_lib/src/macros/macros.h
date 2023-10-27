@@ -1,53 +1,73 @@
 #pragma once
+#include <memory>
+#include <vector>
+#include "model/TestResultContainer.h"
 
-#define DECLARE_RUNNER_WITH_CONSOLE_OUTPUT(runnername) class runnername : public AtlController { \
+using Assertions = std::vector<std::shared_ptr<Result>>;
+
+#define Runner_Declaration_With_Console_Output(runnername, content) class runnername : public AtlController { \
 public:\
 	runnername() : AtlController(std::make_shared<ConsoleOutputWriter>()) {}\
-	void addModules();\
+	void addModules() {\
+	content\
+	}\
 };\
 
-#define ADDING_MODULES_TO_RUNNER(runnername) void runnername::addModules() {
+#define Runner_Modules(runnername, content) void runnername::addModules() {\
+content\
+}\
 
-#define RUN_ALL_TEST(runnername) runnername testRunner = runnername();\
+#define Run_All_Tests(runnername) runnername testRunner = runnername();\
 testRunner.runAllTests();\
 
 #define DEFINE_MODULES \
 void MyTestRunner::addModules() {\
 
-#define ADD_MODULE(moduleName) \
-for (std::shared_ptr<UnitTestController> ut : moduleName::getTestClasses()){ \
+#define Add_Module(moduleName) \
+for (std::shared_ptr<UnitTestController> ut : getTestClasses_##moduleName()){ \
 	addRunner(ut); \
 }\
 
-#define DECLARE_TEST_CLASS(testclassname) \
-class testclassname : public UnitTestController {\
+#define Test_Class_Declaration(modulename, testclassname) class testclassname##_ : public UnitTestController {\
 public:\
 	void addTests();\
 };\
-
-#define DEFINE_TESTS(className) \
-static std::string testClassName = #className ;\
-void className::addTests() \
-{\
-
-#define CREATE_UT(unitTestName) moduleName, testClassName, unitTestName,\
-[](Path path)->std::vector<std::shared_ptr<Result>> \
+struct testclassname {\
+std::string testclassname##_className = #testclassname;\
+std::string testclassname##_moduleName = modulename;\
+};
 
 
-#define END  }
+#define Unit_Test_Definition(className, content) className names_##className ;\
+static std::string tcn = names_##className.className##_className ;\
+static std::string mn = names_##className.className##_moduleName ;\
+void className##_::addTests() { content }\
 
-#define SPECIFY_MODULE(modulename) static std::string moduleName = #modulename;
+#define create_unit_test(unitTestName, test) add(std::make_shared<UnitTest>( \
+mn, tcn, unitTestName,\
+[](Path path)->std::vector<std::shared_ptr<Result>> { \
+Assertions assertions;\
+test \
+return assertions; }));\
 
-#define DECLARE_MODULE(modulename) namespace modulename {\
-std::vector<std::shared_ptr<UnitTestController>> getTestClasses();}\
+#define Module_Declaration(modulename, content) std::vector<std::shared_ptr<UnitTestController>> getTestClasses_##modulename() {\
+	std::vector<std::shared_ptr<UnitTestController>> ut; \
+	content \
+return ut; }\
 
 
-#define START_ADDING_TEST_CLASS_TO_MODULE(modulename) namespace modulename {\
+#define Module_Test_Classes(modulename, content) namespace modulename {\
 std::vector<std::shared_ptr<UnitTestController>> getTestClasses() {\
-	std::vector<std::shared_ptr<UnitTestController>> ut;\
+	std::vector<std::shared_ptr<UnitTestController>> ut; content \
+return ut; }}\
 
-#define ADD_TEST_CLASS(testClassName) ut.push_back(std::make_shared<testClassName>()); \
-
-#define END_ADDING_TEST_CLASS_TO_MODULE	return ut; }}\
+#define add_test_class(testClassName) ut.push_back(std::make_shared<testClassName##_>()); \
 
 
+#define add_assertion(assert) push_back(assert->getResult(path))
+
+
+
+#define declare_assertion(assertion) assertions.add_assertion(assertion);\
+
+#define declare_code if (true==true) 

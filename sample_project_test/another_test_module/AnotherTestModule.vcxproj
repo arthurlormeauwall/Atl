@@ -129,12 +129,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AnotherModule.cpp" />
-    <ClCompile Include="src\MyTestClass.cpp" />
+    <ClCompile Include="src\AClassUnderTest.cpp" />
+    <ClCompile Include="src\AnotherTestClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AnotherModule.h" />
-    <ClInclude Include="src\MyTestClass.h" />
+    <ClInclude Include="src\TestClassDeclarations.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\atl_lib\atl_lib.vcxproj">

@@ -1,40 +1,18 @@
-#include "service/assertion/Assertion.h"
-#include "MyClass.h"
-#include "atl_includes.h"
 #include "MyTestClass.h"
 
-SPECIFY_MODULE(MyModule)
-DEFINE_TESTS(MyTestClass)
-	add(std::make_shared<UnitTest>(CREATE_UT("should") {
+#include "MyClass.h"
+#include "atl_includes.h"
+#include "service/assertion/Assertion.h"
+
+Unit_Test_Definition(MyTestClass,
+	create_unit_test(
+		"should add two number", {
 		MyClass<float> fixture;
 		float a = 3.F;
 		float b = 2.F;
 		float actual = fixture.add(a, b);
 		float expected = 5.F;
-
-		std::vector<std::shared_ptr<Result>> aresults;
-		aresults.push_back(assertThat<float>(actual).isEqualTo(expected)->getResult(path));
-		return aresults;
+		declare_assertion(assertThat<float>(actual).isEqualTo(expected));
 		}
-	));
-
-	add(std::make_shared<UnitTest>(
-		CREATE_UT("A test that should fail")
-		{
-			std::vector<std::shared_ptr<Result>> aresults;
-			aresults.push_back(assertThat<float>(0.5F).isEqualTo(1.8F)->getResult(path));
-			return aresults;
-		}
-	));
-
-
-	add(std::make_shared<UnitTest>(
-		CREATE_UT("Another test that should fail")
-		{
-			std::vector<std::shared_ptr<Result>> aresults;
-			aresults.push_back(assertThat<std::string>("actual").isEqualTo("expected")->getResult(path));
-			return aresults;
-		}
-	));
-END
-
+	)
+)
