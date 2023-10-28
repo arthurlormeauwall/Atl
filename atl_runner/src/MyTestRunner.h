@@ -4,6 +4,6 @@
 #include "MyModule.h"
 
 Runner_Declaration_With_Console_Output(MyRunner,
-	Add_Module(MyModule)
+	//Add_Module(MyModule)
 	Add_Module(AnotherModule)
 )

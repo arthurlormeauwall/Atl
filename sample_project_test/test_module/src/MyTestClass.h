@@ -1,5 +1,5 @@
-#pragma once
-#include "atl_includes.h"
-
-
-Test_Class_Declaration("My Module", MyTestClass)
+//#pragma once
+//#include "atl_includes.h"
+//
+//
+//Test_Class_Declaration("My Module", MyTestClass)
