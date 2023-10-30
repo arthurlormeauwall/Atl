@@ -2,4 +2,11 @@
 #include "atl_includes.h"
 
 
-Test_Class_Declaration("My Module", MyTestClass)
+class MyTestClass_ : public UnitTestController {
+public:
+	void addTests();
+};
+struct MyTestClass {
+	std::string MyTestClass_className = "MyTestClass"; 
+	std::string MyTestClass_moduleName = "My Module";
+};

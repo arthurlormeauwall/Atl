@@ -5,6 +5,8 @@
 #include <memory>
 #include <vector>
 
-Module_Declaration(MyModule,
-	add_test_class(MyTestClass)
-)
+std::vector<std::shared_ptr<UnitTestController>> getTestClasses_MyModule() {
+    std::vector<std::shared_ptr<UnitTestController>> ut; 
+    ut.push_back(std::make_shared<MyTestClass_>()); 
+    return ut;
+}
