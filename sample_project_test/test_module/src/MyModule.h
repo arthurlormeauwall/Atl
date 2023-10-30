@@ -5,8 +5,10 @@
 #include <memory>
 #include <vector>
 
-std::vector<std::shared_ptr<UnitTestController>> getTestClasses_MyModule() {
-    std::vector<std::shared_ptr<UnitTestController>> ut; 
-    ut.push_back(std::make_shared<MyTestClass_>()); 
-    return ut;
-}
+class MyModule : public Module {
+public:
+	MyModule(const string& n) : Module(n) {}
+	void addTestClasses() {
+		addTestClass(std::make_shared<MyTestClass>("My test class"));
+	}
+};

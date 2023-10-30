@@ -5,39 +5,76 @@
 struct UnitTest
 {
 	Path path;
-	string name;
 	vector<sharedptr<Result>>(*unitTestRunnable)(Path);
-	UnitTest(const string& moduleName,
-		const string& testClassName,
-		const string& unitTestName,
+	UnitTest(const string& name,
 		vector<sharedptr<Result>>(*function)(Path)) :
-		path(Path(moduleName, testClassName, unitTestName)),
-		unitTestRunnable(function) {}
+		unitTestRunnable(function) {
+		path.unitTestName = name;
+	}
+	void setPath(const string& moduleName, const string& testClassName) {
+		path.moduleName = moduleName;
+		path.testClassName = testClassName;
+	}
 };
 
 struct TestClass {
 	string name;
-	testMap<sharedptr<UnitTest>> unitTests;
-	TestClass(string name, testMap<sharedptr<UnitTest>> unitTests) :
-		name(name), unitTests(unitTests) {}
+	string moduleName;
+	vector<sharedptr<UnitTest>> unitTests;
+	TestClass(string name) :
+		name(name) {
+	}
+	virtual void addTests() = 0;
+	void addUnitTest(sharedptr<UnitTest> ut) {
+		unitTests.push_back(ut);
+	}
+	void setModuleName(const string& m) {
+		moduleName = m;
+		setNames();
+	}
+	void setNames() {
+		for (sharedptr<UnitTest> ut : unitTests) {
+			ut->setPath(moduleName, name);
+		}
+	}
 };
 
 struct Module {
 	string name;
-	testMap<TestClass> testClasses;
-	Module(string name, testMap<TestClass> testClasses) :
-		name(name), testClasses(testClasses) {}
+	vector<sharedptr<TestClass>> testClasses;
+	Module(string name) :
+		name(name) {
+	}
+	void addTestClass(sharedptr<TestClass> tc) {
+		testClasses.push_back(tc);
+	}
+	virtual void addTestClasses() = 0;
+	void addTcs() {
+		addTestClasses();
+		vector<sharedptr<TestClass>>::iterator it;
+		for (it = testClasses.begin(); it != testClasses.end(); it++) {
+			(*it)->addTests();
+		}
+		setNames();
+	}
+	void setNames() {
+		vector<sharedptr<TestClass>>::iterator it;
+		for (it = testClasses.begin(); it != testClasses.end(); it++) {
+			(*it)->setModuleName(name);
+		}
+	}
 };
 
 struct AllTest {
-	testMap<Module> modules;
+	vector<sharedptr<Module>> modules;
+	void addm() {
+		addModules();
+		vector<sharedptr<Module>>::iterator it;
+		for (it = modules.begin(); it != modules.end(); it++) {
+			(*it)->addTcs();
+		}
+	}
+	virtual void addModules() = 0;
 };
 
-class TestContainer
-{
-	AllTest m_allTest;
-public : 
-	void addUnitTest(sharedptr<UnitTest>);
-	vector<sharedptr<UnitTest>> getAllUnitTest();
-};
 

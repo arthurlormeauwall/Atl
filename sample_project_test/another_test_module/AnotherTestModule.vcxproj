@@ -129,7 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\AClassUnderTest.cpp" />
+    <ClCompile Include="src\AThirdTestClass.cpp" />
     <ClCompile Include="src\AnotherTestClass.cpp" />
   </ItemGroup>
   <ItemGroup>

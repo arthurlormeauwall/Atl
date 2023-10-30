@@ -1,6 +1,15 @@
 #pragma once
 #include "atl_includes.h"
 
+class AThirdTestClass : public TestClass {
+public:
+	AThirdTestClass(const string& n) : TestClass(n) {}
+	void addTests();
+};
 
-//Test_Class_Declaration("anotherModule", AnotherTestClass)
-//Test_Class_Declaration("anotherModule", AClassUnderTest)
+class AnotherTestClass : public TestClass {
+public:
+	AnotherTestClass(const string& n) : TestClass(n) {}
+	void addTests();
+};
+

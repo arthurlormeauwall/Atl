@@ -1,6 +1,8 @@
 #include "MyTestRunner.h"
 
+
+
 int main() {
 	MyRunner testRunner = MyRunner();
-	testRunner.runAllTests();
+	testRunner.runAllTests(std::make_shared<MyTests>());
 }
