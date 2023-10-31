@@ -21,16 +21,34 @@ runUnitTests(vector<sharedptr<UnitTest>> unitTests)
 	m_allTestResult.addUnitTestResult(unitTestResults);
 }
 
-void AtlService::runAllTests()
+vector<sharedptr<UnitTest>> getAllUnitTest(sharedptr<AllTest> test)
 {
-    runUnitTests(m_allTest.getAllUnitTest());
+	vector<sharedptr<UnitTest>> ut;
+	for (vector<sharedptr<Module>>::iterator moduleIt = test->modules.begin();
+		moduleIt != test->modules.end();
+		moduleIt++) {
+		for (vector<sharedptr<TestClass>>::iterator testClassIt = (*moduleIt)->testClasses.begin();
+			testClassIt !=(*moduleIt)->testClasses.end();
+			testClassIt++) {
+			for (vector<sharedptr<UnitTest>>::iterator utIt = (*testClassIt)->unitTests.begin();
+				utIt != (*testClassIt)->unitTests.end();
+				utIt++) {
+				ut.push_back(*utIt);
+			}
+		}
+	}
+	return ut;
+}
+void AtlService::runAllTests(sharedptr<AllTest> allTests)
+{
+    runUnitTests(getAllUnitTest(allTests));
 	write();
 }
 
-void AtlService::addUnitTest(sharedptr<UnitTest> unitTest)
-{
-	m_allTest.addUnitTest(unitTest);
-}
+//void AtlService::addUnitTest(sharedptr<UnitTest> unitTest)
+//{
+//	m_allTest.addUnitTest(unitTest);
+//}
 
 void AtlService::write() 
 {

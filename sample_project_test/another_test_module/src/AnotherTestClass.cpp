@@ -1,14 +1,12 @@
 #include "atl_includes.h"
 #include "TestClassDeclarations.h"
 
-Unit_Test_Definition(AnotherTestClass,
-
-create_unit_test("A test that should fail",
-		declare_assertion(assertThat<float>(0.8F).isEqualTo(0.9F))
-	)
-
-	create_unit_test("Another test that should fail",
-		declare_assertion(assertThat<std::string>("actual").isEqualTo("expected"))
-	)
-)
-
+void AnotherTestClass::addTests() {
+	addUnitTest(std::make_shared<UnitTest>("A test that should succeed", [](Path path)->std::vector<std::shared_ptr<Result>>
+		{
+			Assertions assertions;
+			float expected = 5.F;
+			assertions.push_back(assertThat<float>(3.0F).isEqualTo(3.0F)->getResult(path));;
+			return assertions;
+		}));
+}

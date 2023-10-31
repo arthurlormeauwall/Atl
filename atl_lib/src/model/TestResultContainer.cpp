@@ -55,3 +55,26 @@ sharedptr<AllTestResult> TestResultContainer::getAllTestResult()
 {
 	return std::make_shared<AllTestResult>(m_allTestResult);
 }
+
+
+Result getChildrenResult(vector<TestResult> testResult) {
+	bool pass = true;
+	string message;
+	string beginingMessage;
+
+	for (TestResult utr : testResult) {
+		Result utResult = utr.result;
+		if (!utResult.pass) {
+			pass = false;
+			message.append(utr.name).append(" : Failed");
+		}
+	}
+	if (pass) {
+		beginingMessage = "All is good \n";
+	}
+	else {
+		beginingMessage = "There are test failures : \n";
+		beginingMessage.append(message);
+	}
+	return Result(pass, message);
+}

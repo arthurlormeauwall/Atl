@@ -5,6 +5,10 @@
 #include <memory>
 #include <vector>
 
-Module_Declaration(MyModule,
-	add_test_class(MyTestClass)
-)
+class MyModule : public Module {
+public:
+	MyModule(const string& n) : Module(n) {}
+	void addTestClasses() {
+		addTestClass(std::make_shared<MyTestClass>("My test class"));
+	}
+};

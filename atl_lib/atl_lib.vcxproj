@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="src\controller\AtlController.cpp" />
     <ClCompile Include="src\controller\UnitTestController.cpp" />
-    <ClCompile Include="src\model\TestContainer.cpp" />
     <ClCompile Include="src\model\TestResultContainer.cpp" />
     <ClCompile Include="src\presenter\output\ConsoleOutputWriter.cpp" />
     <ClCompile Include="src\presenter\Presenter.cpp" />

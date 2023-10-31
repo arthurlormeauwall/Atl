@@ -18,6 +18,15 @@ struct Result
 	Result(bool p, string m) : pass(p), message(m) {}
 };
 
+struct TestResult {
+	Result result;
+	string name;
+	TestResult(string n) : name(n) {}
+	TestResult(string n, Result r) : name(n), result(r) {}
+	TestResult() {}
+};
+Result getChildrenResult(vector<TestResult> testResult);
+
 struct UnitTestResult
 {
 	sharedptr<Result> result;
@@ -25,134 +34,72 @@ struct UnitTestResult
 	Path path;
 	UnitTestResult(vector<sharedptr<Result>> result, Path path) :
 		assertResult(result), path(path) {}
+	vector<TestResult> getAllUnitTestResults() {
+		vector<TestResult> allResult;
+		for (vector<sharedptr<Result>>::iterator it = assertResult.begin(); it != assertResult.end(); it++) {
+			allResult.push_back(TestResult(path.unitTestName, (**it)));
+		}
+		return allResult;
+	}
 	void setResult() {
-		bool pass = true;
-		string message;
-		string beginingMessage;
-
-		for (sharedptr<Result> result : assertResult) {
-			if (!result->pass) {
-				pass = false;
-				message.append(result->message).append("\n");
-			}
-		}
-		if (pass) {
-			beginingMessage = "All is good \n";
-		}
-		else {
-			beginingMessage = "There are test failures : \n";
-			beginingMessage.append(message);
-		}
-
-		result = std::make_shared<Result>(pass, message);
+		Result test =  getChildrenResult(getAllUnitTestResults());
+		result = std::make_shared<Result>(test.pass, test.message);
 	}
 };
 
 struct TestClassResult
 {
-	Result result;
+	TestResult testResult;
 	string name;
 	testMap<sharedptr<UnitTestResult>> unitTestResults;
 	TestClassResult(string name, testMap<sharedptr<UnitTestResult>> unitTestResults) :
 		name(name), unitTestResults(unitTestResults) {}
-	vector<sharedptr<UnitTestResult>> getAllUnitTestResults() {
-		vector<sharedptr<UnitTestResult>> allResult;
+	vector<TestResult> getAllUnitTestResults() {
+		vector<TestResult> allResult;
 		for (testMap<sharedptr<UnitTestResult>>::iterator it = unitTestResults.begin(); it != unitTestResults.end(); it++) {
-			allResult.push_back(it->second);
+			allResult.push_back(TestResult(name, *it->second->result));
 		}
 		return allResult;
 	}
 	void setResult() {
-		bool pass = true;
-		string message;
-		string beginingMessage;
-
-		for (sharedptr<UnitTestResult> utr : getAllUnitTestResults()) {
-			sharedptr<Result> utResult = utr->result;
-			if (!utResult->pass) {
-				pass = false;
-				message.append(utr->path.unitTestName).append(" : Failed");
-			}
-		}
-		if (pass) {
-			beginingMessage = "All is good \n";
-		}
-		else {
-			beginingMessage = "There are test failures : \n";
-			beginingMessage.append(message);
-		}
-		result = Result(pass, message);
+		testResult.result = getChildrenResult(getAllUnitTestResults());
 	}
 };
 
 struct ModuleResult
 {
-	Result result;
-	string name;
+	TestResult testResult;
 	testMap<TestClassResult> testClasses;
 	ModuleResult(string name, testMap<TestClassResult> testClasses) :
-		name(name), testClasses(testClasses) {}
-	vector<TestClassResult> getAllUnitTestResults() {
-		vector<TestClassResult> allResult;
+		testClasses(testClasses) {
+		testResult = TestResult(name);
+	}
+	vector<TestResult> getAllUnitTestResults() {
+		vector<TestResult> allResult;
 		for (testMap<TestClassResult>::iterator it = testClasses.begin(); it != testClasses.end(); it++) {
-			allResult.push_back(it->second);
+			allResult.push_back(it->second.testResult);
 		}
 		return allResult;
 	}
 	void setResult() {
-		bool pass = true;
-		string message;
-		string beginingMessage;
-
-		for (TestClassResult utr : getAllUnitTestResults()) {
-			Result utResult = utr.result;
-			if (!utResult.pass) {
-				pass = false;
-				message.append(utr.name).append(" : Failed");
-			}
-		}
-		if (pass) {
-			beginingMessage = "All is good \n";
-		}
-		else {
-			beginingMessage = "There are test failures : \n";
-			beginingMessage.append(message);
-		}
-		result = Result(pass, message);
+		testResult.result = getChildrenResult(getAllUnitTestResults());
 	}
 };
+
 
 struct AllTestResult
 {
 	Result result;
 	testMap<ModuleResult> modules;
-	vector<ModuleResult> getAllUnitTestResults() {
-		vector<ModuleResult> allResult;
+	vector<TestResult> getAllUnitTestResults() {
+		vector<TestResult> allResult;
 		for (testMap<ModuleResult>::iterator it = modules.begin(); it != modules.end(); it++) {
-			allResult.push_back(it->second);
+			allResult.push_back(it->second.testResult);
 		}
 		return allResult;
 	}
 	void setResult() {
-		bool pass = true;
-		string message;
-		string beginingMessage;
-
-		for (ModuleResult utr : getAllUnitTestResults()) {
-			Result utResult = utr.result;
-			if (!utResult.pass) {
-				pass = false;
-				message.append(utr.name).append(" : Failed");
-			}
-		}
-		if (pass) {
-			beginingMessage = "All is good \n";
-		}
-		else {
-			beginingMessage = "There are test failures : \n";
-			beginingMessage.append(message);
-		}
-		result = Result(pass, message);
+		result = getChildrenResult(getAllUnitTestResults());
 	}
 };
 

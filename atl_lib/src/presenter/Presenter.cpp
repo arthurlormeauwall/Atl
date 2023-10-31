@@ -3,7 +3,7 @@
 string getTestResultsAsString(sharedptr<AllTestResult> allTestResult) {
 	string out;
 	for (std::map<std::string, ModuleResult>::iterator mit = allTestResult->modules.begin(); mit != allTestResult->modules.end(); mit++) {
-		out.append("* Module : ").append(mit->second.name).append("\n");
+		out.append("* Module : ").append(mit->second.testResult.name).append("\n");
 		for (testMap<TestClassResult>::iterator tcit = mit->second.testClasses.begin();
 			tcit != mit->second.testClasses.end();
 			tcit++) {

@@ -2,4 +2,8 @@
 #include "atl_includes.h"
 
 
-Test_Class_Declaration("My Module", MyTestClass)
+class MyTestClass : public TestClass {
+public:
+	MyTestClass(const string& n) : TestClass(n) {}
+	void addTests();
+};

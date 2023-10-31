@@ -4,15 +4,13 @@
 #include "atl_includes.h"
 #include "service/assertion/Assertion.h"
 
-Unit_Test_Definition(MyTestClass,
-	create_unit_test(
-		"should add two number", {
-		MyClass<float> fixture;
-		float a = 3.F;
-		float b = 2.F;
-		float actual = fixture.add(a, b);
-		float expected = 5.F;
-		declare_assertion(assertThat<float>(actual).isEqualTo(expected));
-		}
-	)
-)
+void MyTestClass::addTests() {
+	addUnitTest(std::make_shared<UnitTest>("should add two number", [](Path path)->std::vector<std::shared_ptr<Result>>
+		{ Assertions assertions;
+	MyClass<float> fixture;
+	float a = 3.F;
+	float b = 2.F;
+	float actual = fixture.add(a, b);
+	float expected = 5.F; assertions.push_back(assertThat<float>(actual).isEqualTo(3.0F)->getResult(path));;
+	return assertions; }));
+}

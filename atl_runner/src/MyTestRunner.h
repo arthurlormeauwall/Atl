@@ -3,7 +3,14 @@
 #include "AnotherModule.h"
 #include "MyModule.h"
 
-Runner_Declaration_With_Console_Output(MyRunner,
-	Add_Module(MyModule)
-	Add_Module(AnotherModule)
-)
+class MyTests : public AllTest {
+	void addModules() {
+		modules.push_back(std::make_shared<MyModule>("My Module"));
+		modules.push_back(std::make_shared<AnotherModule>("Another Module"));
+	}
+};
+
+class MyRunner : public AtlController {
+public:
+	MyRunner() : AtlController(std::make_shared<ConsoleOutputWriter>()) {}
+};
