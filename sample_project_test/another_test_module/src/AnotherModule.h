@@ -4,11 +4,11 @@
 #include <string>
 #include <vector>
 
-class AnotherModule : public Module {
-public:
-	AnotherModule(const string& n) : Module(n) {}
-	void addTestClasses() {
-		addTestClass(std::make_shared<AnotherTestClass>("Another test class"));
-		addTestClass(std::make_shared<AThirdTestClass>("A third test class"));
-	}
-};
+//class AnotherModule : public Module {
+//public:
+//	AnotherModule(string n) : Module(TestData(vector<string> {n})) {}
+//	void addTestClasses() {
+//		testClasses.add(createTestClass<AnotherTestClass>("Another test class"));
+//		testClasses.add(createTestClass<AThirdTestClass>("A third test class"));
+//	}
+//};

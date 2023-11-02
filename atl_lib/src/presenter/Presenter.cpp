@@ -1,38 +1,60 @@
 #include "Presenter.h"
 
-string getTestResultsAsString(sharedptr<AllTestResult> allTestResult) {
+string AssertPresenter::getString(sharedptr<Result> assert) {
 	string out;
-	for (std::map<std::string, ModuleResult>::iterator mit = allTestResult->modules.begin(); mit != allTestResult->modules.end(); mit++) {
-		out.append("* Module : ").append(mit->second.testResult.name).append("\n");
-		for (testMap<TestClassResult>::iterator tcit = mit->second.testClasses.begin();
-			tcit != mit->second.testClasses.end();
-			tcit++) {
-			string tcIndent = "==>";
-			out.append(tcIndent).append("Test class : ").append(tcit->second.name).append("\n");
-			for (testMap<sharedptr<UnitTestResult>>::iterator utit = tcit->second.unitTestResults.begin();
-				utit != tcit->second.unitTestResults.end();
-				utit++) {
-				string utIndent = "--------------------";
-				out.append(utIndent).append(utit->second->path.unitTestName);
-				if (utit->second->result->pass) {
-					out.append("       SUCCESS \n");
-				}
-				else {
-					out.append("       ASSERT FAILURES \n").append(utit->second->result->message);
-				}
-			}
-			out.append("\n");
-		}
-		out.append("\n\n");
-	}
+	//out.append("Inside assert presenter \n");
+	return out;
+}
+string UnitTestPresenter::getString(sharedptr<UnitTest> unitTest) {
+	string out;
+	//out.append("Inside unit test presenter \n");
+	//out.append("module name : ").append(unitTest->getData().path.moduleName).append("\n");
+	//out.append("test class name : ").append(unitTest->getData().path.testClassName).append("\n");
+	//out.append("unit test name : ").append(unitTest->getData().path.unitTestName).append("\n");
+	return out;
+}
+string TestClassPresenter::getString(sharedptr<TestClass> testClass) {
+	string out;
+	//out.append("Inside test class presenter \n");
+	//out.append("module name : ").append(testClass->getData().path.moduleName).append("\n");
+	//out.append("test class name : ").append(testClass->getData().path.testClassName).append("\n");
+
+	//vector<sharedptr<UnitTest>> unitTests = testClass->getAll();
+	//for (sharedptr<UnitTest> ut :  unitTests) {
+	//	out.append(m_unitTestPresenter.getString(ut));
+	//}
 	return out;
 }
 
-string Presenter::getStringFromTestResult(sharedptr<AllTestResult> allTestResult)
+string ModulePresenter::getString(sharedptr<Module> module) {
+	string out;
+	//out.append("Inside module presenter \n");
+	//out.append("module name : ").append(module->getData().path.moduleName).append("\n");
+
+	//vector<sharedptr<TestClass>> testClasses = module->getAll();
+	//for (sharedptr<TestClass> tc :  testClasses) {
+	//	out.append(m_testClassPresenter.getString(tc));
+	//}
+	return out;
+}
+
+string AllTestPresenter::getString(sharedptr<Test> allTest) {
+	string out;
+	//out.append("Inside all test presenter \n");
+
+	//vector<sharedptr<Module>> modules = allTest->getAll();
+	//for (sharedptr<Module> m : modules) {
+	//	out.append(m_modulePresenter.getString(m));
+	//}
+	return out;
+}
+
+
+string Presenter::getStringFromTestResult(sharedptr<Test> allTestResult)
 {
 	string out;
 	out.append(welcomeView);
-	out.append(getTestResultsAsString(allTestResult));
+	//out.append(m_allTestPresenter.getString(allTestResult));
 	out.append(goodbyeView);
 	return out;
 }

@@ -3,10 +3,11 @@
 #include "AnotherModule.h"
 #include "MyModule.h"
 
-class MyTests : public AllTest {
-	void addModules() {
-		modules.push_back(std::make_shared<MyModule>("My Module"));
-		modules.push_back(std::make_shared<AnotherModule>("Another Module"));
+class MyTests  : public AllTest {
+public:
+	MyTests() {}
+	void addChildren() {
+		add(createModule<MyModule>("My module"));
 	}
 };
 

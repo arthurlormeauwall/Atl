@@ -10,22 +10,8 @@ AtlController::AtlController()
 	m_atlService = std::make_shared<AtlService>(); 
 }
 
-//void AtlController::addRunner(sharedptr<UnitTestController> runner)
-//{
-//	m_unitTests.push_back(runner);
-//}
-
-void AtlController::prepare() 
-{
-	//addModules();
-	//for (sharedptr<UnitTestController> runner : m_unitTests) 
-	//{
-	//	runner->setAtlService(m_atlService);
-	//	runner->addTests();
-	//}
-}
 void AtlController::runAllTests(sharedptr<AllTest> allTests)
 {
-	allTests->addm();
+	allTests->init();
 	m_atlService->runAllTests(allTests);
 }

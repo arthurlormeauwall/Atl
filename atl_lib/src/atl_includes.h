@@ -8,3 +8,4 @@
 #include "service/assertion/Assertion.h"
 #include "presenter/output/ConsoleOutputWriter.h"
 #include "model/TestContainer.h"
+#include "model/AllTests.h"
