@@ -3,6 +3,6 @@
 
 class OutputWriter{
 public: 
-	virtual void write(sharedptr<string> output) = 0;
+	virtual void write(string output) = 0;
 };
 

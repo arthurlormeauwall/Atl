@@ -6,17 +6,17 @@
 
 
 
-class UnitTest : public Test
-{
-	vector<sharedptr<Result>> assertResults;
-	vector<sharedptr<Result>>(*unitTestRunnable)(Path);
+class UnitTest : public Test {
+	vector<Result> assertResults;
+	vector<Result>(*unitTestRunnable)(Path);
 public:
-	UnitTest(TestData td, vector<sharedptr<Result>>(*runnable)(Path)) : Test(td) {
+	UnitTest(TestData td, vector<Result>(*runnable)(Path)) : Test(td) {
 		unitTestRunnable = runnable;
 	}
-	bool areChildrenPassing(vector<sharedptr<Result>> assertResult) ;
-	vector<string> getChildrenMessage(vector<sharedptr<Result>> assertResult) ;
+	bool areChildrenPassing(vector<Result> assertResult) ;
+	vector<string> getChildrenMessage(vector<Result> assertResult) ;
 	void updateResult() ;
 	void run() ;
-	vector<sharedptr<Result>> getAssertResults();
+	vector<Result> getAssertResults();
+	void addChildren() {}
 };

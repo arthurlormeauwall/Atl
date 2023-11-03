@@ -4,6 +4,6 @@
 
 class ConsoleOutputWriter : public OutputWriter{
 public: 
-	void write(sharedptr<string> out);
+	void write(string out);
 };
 

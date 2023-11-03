@@ -8,5 +8,5 @@ void AtlService::runAllTests(sharedptr<AllTest> allTests){
 
 void AtlService::write(sharedptr<AllTest> allTests) {
 	string out = m_presenter.getStringFromTestResult(allTests);
-	m_outputWriter->write(std::make_shared<string>(out));
+	m_outputWriter->write(out);
 }

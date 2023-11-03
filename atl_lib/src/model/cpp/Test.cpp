@@ -6,8 +6,7 @@ void Test::init() {
 	m_children.init();
 }
 
-void Test::addChildren() {};
-
+ 
 void Test::run() {
 	if (m_testData.hasChildren) {
 		m_children.run();
@@ -16,6 +15,7 @@ void Test::run() {
 	updateResult();
 }
 
+ 
 void Test::updateResult() {
 	if (!m_testData.childrenResult.pass) {
 		m_testData.result.pass = false;
@@ -27,8 +27,9 @@ void Test::updateResult() {
 	}
 }
 
+ 
 bool Test::areChildrenPassing() {
-	for (sharedptr<Test> t : m_children.getAllAsVector()) {
+	for (sharedptr<TestInterface> t : m_children.getTest()->getAllAsVector()) {
 		if (!t->getData().result.pass) {
 			return false;
 		}
@@ -36,36 +37,45 @@ bool Test::areChildrenPassing() {
 	return true;
 }
 
+ 
 vector<string> Test::getChildrenMessage() {
 	vector<string> messages;
-	for (sharedptr<Test> t : m_children.getAllAsVector()) {
+	for (sharedptr<TestInterface> t : m_children.getTest()->getAllAsVector()) {
 		messages.push_back(t->getData().result.message);
 	}
 	return messages;
 }
 
+ 
 void Test::computeChildrenResult() {
 	m_testData.childrenResult.pass = areChildrenPassing();
 	m_testData.childrenResult.message = getChildrenMessage();
 }
 
-void Test::add(sharedptr<Test> t) {
-	m_children.add(t);
+ 
+void Test::add(sharedptr<TestInterface> t) {
+	m_children.getTest()->add(t);
 }
 
-sharedptr<Test> Test::get(string name) {
-	return m_children.getByOrder(m_children.getByName(name));
+ 
+sharedptr<TestInterface> Test::get(string name) {
+	return m_children.getTest()->getByOrder(m_children.getTest()->getByName(name));
 }
 
-vector<sharedptr<Test>> Test::getAll() {
-	return m_children.getAllAsVector();
+ 
+vector<sharedptr<TestInterface>> Test::getAll() {
+	return m_children.getTest()->getAllAsVector();
 }
 
+ 
 TestData Test::getData() {
 	return m_testData;
 }
 
+ 
 void Test::runAll() {
 	run();
 	m_children.run();
 }
+
+

@@ -4,39 +4,36 @@
 #include "Path.h"
 #include "TestData.h"
 
-class Test {
+class Test : public TestInterface {
 protected:
 	TestData m_testData;
-	StackMap<sharedptr<Test>> m_children;
+	TestStackMap m_children;
 public:
 	Test(TestData data) : m_testData(data) {}
 	Test(string moduleName) : m_testData(Path(moduleName)) {}
 	Test(string modulName, string testClassName) : m_testData(Path(modulName, testClassName)) {}
 	Test() {}
-	void init();
-	virtual void addChildren();
-	virtual void run() ;
-	virtual void updateResult() ;
-	bool areChildrenPassing() ;
 
+	void init();
+	virtual void run() ;
+	TestData getData();
+
+	virtual void addChildren() = 0;
+	virtual void updateResult() ;
+
+	bool areChildrenPassing() ;
 	vector<string> getChildrenMessage() ;
 
 	void computeChildrenResult() ;
 
-	void add(sharedptr<Test> t) ;
+	void add(sharedptr<TestInterface> t) ;
 
-	sharedptr<Test> get(string name) ;
+	sharedptr<TestInterface> get(string name) ;
 
-	vector<sharedptr<Test>> getAll() ;
-
-	TestData getData();
+	vector<sharedptr<TestInterface>> getAll() ;
 
 	void runAll() ;
 };
-
-
-
-
 
 
 

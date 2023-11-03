@@ -1,19 +1,19 @@
 #include "../UnitTest.h"
 #include "../../template.h"
 
-bool UnitTest::areChildrenPassing(vector<sharedptr<Result>> assertResult) {
-	for (sharedptr<Result> t : assertResult) {
-		if (!t->pass) {
+bool UnitTest::areChildrenPassing(vector<Result> assertResult) {
+	for (Result t : assertResult) {
+		if (!t.pass) {
 			return false;
 		}
 	}
 	return true;
 }
 
-vector<string> UnitTest::getChildrenMessage(vector<sharedptr<Result>> assertResult) {
+vector<string> UnitTest::getChildrenMessage(vector<Result> assertResult) {
 	vector<string> messages;
-	for (sharedptr<Result> t : assertResult) {
-		messages.push_back(t->message);
+	for (Result t : assertResult) {
+		messages.push_back(t.message);
 	}
 	return messages;
 }
@@ -36,6 +36,6 @@ void UnitTest::run() {
 	updateResult();
 }
 
-vector<sharedptr<Result>> UnitTest::getAssertResults() {
+vector<Result> UnitTest::getAssertResults() {
 	return assertResults;
 }

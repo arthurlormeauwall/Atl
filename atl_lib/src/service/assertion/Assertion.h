@@ -11,6 +11,6 @@ protected:
 public:
 	Assertion() : m_expected(0.00), m_actual(0.00) {}
 	Assertion(T actual, T expected) : m_expected(expected), m_actual(actual) {}
-	virtual sharedptr<Result> getResult(Path path) = 0;
+	virtual Result getResult(Path path) = 0;
 };
 
