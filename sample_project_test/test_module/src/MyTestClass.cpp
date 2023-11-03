@@ -2,7 +2,6 @@
 
 #include "MyClass.h"
 #include "atl_includes.h"
-#include "service/assertion/Assertion.h"
 
 void MyTestClass::addChildren() {
 	add(createUnitTest("should add two number",

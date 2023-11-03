@@ -127,24 +127,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\service\ResultService.cpp" />
+    <ClCompile Include="src\model\cpp\Test.cpp" />
+    <ClCompile Include="src\model\cpp\UnitTest.cpp" />
+    <ClCompile Include="src\model\Module.h" />
+    <ClCompile Include="src\service\assertion\AssertBuilder.h" />
     <ClCompile Include="src\controller\AtlController.cpp" />
-    <ClCompile Include="src\model\TestResultContainer.cpp" />
     <ClCompile Include="src\presenter\output\ConsoleOutputWriter.cpp" />
     <ClCompile Include="src\presenter\Presenter.cpp" />
-    <ClCompile Include="src\service\assertion\Assertion.cpp" />
     <ClCompile Include="src\service\AtlService.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\model\TestContainer.h" />
+    <ClInclude Include="src\model\AllTest.h" />
+    <ClInclude Include="src\model\ChildrenResult.h" />
+    <ClInclude Include="src\model\Path.h" />
+    <ClInclude Include="src\model\Result.h" />
+    <ClInclude Include="src\model\StackMap.h" />
+    <ClInclude Include="src\model\TestClass.h" />
+    <ClInclude Include="src\model\TestData.h" />
     <ClInclude Include="src\model\UnitTest.h" />
-    <ClInclude Include="src\service\ResultService.h" />
+    <ClInclude Include="src\service\assertion\IsEqualTo.h" />
     <ClInclude Include="src\atl_includes.h" />
     <ClInclude Include="src\controller\AtlController.h" />
     <ClInclude Include="src\macros\macros.h" />
-    <ClInclude Include="src\model\AllTests.h" />
-    <ClInclude Include="src\model\TestResultContainer.h" />
-    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\model\Test.h" />
+    <ClInclude Include="src\template.h" />
     <ClInclude Include="src\presenter\output\ConsoleOutputWriter.h" />
     <ClInclude Include="src\presenter\output\OutputWriter.h" />
     <ClInclude Include="src\presenter\Presenter.h" />

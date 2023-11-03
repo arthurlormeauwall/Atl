@@ -1,6 +1,11 @@
 #pragma once
-#include "../pch.h"
-#include "../model/AllTests.h"
+#include "../template.h"
+#include "../model/Result.h"
+#include "../model/UnitTest.h"
+#include "../model/TestClass.h"
+#include "../model/Module.h"
+#include "../model/Test.h"
+#include "../model/AllTest.h"
 #include "views/Views.h"
 
 class AssertPresenter {

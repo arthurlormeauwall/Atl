@@ -1,5 +1,8 @@
 #pragma once
-#include "TestResultContainer.h"
+#include "../template.h"
+#include "ChildrenResult.h"
+#include "Path.h"
+#include "Result.h"
 
 class TestData {
 public:

@@ -1,9 +1,8 @@
 #pragma once
-#include "../pch.h"
+#include "../template.h"
 #include "../presenter/output/OutputWriter.h"
-#include "../model/TestContainer.h"
+#include "../model/AllTest.h"
 #include "../service/AtlService.h"
-#include "../model/AllTests.h"
 
 
 class AtlController 

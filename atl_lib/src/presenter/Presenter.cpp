@@ -1,3 +1,4 @@
+#include "../template.h"
 #include "Presenter.h"
 
 string AssertPresenter::getString(sharedptr<Result> assert) {
