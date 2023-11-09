@@ -1,9 +1,8 @@
 #pragma once
-#include "../../pch.h"
+#include "../../template.h"
 
-class OutputWriter
-{
+class OutputWriter{
 public: 
-	virtual void write(sharedptr<string> output) = 0;
+	virtual void write(string output) = 0;
 };
 

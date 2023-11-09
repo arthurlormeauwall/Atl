@@ -1,9 +1,44 @@
 #pragma once
-#include "../pch.h"
-#include "../model/TestResultContainer.h" 
-#include "views/Views.h"
+#include "../template.h"
+#include "../model/Result.h"
+#include "../model/UnitTest.h"
+#include "../model/TestClass.h"
+#include "../model/Module.h"
+#include "../model/Test.h"
+#include "../model/AllTest.h"
+#include "views/CommonViews.h"
+#include "views/ModuleView.h"
+#include "views/TestClassView.h"
+#include "views/UnitTestView.h"
+#include "views/AssertResultView.h"
+
+class AssertPresenter {
+public:
+	string getString(AssertResultView);
+};
+
+class UnitTestPresenter {
+	AssertPresenter m_assertPresenter;
+public:
+	string getString(UnitTestView);
+};
+
+class TestClassPresenter {
+	UnitTestPresenter m_unitTestPresenter;
+public:
+	string getString(TestClassView);
+};
+
+class ModulePresenter {
+	TestClassPresenter m_testClassPresenter;
+public:
+	string getString(ModuleView);
+};
+
 
 class Presenter {
-public :
-	string getStringFromTestResult(sharedptr<AllTestResult>);
+	ModulePresenter m_modulePresenter;
+public:
+	string getStringFromTestResult(sharedptr<TestInterface>);
 };
+

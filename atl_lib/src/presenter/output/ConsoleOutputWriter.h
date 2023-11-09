@@ -1,10 +1,9 @@
 #pragma once
-#include "../../pch.h"
+#include "../../template.h"
 #include "../output/OutputWriter.h"
 
-class ConsoleOutputWriter : public OutputWriter
-{
+class ConsoleOutputWriter : public OutputWriter{
 public: 
-	void write(sharedptr<string> out);
+	void write(string out);
 };
 

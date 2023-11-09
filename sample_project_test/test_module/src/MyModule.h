@@ -7,8 +7,9 @@
 
 class MyModule : public Module {
 public:
-	MyModule(const string& n) : Module(n) {}
-	void addTestClasses() {
-		addTestClass(std::make_shared<MyTestClass>("My test class"));
+
+	MyModule(TestData td) : Module(td) {}
+	void addChildren() {
+		add(createTestClass<MyTestClass>("My Test class"));
 	}
 };

@@ -6,9 +6,10 @@
 
 class AnotherModule : public Module {
 public:
-	AnotherModule(const string& n) : Module(n) {}
-	void addTestClasses() {
-		addTestClass(std::make_shared<AnotherTestClass>("Another test class"));
-		addTestClass(std::make_shared<AThirdTestClass>("A third test class"));
+
+	AnotherModule(TestData td) : Module(td) {}
+	void addChildren() {
+		add(createTestClass<AnotherTestClass>("Another test class"));
+		add(createTestClass<AThirdTestClass>("A third test class"));
 	}
 };

@@ -4,6 +4,6 @@
 
 class MyTestClass : public TestClass {
 public:
-	MyTestClass(const string& n) : TestClass(n) {}
-	void addTests();
+	MyTestClass(TestData td) : TestClass(td) {}
+	void addChildren();
 };
