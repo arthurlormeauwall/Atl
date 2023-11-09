@@ -7,28 +7,32 @@
 #include "../model/Test.h"
 #include "../model/AllTest.h"
 #include "views/CommonViews.h"
+#include "views/ModuleView.h"
+#include "views/TestClassView.h"
+#include "views/UnitTestView.h"
+#include "views/AssertResultView.h"
 
 class AssertPresenter {
 public:
-	string getString(Result);
+	string getString(AssertResultView);
 };
 
 class UnitTestPresenter {
 	AssertPresenter m_assertPresenter;
 public:
-	string getString(sharedptr<TestInterface>);
+	string getString(UnitTestView);
 };
 
 class TestClassPresenter {
 	UnitTestPresenter m_unitTestPresenter;
 public:
-	string getString(sharedptr<TestInterface>);
+	string getString(TestClassView);
 };
 
 class ModulePresenter {
 	TestClassPresenter m_testClassPresenter;
 public:
-	string getString(sharedptr<TestInterface>);
+	string getString(ModuleView);
 };
 
 

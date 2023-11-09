@@ -1,5 +1,6 @@
 #include "../template.h"
 #include "Presenter.h"
+#include "views/ModuleView.h"
 
 string format(string tab, bool pass) {
 	string out;
@@ -9,50 +10,50 @@ string format(string tab, bool pass) {
 	return out;
 }
 
-string AssertPresenter::getString(Result assert) {
+string AssertPresenter::getString(AssertResultView assertResult) {
 	string out;
 	string tab = "                           ";
-	out.append(format(tab, assert.pass));
-	out.append(assert.message).append("\n");
+	out.append(format(tab, assertResult.pass));
+	out.append(assertResult.message).append("\n");
 	return out;
 }
-string UnitTestPresenter::getString(sharedptr<TestInterface> unitTest) {
+string UnitTestPresenter::getString(UnitTestView unitTest) {
 	string out;
 	string tab ="                  "; 
-	out.append(format(tab, unitTest->getData().result.pass));
-	out.append(unitTest->getData().path.unitTestName).append("\n");
+	out.append(format(tab, unitTest.result.pass));
+	out.append(unitTest.path.unitTestName).append("\n");
 
-	vector<Result> assertResults = unitTest->getData().childrenResult.result;
-	for (Result assertMessage : assertResults) {
-		if (!assertMessage.pass) {
-			out.append(m_assertPresenter.getString(assertMessage));
+	vector<Result> assertResults = unitTest.childrenResult;
+	for (Result assertResult : assertResults) {
+		if (!assertResult.pass) {
+			out.append(m_assertPresenter.getString(AssertResultView(assertResult)));
 		}
 	}
 	return out;
 }
-string TestClassPresenter::getString(sharedptr<TestInterface> testClass) {
+string TestClassPresenter::getString(TestClassView testClass) {
 	string out;
 	string tab ="         "; 
-	out.append(format(tab, testClass->getData().result.pass));
-	out.append(testClass->getData().path.testClassName).append("\n");
+	out.append(format(tab, testClass.result.pass));
+	out.append(testClass.path.testClassName).append("\n");
 
-	vector<sharedptr<TestInterface>> unitTests = testClass->getAllChildren();
+	vector<sharedptr<TestInterface>> unitTests = testClass.children;
 	for (sharedptr<TestInterface> ut :  unitTests) {
-		out.append(m_unitTestPresenter.getString(ut));
+		out.append(m_unitTestPresenter.getString(UnitTestView(ut)));
 	}
 	return out;
 }
 
 
-string ModulePresenter::getString(sharedptr<TestInterface> module) {
+string ModulePresenter::getString(ModuleView module) {
 	string out;
 	string tab =""; 
-	out.append(format(tab, module->getData().result.pass));
-	out.append(module->getData().path.moduleName).append("\n");
+	out.append(format(tab, module.result.pass));
+	out.append(module.path.moduleName).append("\n");
 
-	vector<sharedptr<TestInterface>> testClass = module->getAllChildren();
+	vector<sharedptr<TestInterface>> testClass = module.children;
 	for (sharedptr<TestInterface> tc : testClass) {
-		out.append(m_testClassPresenter.getString(tc));
+		out.append(m_testClassPresenter.getString(TestClassView(tc)));
 	}
 	out.append("\n");
 	return out;
@@ -65,9 +66,8 @@ string Presenter::getStringFromTestResult(sharedptr<TestInterface> allTest)
 
 	vector<sharedptr<TestInterface>> modules = allTest->getAllChildren();
 	for (sharedptr<TestInterface> m : modules) {
-		out.append(m_modulePresenter.getString(m));
+		out.append(m_modulePresenter.getString(ModuleView(m)));
 	}
-
 	out.append(commonViews::goodBye);
 	return out;
 }
