@@ -22,7 +22,7 @@ public:
 	virtual void updateResult() ;
 
 	bool areChildrenPassing() ;
-	vector<string> getChildrenMessage() ;
+	vector<Result> getChildrenResults() ;
 
 	void computeChildrenResult() ;
 

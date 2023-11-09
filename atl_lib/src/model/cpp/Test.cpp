@@ -38,18 +38,17 @@ bool Test::areChildrenPassing() {
 }
 
  
-vector<string> Test::getChildrenMessage() {
-	vector<string> messages;
+vector<Result> Test::getChildrenResults() {
+	vector<Result> results;
 	for (sharedptr<TestInterface> t : m_children.getTest()->getAllAsVector()) {
-		messages.push_back(t->getData().result.message);
+		results.push_back(Result(t->getData().result));
 	}
-	return messages;
+	return results;
 }
 
  
 void Test::computeChildrenResult() {
-	m_testData.childrenResult.pass = areChildrenPassing();
-	m_testData.childrenResult.message = getChildrenMessage();
+	m_testData.childrenResult = ChildrenResult(areChildrenPassing(), getChildrenResults());
 }
 
  

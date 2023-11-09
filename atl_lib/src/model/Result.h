@@ -2,7 +2,7 @@
 
 #include "../template.h"
 
-struct Result{
+struct Result {
 	bool pass;
 	string message;
 	Result() :
@@ -11,4 +11,9 @@ struct Result{
 	Result(bool p, string m) :
 		pass(p),
 		message(m) {}
+	Result(const Result& result) {
+		pass = result.pass;
+		message = result.message;
+	}
 };
+

@@ -10,7 +10,7 @@
 
 class AssertPresenter {
 public:
-	string getString(sharedptr<Result>);
+	string getString(Result);
 };
 
 class UnitTestPresenter {

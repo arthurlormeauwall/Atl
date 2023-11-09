@@ -8,6 +8,7 @@ public:
 	MyTests() {}
 	void addChildren() {
 		add(createModule<MyModule>("My module"));
+		add(createModule<AnotherModule>("Another module"));
 	}
 };
 

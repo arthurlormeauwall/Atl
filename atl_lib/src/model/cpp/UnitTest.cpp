@@ -32,7 +32,7 @@ void UnitTest::updateResult() {
 void UnitTest::run() {
 	assertResults = unitTestRunnable(Path(m_testData.path.moduleName, m_testData.path.testClassName, m_testData.path.unitTestName));
 	m_testData.childrenResult.pass = areChildrenPassing(assertResults);
-	m_testData.childrenResult.message = getChildrenMessage(assertResults);
+	m_testData.childrenResult.result = assertResults;
 	updateResult();
 }
 
