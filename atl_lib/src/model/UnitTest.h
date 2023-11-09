@@ -15,7 +15,6 @@ public:
 	}
 	bool areChildrenPassing(vector<Result> assertResult) ;
 	vector<string> getChildrenMessage(vector<Result> assertResult) ;
-	void updateResult() ;
 	void run() ;
 	vector<Result> getAssertResults();
 	void addChildren() {}

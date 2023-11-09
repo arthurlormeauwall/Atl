@@ -57,9 +57,9 @@ void Test::add(sharedptr<TestInterface> t) {
 }
 
  
-sharedptr<TestInterface> Test::get(string name) {
-	return m_children.getTest()->getByOrder(m_children.getTest()->getByName(name));
-}
+//sharedptr<TestInterface> Test::get(string name) {
+//	return m_children.getTest()->getByOrder(m_children.getTest()->getByName(name));
+//}
 
  
 vector<sharedptr<TestInterface>> Test::getAllChildren() {
@@ -72,9 +72,9 @@ TestData Test::getData() {
 }
 
  
-void Test::runAll() {
-	run();
-	m_children.run();
-}
+//void Test::runAll() {
+//	run();
+//	m_children.run();
+//}
 
 

@@ -18,17 +18,6 @@ vector<string> UnitTest::getChildrenMessage(vector<Result> assertResult) {
 	return messages;
 }
 
-void UnitTest::updateResult() {
-	if (!m_testData.childrenResult.pass) {
-		m_testData.result.pass = false;
-		m_testData.result.message = "Some assertions failed";
-	}
-	else {
-		m_testData.result.pass = true;
-		m_testData.result.message = "UnitTest Succeed";
-	}
-}
-
 void UnitTest::run() {
 	assertResults = unitTestRunnable(Path(m_testData.path.moduleName, m_testData.path.testClassName, m_testData.path.unitTestName));
 	m_testData.childrenResult.pass = areChildrenPassing(assertResults);

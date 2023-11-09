@@ -8,6 +8,16 @@ class Test : public TestInterface {
 protected:
 	TestData m_testData;
 	TestStackMap m_children;
+
+	virtual void addChildren() = 0;
+	void add(sharedptr<TestInterface> t) ;
+
+	void updateResult() ;
+	bool areChildrenPassing() ;
+	vector<Result> getChildrenResults() ;
+	void computeChildrenResult() ;
+	vector<sharedptr<TestInterface>> getAllChildren() ;
+
 public:
 	Test(TestData data) : m_testData(data) {}
 	Test(string moduleName) : m_testData(Path(moduleName)) {}
@@ -18,21 +28,6 @@ public:
 	virtual void run() ;
 	TestData getData();
 
-	virtual void addChildren() = 0;
-	virtual void updateResult() ;
-
-	bool areChildrenPassing() ;
-	vector<Result> getChildrenResults() ;
-
-	void computeChildrenResult() ;
-
-	void add(sharedptr<TestInterface> t) ;
-
-	sharedptr<TestInterface> get(string name) ;
-
-	vector<sharedptr<TestInterface>> getAllChildren() ;
-
-	void runAll() ;
 };
 
 
