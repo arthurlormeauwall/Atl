@@ -7,6 +7,7 @@ public:
 	virtual	void run() = 0;
 	virtual	void init() = 0;
 	virtual TestData getData() = 0;
+	virtual vector<sharedptr<TestInterface>> getAllChildren()=0;
 };
 
 template<typename T>

@@ -8,32 +8,33 @@
 #include "../model/AllTest.h"
 #include "views/CommonViews.h"
 
-//class AssertPresenter {
-//public:
-//	string getString(sharedptr<Result>);
-//};
-//
-//class UnitTestPresenter {
-//	AssertPresenter m_assertPresenter;
-//public:
-//	string getString(Test);
-//};
-//
-//class TestClassPresenter {
-//	UnitTestPresenter m_unitTestPresenter;
-//public:
-//	string getString(Test);
-//};
-//
-//class ModulePresenter {
-//	TestClassPresenter m_testClassPresenter;
-//public:
-//	string getString(Test);
-//};
+class AssertPresenter {
+public:
+	string getString(sharedptr<Result>);
+};
+
+class UnitTestPresenter {
+	AssertPresenter m_assertPresenter;
+public:
+	string getString(sharedptr<TestInterface>);
+};
+
+class TestClassPresenter {
+	UnitTestPresenter m_unitTestPresenter;
+public:
+	string getString(sharedptr<TestInterface>);
+};
+
+class ModulePresenter {
+	TestClassPresenter m_testClassPresenter;
+public:
+	string getString(sharedptr<TestInterface>);
+};
 
 
 class Presenter {
+	ModulePresenter m_modulePresenter;
 public:
-	string getStringFromTestResult(sharedptr<Test>);
+	string getStringFromTestResult(sharedptr<TestInterface>);
 };
 

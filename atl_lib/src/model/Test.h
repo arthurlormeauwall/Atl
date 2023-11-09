@@ -30,7 +30,7 @@ public:
 
 	sharedptr<TestInterface> get(string name) ;
 
-	vector<sharedptr<TestInterface>> getAll() ;
+	vector<sharedptr<TestInterface>> getAllChildren() ;
 
 	void runAll() ;
 };

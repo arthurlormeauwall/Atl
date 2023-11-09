@@ -63,7 +63,7 @@ sharedptr<TestInterface> Test::get(string name) {
 }
 
  
-vector<sharedptr<TestInterface>> Test::getAll() {
+vector<sharedptr<TestInterface>> Test::getAllChildren() {
 	return m_children.getTest()->getAllAsVector();
 }
 
