@@ -27,13 +27,10 @@
     <ClCompile Include="src\service\AtlService.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\Module.h">
+    <ClCompile Include="src\model\Initialisation\ModuleInit.h">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\cpp\UnitTest.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\model\cpp\TestInterface.cpp">
+    <ClCompile Include="src\model\Initialisation\TestInit.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\service\assertion\AssertBuilder.h">
@@ -77,10 +74,7 @@
     <ClInclude Include="src\model\TestData.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\TestClass.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\model\Path.h">
+    <ClInclude Include="src\model\Initialisation\TestClassInit.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\model\Result.h">
@@ -104,13 +98,16 @@
     <ClInclude Include="src\presenter\views\AssertResultView.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\AllTest.h">
+    <ClInclude Include="src\model\Initialisation\AllTestInit.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\UnitTest.h">
+    <ClInclude Include="src\model\Initialisation\UnitTestInit.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\TestInterface.h">
+    <ClInclude Include="src\model\Initialisation\TestInit.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\service\TestRunner.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

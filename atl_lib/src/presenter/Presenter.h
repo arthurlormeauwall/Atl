@@ -1,11 +1,11 @@
 #pragma once
 #include "../template.h"
 #include "../model/Result.h"
-#include "../model/UnitTest.h"
-#include "../model/TestClass.h"
-#include "../model/Module.h"
-#include "../model/TestInterface.h"
-#include "../model/AllTest.h"
+#include "../model/Initialisation/UnitTestInit.h"
+#include "../model/Initialisation/TestClassInit.h"
+#include "../model/Initialisation/ModuleInit.h"
+#include "../model/Initialisation/TestInit.h"
+#include "../model/Initialisation/AllTestInit.h"
 #include "views/CommonViews.h"
 #include "views/ModuleView.h"
 #include "views/TestClassView.h"
@@ -17,28 +17,28 @@ public:
 	string getString(AssertResultView);
 };
 
-class UnitTestPresenter {
+class UnitTestInitPresenter {
 	AssertPresenter m_assertPresenter;
 public:
-	string getString(UnitTestView);
+	string getString(UnitTestInitView);
 };
 
-class TestClassPresenter {
-	UnitTestPresenter m_unitTestPresenter;
+class TestClassInitPresenter {
+	UnitTestInitPresenter m_UnitTestInitPresenter;
 public:
-	string getString(TestClassView);
+	string getString(TestClassInitView);
 };
 
-class ModulePresenter {
-	TestClassPresenter m_testClassPresenter;
+class ModuleInitPresenter {
+	TestClassInitPresenter m_TestClassInitPresenter;
 public:
-	string getString(ModuleView);
+	string getString(ModuleInitView);
 };
 
 
 class Presenter {
-	ModulePresenter m_modulePresenter;
+	ModuleInitPresenter m_ModuleInitPresenter;
 public:
-	string getStringFromTestResult(sharedptr<TestInterface>);
+	string getStringFromTestResult(sharedptr<TestInit>);
 };
 

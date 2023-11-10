@@ -4,5 +4,5 @@
 
 int main() {
 	MyRunner testRunner = MyRunner();
-	testRunner.runAllTests(std::make_shared<MyTests>());
+	testRunner.runAllTest(std::make_shared<MyTests>());
 }

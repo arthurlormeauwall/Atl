@@ -2,8 +2,8 @@
 #include "atl_includes.h"
 
 
-class MyTestClass : public TestClass {
+class MyTestClass: public TestClassInit {
 public:
-	MyTestClass(TestData td) : TestClass(td) {}
+	MyTestClass(TestData td) : TestClassInit(td) {}
 	void addChildren();
 };

@@ -4,7 +4,7 @@
 #include "atl_includes.h"
 
 void MyTestClass::addChildren() {
-	add(createUnitTest("should add two number",
+	add(createUnitTestInit("should add two number",
 		[]()->std::vector<Result>
 		{
 			Assertions assertions;

@@ -1,6 +1,5 @@
 #pragma once
 #include "../template.h"
-#include "TestData.h"
 
 template<typename T>
 class StackMap {
@@ -25,6 +24,5 @@ public:
 	void remove(int) {}
 	vector<sharedptr<T>> getAllAsVector() { return m_data; }
 	map<string, sharedptr<T>> getAllAsMap() {}
-
 };
 

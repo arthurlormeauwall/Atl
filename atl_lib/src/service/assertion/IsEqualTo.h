@@ -1,7 +1,6 @@
 #pragma once
 #include "../../template.h"
 #include "../../model/Result.h"
-#include "../../model/Path.h"
 
 template<typename T>
 class IsEqualTo : public Assertion<T> {

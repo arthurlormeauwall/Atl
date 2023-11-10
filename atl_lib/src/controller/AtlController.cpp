@@ -10,7 +10,6 @@ AtlController::AtlController() {
 	m_atlService = std::make_shared<AtlService>(); 
 }
 
-void AtlController::runAllTests(sharedptr<AllTest> allTests){
-	allTests->init();
-	m_atlService->runAllTests(allTests);
+void AtlController::runAllTest(sharedptr<AllTestInit> allTests){
+	m_atlService->runAllTests(allTests->init());
 }

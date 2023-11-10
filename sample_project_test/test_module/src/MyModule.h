@@ -5,11 +5,11 @@
 #include <memory>
 #include <vector>
 
-class MyModule : public Module {
+class MyModule: public ModuleInit {
 public:
 
-	MyModule(TestData td) : Module(td) {}
+	MyModule(TestData td) : ModuleInit(td) {}
 	void addChildren() {
-		add(createTestClass<MyTestClass>("My Test class"));
+		add(createTestClassInit<MyTestClass>("My Test class"));
 	}
 };

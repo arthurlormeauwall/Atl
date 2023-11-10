@@ -1,8 +1,8 @@
 #include "atl_includes.h"
 #include "TestClassDeclarations.h"
 
-//void AnotherTestClass::addChildren() {
-//	add(createUnitTest("A test that should succeed",
+//void AnotherTestClassInit::addChildren() {
+//	add(createUnitTestInit("A test that should succeed",
 //		[](Path path)->std::vector<Result>
 //		{
 //			Assertions assertions;

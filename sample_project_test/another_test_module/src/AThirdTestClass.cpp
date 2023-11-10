@@ -1,7 +1,7 @@
 #include "TestClassDeclarations.h"
 
-//void AThirdTestClass::addChildren() {
-//	add(createUnitTest("A test that should fail",
+//void AThirdTestClassInit::addChildren() {
+//	add(createUnitTestInit("A test that should fail",
 //		[](Path path)->std::vector<Result>
 //		{
 //			Assertions assertions;

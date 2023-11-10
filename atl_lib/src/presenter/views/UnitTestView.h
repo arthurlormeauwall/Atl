@@ -1,16 +1,12 @@
 #pragma once
 #include "../../model/Result.h"
-#include "../../model/Path.h"
-#include "../../model/TestInterface.h"
+#include "../../model/Initialisation/TestInit.h"
 
-class UnitTestView {
+class UnitTestInitView {
 public:
 	Result result;
-	Path path;
+	string path;
 	vector<Result> childrenResult;
-	UnitTestView(sharedptr<TestInterface> test) {
-		result = test->getData().result;
-		path = test->getData().path;
-		childrenResult = test->getData().childrenResult.result;
-	}
+	UnitTestInitView(sharedptr<TestInit> test) {
+		}
 };

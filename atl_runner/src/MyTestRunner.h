@@ -3,12 +3,12 @@
 #include "AnotherModule.h"
 #include "MyModule.h"
 
-class MyTests  : public AllTest {
+class MyTests  : public AllTestInit {
 public:
 	MyTests() {}
 	void addChildren() {
-		add(createModule<MyModule>("My module"));
-		//add(createModule<AnotherModule>("Another module"));
+		add(createModuleInit<MyModule>("My ModuleInit"));
+		//add(createModuleInit<AnotherModuleInit>("Another ModuleInit"));
 	}
 };
 
