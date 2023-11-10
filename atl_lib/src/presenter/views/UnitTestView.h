@@ -1,5 +1,7 @@
 #pragma once
-#include "../../model/StackMap.h"
+#include "../../model/Result.h"
+#include "../../model/Path.h"
+#include "../../model/TestInterface.h"
 
 class UnitTestView {
 public:

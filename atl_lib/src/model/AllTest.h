@@ -1,11 +1,11 @@
 #pragma once
 #include "../template.h"
-#include "Test.h"
+#include "TestInterface.h"
 #include "TestData.h"
 #include "Path.h"
 #include "Module.h"
 
-class AllTest : public Test{
+class AllTest : public TestInterface{
 public:
 	AllTest() {}
 	template<typename T>

@@ -1,8 +1,5 @@
 #pragma once
-#include <iostream>
-#include <stack> 
-#include <string>
-#include <memory> 
+#include "template.h"
 #include "macros/macros.h"
 #include "controller/AtlController.h"
 #include "service/assertion/Assertion.h"

@@ -1,16 +1,16 @@
 #pragma once
 #include "../template.h"
-#include "Test.h"
+#include "TestInterface.h"
 #include "Result.h"
 #include "TestData.h"
 
 
 
-class UnitTest : public Test {
+class UnitTest : public TestInterface {
 	vector<Result> assertResults;
 	vector<Result>(*unitTestRunnable)(Path);
 public:
-	UnitTest(TestData td, vector<Result>(*runnable)(Path)) : Test(td) {
+	UnitTest(TestData td, vector<Result>(*runnable)(Path)) : TestInterface(td) {
 		unitTestRunnable = runnable;
 	}
 	bool areChildrenPassing(vector<Result> assertResult) ;

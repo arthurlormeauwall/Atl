@@ -4,7 +4,7 @@
 #include "../model/UnitTest.h"
 #include "../model/TestClass.h"
 #include "../model/Module.h"
-#include "../model/Test.h"
+#include "../model/TestInterface.h"
 #include "../model/AllTest.h"
 #include "views/CommonViews.h"
 #include "views/ModuleView.h"

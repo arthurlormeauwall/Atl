@@ -33,7 +33,7 @@
     <ClCompile Include="src\model\cpp\UnitTest.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\cpp\Test.cpp">
+    <ClCompile Include="src\model\cpp\TestInterface.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\service\assertion\AssertBuilder.h">
@@ -45,9 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\controller\AtlController.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\model\Test.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\presenter\output\ConsoleOutputWriter.h">
@@ -80,12 +77,6 @@
     <ClInclude Include="src\model\TestData.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\UnitTest.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\model\AllTest.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="src\model\TestClass.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -111,6 +102,15 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\presenter\views\AssertResultView.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\AllTest.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\UnitTest.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\TestInterface.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

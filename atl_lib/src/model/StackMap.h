@@ -2,14 +2,6 @@
 #include "../template.h"
 #include "TestData.h"
 
-class TestInterface {
-public:
-	virtual	void run() = 0;
-	virtual	void init() = 0;
-	virtual TestData getData() = 0;
-	virtual vector<sharedptr<TestInterface>> getAllChildren()=0;
-};
-
 template<typename T>
 class StackMap {
 	vector<sharedptr<T>> m_data;
@@ -36,20 +28,3 @@ public:
 
 };
 
-class TestStackMap {
-	StackMap<TestInterface> m_data;
-public:
-	void init() {
-		for (sharedptr<TestInterface> t : m_data.getAllAsVector()) {
-			t->init();
-		}
-	}
-	void run() {
-		for (sharedptr<TestInterface> t : m_data.getAllAsVector()) {
-			t->run();
-		}
-	}
-	StackMap<TestInterface>* getTest() {
-		return &m_data;
-	}
-};
