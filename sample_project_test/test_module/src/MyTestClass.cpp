@@ -5,7 +5,7 @@
 
 void MyTestClass::addChildren() {
 	add(createUnitTest("should add two number",
-		[](Path path)->std::vector<Result>
+		[]()->std::vector<Result>
 		{
 			Assertions assertions;
 			MyClass<float> fixture;
@@ -13,7 +13,7 @@ void MyTestClass::addChildren() {
 			float b = 2.F;
 			float actual = fixture.add(a, b);
 			float expected = 5.F; 
-			assertions.push_back(assertThat<float>(actual).isEqualTo(0.88F)->getResult(path));
+			assertions.push_back(assertThat<float>(actual).isEqualTo(0.88F)->getResult());
 			return assertions;
 		}
 	));

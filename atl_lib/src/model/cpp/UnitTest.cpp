@@ -19,7 +19,7 @@ vector<string> UnitTest::getChildrenMessage(vector<Result> assertResult) {
 }
 
 void UnitTest::run() {
-	assertResults = unitTestRunnable(Path(m_testData.path.moduleName, m_testData.path.testClassName, m_testData.path.unitTestName));
+	assertResults = unitTestRunnable();
 	m_testData.childrenResult.pass = areChildrenPassing(assertResults);
 	m_testData.childrenResult.result = assertResults;
 	updateResult();

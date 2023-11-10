@@ -8,9 +8,9 @@
 
 class UnitTest : public TestInterface {
 	vector<Result> assertResults;
-	vector<Result>(*unitTestRunnable)(Path);
+	vector<Result>(*unitTestRunnable)();
 public:
-	UnitTest(TestData td, vector<Result>(*runnable)(Path)) : TestInterface(td) {
+	UnitTest(TestData td, vector<Result>(*runnable)()) : TestInterface(td) {
 		unitTestRunnable = runnable;
 	}
 	bool areChildrenPassing(vector<Result> assertResult) ;
