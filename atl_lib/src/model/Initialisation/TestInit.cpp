@@ -1,7 +1,6 @@
 #include "../../template.h"
 #include "TestInit.h"
 
-
 void TestInit::initChildrenTest(vector<sharedptr<TestInit>> children) {
 	for (sharedptr<TestInit> t : children) {
 		m_testData.children.add(t->init());
