@@ -3,11 +3,11 @@
 #include "../../model/Result.h"
 #include "../../model/Initialisation/TestInit.h"
 
-class ModuleInitView {
+class ModuleView {
 public:
 	Result result;
 	string path;
-	vector<sharedptr<TestInit>> children;
-	ModuleInitView(sharedptr<TestInit> test) {
+	vector<sharedptr<TestData>> children;
+	ModuleView(sharedptr<TestData> test) {
 	}
 };

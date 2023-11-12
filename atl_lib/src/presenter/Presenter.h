@@ -20,25 +20,25 @@ public:
 class UnitTestInitPresenter {
 	AssertPresenter m_assertPresenter;
 public:
-	string getString(UnitTestInitView);
+	string getString(UnitTestView);
 };
 
 class TestClassInitPresenter {
 	UnitTestInitPresenter m_UnitTestInitPresenter;
 public:
-	string getString(TestClassInitView);
+	string getString(TestClassView);
 };
 
 class ModuleInitPresenter {
 	TestClassInitPresenter m_TestClassInitPresenter;
 public:
-	string getString(ModuleInitView);
+	string getString(ModuleView);
 };
 
 
 class Presenter {
 	ModuleInitPresenter m_ModuleInitPresenter;
 public:
-	string getStringFromTestResult(sharedptr<TestInit>);
+	string getStringFromTestResult(sharedptr<TestData>);
 };
 

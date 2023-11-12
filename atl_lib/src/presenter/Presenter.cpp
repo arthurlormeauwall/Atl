@@ -17,7 +17,7 @@ string AssertPresenter::getString(AssertResultView assertResult) {
 	out.append(assertResult.message).append("\n");
 	return out;
 }
-string UnitTestInitPresenter::getString(UnitTestInitView UnitTestInit) {
+string UnitTestInitPresenter::getString(UnitTestView UnitTestInit) {
 	string out;
 	string tab ="                  "; 
 	out.append(format(tab, UnitTestInit.result.pass));
@@ -31,41 +31,41 @@ string UnitTestInitPresenter::getString(UnitTestInitView UnitTestInit) {
 	}
 	return out;
 }
-string TestClassInitPresenter::getString(TestClassInitView TestClassInit) {
+string TestClassInitPresenter::getString(TestClassView TestClassInit) {
 	string out;
 	string tab ="         "; 
 	out.append(format(tab, TestClassInit.result.pass));
 	out.append(TestClassInit.path).append("\n");
 
-	vector<sharedptr<TestInit>> UnitTestInits = TestClassInit.children;
-	for (sharedptr<TestInit> ut :  UnitTestInits) {
-		out.append(m_UnitTestInitPresenter.getString(UnitTestInitView(ut)));
+	vector<sharedptr<TestData>> UnitTestInits = TestClassInit.children;
+	for (sharedptr<TestData> ut :  UnitTestInits) {
+		out.append(m_UnitTestInitPresenter.getString(UnitTestView(ut)));
 	}
 	return out;
 }
 
 
-string ModuleInitPresenter::getString(ModuleInitView ModuleInit) {
+string ModuleInitPresenter::getString(ModuleView moduleView) {
 	string out;
 	string tab =""; 
-	out.append(format(tab, ModuleInit.result.pass));
-	out.append(ModuleInit.path).append("\n");
+	out.append(format(tab, moduleView.result.pass));
+	out.append(moduleView.path).append("\n");
 
-	vector<sharedptr<TestInit>> TestClassInit = ModuleInit.children;
-	for (sharedptr<TestInit> tc : TestClassInit) {
-		out.append(m_TestClassInitPresenter.getString(TestClassInitView(tc)));
+	vector<sharedptr<TestData>> TestClassInit = moduleView.children;
+	for (sharedptr<TestData> tc : TestClassInit) {
+		out.append(m_TestClassInitPresenter.getString(TestClassView(tc)));
 	}
 	out.append("\n");
 	return out;
 }
 
-string Presenter::getStringFromTestResult(sharedptr<TestInit> allTest)
+string Presenter::getStringFromTestResult(sharedptr<TestData> testData)
 {
 	string out;
 	out.append(commonViews::welcome);
 
-	//vector<sharedptr<TestInit>> ModuleInits = allTest->getAllChildren();
-	//for (sharedptr<TestInit> m : ModuleInits) {
+	//vector<sharedptr<TestData>> ModuleInits = allTest->getAllChildren();
+	//for (sharedptr<TestData> m : ModuleInits) {
 	//	out.append(m_ModuleInitPresenter.getString(ModuleInitView(m)));
 	//}
 	out.append(commonViews::goodBye);

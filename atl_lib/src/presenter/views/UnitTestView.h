@@ -2,11 +2,11 @@
 #include "../../model/Result.h"
 #include "../../model/Initialisation/TestInit.h"
 
-class UnitTestInitView {
+class UnitTestView {
 public:
 	Result result;
 	string path;
 	vector<Result> childrenResult;
-	UnitTestInitView(sharedptr<TestInit> test) {
+	UnitTestView(sharedptr<TestData> test) {
 		}
 };
