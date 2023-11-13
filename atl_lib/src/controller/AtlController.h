@@ -1,7 +1,7 @@
 #pragma once
 #include "../template.h"
 #include "../presenter/output/OutputWriter.h"
-#include "../model/Initialisation/AllTestInit.h"
+#include "../testBuilder/TestBuilder.h"
 #include "../service/AtlService.h"
 
 
@@ -13,6 +13,6 @@ protected:
 public :
 	AtlController(sharedptr<OutputWriter>);
 	AtlController();
-	void runAllTest(sharedptr<AllTestInit> allTests);
+	void runAllTest(sharedptr<AllTestBuilder> allTests);
 };
 

@@ -4,12 +4,12 @@
 #include <string>
 #include <vector>
 
-//class AnotherModuleInit : public ModuleInit {
-//public:
-//
-//	AnotherModuleInit(TestData td) : ModuleInit(td) {}
-//	void addChildren() {
-//		add(createTestClassInit<AnotherTestClassInit>("Another test class"));
-//		add(createTestClassInit<AThirdTestClassInit>("A third test class"));
-//	}
-//};
+class AnotherModule : public ModuleBuilder {
+public:
+
+	AnotherModule(TestData td) : ModuleBuilder(td) {}
+	void addChildren() {
+		add(createTestClassBuilder<AnotherTestClass>("Another test class"));
+		add(createTestClassBuilder<AThirdTestClass>("A third test class"));
+	}
+};

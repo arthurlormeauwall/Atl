@@ -127,8 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\model\Initialisation\TestInit.cpp" />
-    <ClCompile Include="src\model\Initialisation\ModuleInit.h" />
+    <ClCompile Include="src\testBuilder\TestTreeBuilder.cpp" />
+    <ClCompile Include="src\testBuilder\ModuleBuilder.h" />
     <ClCompile Include="src\presenter\views\ModuleView.h" />
     <ClCompile Include="src\service\assertion\AssertBuilder.h" />
     <ClCompile Include="src\controller\AtlController.cpp" />
@@ -137,13 +137,16 @@
     <ClCompile Include="src\service\AtlService.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\model\Initialisation\AllTestInit.h" />
+    <ClInclude Include="src\model\Model.h" />
+    <ClInclude Include="src\presenter\views\Views.h" />
+    <ClInclude Include="src\testBuilder\AllTestBuilder.h" />
     <ClInclude Include="src\model\ChildrenResult.h" />
     <ClInclude Include="src\model\Result.h" />
     <ClInclude Include="src\model\StackMap.h" />
-    <ClInclude Include="src\model\Initialisation\TestClassInit.h" />
+    <ClInclude Include="src\testBuilder\TestBuilder.h" />
+    <ClInclude Include="src\testBuilder\TestClassBuilder.h" />
     <ClInclude Include="src\model\TestData.h" />
-    <ClInclude Include="src\model\Initialisation\UnitTestInit.h" />
+    <ClInclude Include="src\testBuilder\UnitTestBuilder.h" />
     <ClInclude Include="src\presenter\views\AssertResultView.h" />
     <ClInclude Include="src\presenter\views\TestClassView.h" />
     <ClInclude Include="src\presenter\views\UnitTestView.h" />
@@ -151,7 +154,7 @@
     <ClInclude Include="src\atl_includes.h" />
     <ClInclude Include="src\controller\AtlController.h" />
     <ClInclude Include="src\macros\macros.h" />
-    <ClInclude Include="src\model\Initialisation\TestInit.h" />
+    <ClInclude Include="src\testBuilder\TestTreeBuilder.h" />
     <ClInclude Include="src\service\TestRunner.h" />
     <ClInclude Include="src\template.h" />
     <ClInclude Include="src\presenter\output\ConsoleOutputWriter.h" />

@@ -2,13 +2,14 @@
 #include "atl_includes.h" 
 #include "AnotherModule.h"
 #include "MyModule.h"
+#include "AnotherModule.h"
 
-class MyTests  : public AllTestInit {
+class MyTests  : public AllTestBuilder {
 public:
 	MyTests() {}
-	void addChildren() {
-		add(createModuleInit<MyModule>("My ModuleInit"));
-		//add(createModuleInit<AnotherModuleInit>("Another ModuleInit"));
+	void addChildren() override {
+		add(createModuleBuilder<MyModule>("My Module"));
+		add(createModuleBuilder<AnotherModule>("Another ModuleInit"));
 	}
 };
 

@@ -3,13 +3,13 @@
 
 template<typename T>
 class StackMap {
-	vector<sharedptr<T>> m_data;
+	vector<T> m_data;
 	map<string, int> m_map;
 public:
-	void add(sharedptr<T> t) {
+	void add(T t) {
 		m_data.push_back(t);
 	}
-	sharedptr<T> getByOrder(int i) {
+	T getByOrder(int i) {
 		return m_data.at(i);
 	}
 	int getByName(string name) {
@@ -22,7 +22,12 @@ public:
 		}
 	}
 	void remove(int) {}
-	vector<sharedptr<T>> getAllAsVector() { return m_data; }
-	map<string, sharedptr<T>> getAllAsMap() {}
+	vector<T> getAllAsVector() const { return m_data; }
+	map<string, T> getAllAsMap() {}
+	void doForEach(void (*func)(T* t)) {
+		for (int i = 0; i < m_data.size(); i++) {
+			func(&m_data.at(i));
+		}
+	}
 };
 

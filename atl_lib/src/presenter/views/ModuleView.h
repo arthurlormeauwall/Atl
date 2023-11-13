@@ -1,13 +1,16 @@
 #pragma once
 #include "../../template.h"
-#include "../../model/Result.h"
-#include "../../model/Initialisation/TestInit.h"
+#include "../../model/Model.h"
+
 
 class ModuleView {
 public:
 	Result result;
 	string path;
-	vector<sharedptr<TestData>> children;
-	ModuleView(sharedptr<TestData> test) {
+	vector<TestData> children;
+	ModuleView(const TestData& test) {
+		result= test.result;
+		path = test.path;
+		children = test.children.getAllAsVector();
 	}
 };

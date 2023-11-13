@@ -1,6 +1,6 @@
 #pragma once
 #include "../../template.h"
-#include "../../model/Result.h"
+#include "../../model/Model.h"
 
 class AssertResultView {
 public:

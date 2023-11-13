@@ -2,8 +2,8 @@
 #include "atl_includes.h"
 
 
-class MyTestClass: public TestClassInit {
+class MyTestClass: public TestClassBuilder {
 public:
-	MyTestClass(TestData td) : TestClassInit(td) {}
-	void addChildren();
+	MyTestClass(TestData td) : TestClassBuilder(td) {}
+	virtual void addChildren() override;
 };

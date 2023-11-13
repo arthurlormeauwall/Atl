@@ -27,10 +27,10 @@
     <ClCompile Include="src\service\AtlService.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\Initialisation\ModuleInit.h">
+    <ClCompile Include="src\testBuilder\ModuleBuilder.h">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\Initialisation\TestInit.cpp">
+    <ClCompile Include="src\testBuilder\TestTreeBuilder.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\service\assertion\AssertBuilder.h">
@@ -74,7 +74,7 @@
     <ClInclude Include="src\model\TestData.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\Initialisation\TestClassInit.h">
+    <ClInclude Include="src\testBuilder\TestClassBuilder.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\model\Result.h">
@@ -98,16 +98,25 @@
     <ClInclude Include="src\presenter\views\AssertResultView.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\Initialisation\AllTestInit.h">
+    <ClInclude Include="src\testBuilder\AllTestBuilder.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\Initialisation\UnitTestInit.h">
+    <ClInclude Include="src\testBuilder\UnitTestBuilder.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\Initialisation\TestInit.h">
+    <ClInclude Include="src\testBuilder\TestTreeBuilder.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\service\TestRunner.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\Model.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testBuilder\TestBuilder.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\presenter\views\Views.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

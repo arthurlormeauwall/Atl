@@ -6,7 +6,4 @@
 #include "service/assertion/AssertBuilder.h"
 #include "service/assertion/IsEqualTo.h"
 #include "presenter/output/ConsoleOutputWriter.h"
-#include "model/Initialisation/AllTestInit.h"
-#include "model/Initialisation/ModuleInit.h"
-#include "model/Initialisation/TestClassInit.h"
-#include "model/Initialisation/UnitTestInit.h"
+#include "testBuilder/TestBuilder.h"
