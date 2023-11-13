@@ -1,5 +1,6 @@
 #pragma once
 #include "../../template.h"
+#include "Comparable.h"
 #include "../../model/Result.h"
 
 template<typename T>
@@ -28,6 +29,41 @@ Result IsEqualTo<T>::getResult(){
 	}
 	else {
 		message = "expected to be equal to: " + std::to_string(Assertion<T>::m_expected) + " but was equal to: " + std::to_string(Assertion<T>::m_actual);
+	}
+	return Result(pass, message);
+}
+
+template<>
+inline Result IsEqualTo<Comparable*>::getResult() {
+	Comparable* actual, *expected;
+	actual = Assertion<Comparable*>::m_actual;
+	expected = Assertion<Comparable*>::m_expected;
+
+	bool pass = (actual == expected);
+	string message;
+	if (pass) {
+		message = "assertion is good :) ";
+	}
+	else {
+		message = "expected to be equal to: " + m_expected->toString() + " but was equal to: " + m_actual->toString();
+	}
+	return Result(pass, message);
+}
+
+
+template<>
+inline Result IsEqualTo<string>::getResult() {
+	string actual, expected;
+	actual = Assertion<string>::m_actual;
+	expected = Assertion<string>::m_expected;
+
+	bool pass = (actual == expected);
+	string message;
+	if (pass) {
+		message = "assertion is good :) ";
+	}
+	else {
+		message = "expected to be equal to: " + m_expected + " but was equal to: " + m_actual;
 	}
 	return Result(pass, message);
 }

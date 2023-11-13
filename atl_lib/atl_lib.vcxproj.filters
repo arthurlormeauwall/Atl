@@ -119,5 +119,8 @@
     <ClInclude Include="src\presenter\views\Views.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="src\service\assertion\Comparable.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
