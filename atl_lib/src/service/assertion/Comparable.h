@@ -1,7 +1,6 @@
 #pragma once
 #include "../../template.h"
 
-
 class Comparable {
 public:
 	virtual string toString() = 0;
