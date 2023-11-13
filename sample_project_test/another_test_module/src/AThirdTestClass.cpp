@@ -5,7 +5,7 @@ void AThirdTestClass::addChildren() {
 		[]()->std::vector<Result>
 		{
 			Assertions assertions;
-			assertions.push_back(assertThat<float>(0.3F).isEqualTo(0.88F)->getResult());
+			assertions.push_back(assertThat<float>(0.3F).isEqualTo(49.0F)->getResult());
 			return assertions;
 		}
 	));

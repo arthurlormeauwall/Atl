@@ -136,6 +136,9 @@
     <ClCompile Include="src\MyTestClass.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\sample_project\sample_project.vcxproj">
+      <Project>{fbe74664-312a-4be8-8012-904190a38599}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\atl_lib\atl_lib.vcxproj">
       <Project>{ae1ef122-1240-493a-bf79-1538703d4a1f}</Project>
     </ProjectReference>

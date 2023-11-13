@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\MyTestClassInit.h">
+    <ClInclude Include="src\MyModule.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\MyModuleInit.h">
+    <ClInclude Include="src\MyTestClass.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\MyTestClassInit.cpp">
+    <ClCompile Include="src\MyTestClass.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -16,6 +16,7 @@ string AssertPresenter::getString(AssertResultView assertResult) {
 	out.append(assertResult.message).append("\n");
 	return out;
 }
+
 string UnitTestPresenter::getString(UnitTestView UnitTestInit) {
 	string out;
 	string tab ="                  "; 
@@ -30,6 +31,7 @@ string UnitTestPresenter::getString(UnitTestView UnitTestInit) {
 	}
 	return out;
 }
+
 string TestClassPresenter::getString(TestClassView TestClassInit) {
 	string out;
 	string tab ="         "; 
@@ -42,7 +44,6 @@ string TestClassPresenter::getString(TestClassView TestClassInit) {
 	}
 	return out;
 }
-
 
 string ModulePresenter::getString(ModuleView moduleView) {
 	string out;

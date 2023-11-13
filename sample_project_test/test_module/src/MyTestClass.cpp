@@ -1,5 +1,4 @@
 #include "MyTestClass.h"
-
 #include "MyClass.h"
 #include "atl_includes.h"
 
@@ -14,6 +13,7 @@ void MyTestClass::addChildren() {
 			float actual = fixture.add(a, b);
 			float expected = 5.F; 
 			assertions.push_back(assertThat<float>(actual).isEqualTo(0.88F)->getResult());
+			assertions.push_back(assertThat<float>(actual).isEqualTo(expected)->getResult());
 			return assertions;
 		}
 	));
