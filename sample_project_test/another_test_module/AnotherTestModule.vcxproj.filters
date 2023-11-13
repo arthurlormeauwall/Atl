@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\AnotherTestClass.cpp">
+    <ClCompile Include="src\AnotherTestClassInit.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\AThirdTestClass.cpp">
+    <ClCompile Include="src\AThirdTestClassInit.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\AnotherModule.h">
+    <ClInclude Include="src\AnotherModuleInit.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\TestClassDeclarations.h">
+    <ClInclude Include="src\TestClassInitDeclarations.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

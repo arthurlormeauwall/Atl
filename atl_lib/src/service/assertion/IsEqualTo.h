@@ -1,13 +1,12 @@
 #pragma once
 #include "../../template.h"
 #include "../../model/Result.h"
-#include "../../model/Path.h"
 
 template<typename T>
 class IsEqualTo : public Assertion<T> {
 public:
 	IsEqualTo(T, T);
-	Result getResult(Path path);
+	Result getResult();
 };
 
 
@@ -17,7 +16,7 @@ IsEqualTo<T>::IsEqualTo(T actual, T expected) : Assertion<T>(actual, expected) {
 }
 
 template<typename T>
-Result IsEqualTo<T>::getResult(Path path){
+Result IsEqualTo<T>::getResult(){
 	T actual, expected;
 	actual = Assertion<T>::m_actual;
 	expected = Assertion<T>::m_expected;
@@ -34,4 +33,4 @@ Result IsEqualTo<T>::getResult(Path path){
 }
 
 template<>
-Result IsEqualTo<std::string>::getResult(Path path);
+Result IsEqualTo<std::string>::getResult();

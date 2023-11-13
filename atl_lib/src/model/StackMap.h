@@ -1,24 +1,15 @@
 #pragma once
 #include "../template.h"
-#include "TestData.h"
-
-class TestInterface {
-public:
-	virtual	void run() = 0;
-	virtual	void init() = 0;
-	virtual TestData getData() = 0;
-	virtual vector<sharedptr<TestInterface>> getAllChildren()=0;
-};
 
 template<typename T>
 class StackMap {
-	vector<sharedptr<T>> m_data;
+	vector<T> m_data;
 	map<string, int> m_map;
 public:
-	void add(sharedptr<T> t) {
+	void add(T t) {
 		m_data.push_back(t);
 	}
-	sharedptr<T> getByOrder(int i) {
+	T getByOrder(int i) {
 		return m_data.at(i);
 	}
 	int getByName(string name) {
@@ -31,25 +22,12 @@ public:
 		}
 	}
 	void remove(int) {}
-	vector<sharedptr<T>> getAllAsVector() { return m_data; }
-	map<string, sharedptr<T>> getAllAsMap() {}
-
-};
-
-class TestStackMap {
-	StackMap<TestInterface> m_data;
-public:
-	void init() {
-		for (sharedptr<TestInterface> t : m_data.getAllAsVector()) {
-			t->init();
+	vector<T> getAllAsVector() const { return m_data; }
+	map<string, T> getAllAsMap() {}
+	void doForEach(void (*func)(T* t)) {
+		for (int i = 0; i < m_data.size(); i++) {
+			func(&m_data.at(i));
 		}
 	}
-	void run() {
-		for (sharedptr<TestInterface> t : m_data.getAllAsVector()) {
-			t->run();
-		}
-	}
-	StackMap<TestInterface>* getTest() {
-		return &m_data;
-	}
 };
+

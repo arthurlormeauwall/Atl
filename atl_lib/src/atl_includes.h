@@ -1,15 +1,9 @@
 #pragma once
-#include <iostream>
-#include <stack> 
-#include <string>
-#include <memory> 
+#include "template.h"
 #include "macros/macros.h"
 #include "controller/AtlController.h"
 #include "service/assertion/Assertion.h"
 #include "service/assertion/AssertBuilder.h"
 #include "service/assertion/IsEqualTo.h"
 #include "presenter/output/ConsoleOutputWriter.h"
-#include "model/AllTest.h"
-#include "model/Module.h"
-#include "model/TestClass.h"
-#include "model/UnitTest.h"
+#include "testBuilder/TestBuilder.h"

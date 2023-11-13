@@ -1,15 +1,15 @@
 #pragma once
 #include "atl_includes.h"
 
-class AnotherTestClass : public TestClass {
+class AnotherTestClass : public TestClassBuilder {
 public:
-	AnotherTestClass(TestData td) : TestClass(td) {}
+	AnotherTestClass(TestData td) : TestClassBuilder(td) {}
 	void addChildren();
 };
 
-class AThirdTestClass : public TestClass {
+class AThirdTestClass : public TestClassBuilder{
 public:
-	AThirdTestClass(TestData td) : TestClass(td) {}
+	AThirdTestClass(TestData td) : TestClassBuilder(td) {}
 	void addChildren();
 };
 

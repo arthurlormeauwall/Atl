@@ -1,11 +1,11 @@
 #include "TestClassDeclarations.h"
 
 void AThirdTestClass::addChildren() {
-	add(createUnitTest("A test that should fail",
-		[](Path path)->std::vector<Result>
+	add(createUnitTestBuilder("A test that should fail",
+		[]()->std::vector<Result>
 		{
 			Assertions assertions;
-			assertions.push_back(assertThat<float>(0.3F).isEqualTo(0.88F)->getResult(path));
+			assertions.push_back(assertThat<float>(0.3F).isEqualTo(49.0F)->getResult());
 			return assertions;
 		}
 	));

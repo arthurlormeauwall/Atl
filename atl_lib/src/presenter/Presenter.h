@@ -1,16 +1,8 @@
 #pragma once
 #include "../template.h"
-#include "../model/Result.h"
-#include "../model/UnitTest.h"
-#include "../model/TestClass.h"
-#include "../model/Module.h"
-#include "../model/Test.h"
-#include "../model/AllTest.h"
-#include "views/CommonViews.h"
-#include "views/ModuleView.h"
-#include "views/TestClassView.h"
-#include "views/UnitTestView.h"
-#include "views/AssertResultView.h"
+#include "../model/Model.h"
+#include "../testBuilder/TestBuilder.h"
+#include "views/Views.h"
 
 class AssertPresenter {
 public:
@@ -24,21 +16,21 @@ public:
 };
 
 class TestClassPresenter {
-	UnitTestPresenter m_unitTestPresenter;
+	UnitTestPresenter m_UnitTestInitPresenter;
 public:
 	string getString(TestClassView);
 };
 
 class ModulePresenter {
-	TestClassPresenter m_testClassPresenter;
+	TestClassPresenter m_TestClassInitPresenter;
 public:
 	string getString(ModuleView);
 };
 
 
 class Presenter {
-	ModulePresenter m_modulePresenter;
+	ModulePresenter m_ModuleInitPresenter;
 public:
-	string getStringFromTestResult(sharedptr<TestInterface>);
+	string getStringFromTestResult(const TestData&);
 };
 

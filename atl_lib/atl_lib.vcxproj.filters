@@ -27,13 +27,10 @@
     <ClCompile Include="src\service\AtlService.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\Module.h">
+    <ClCompile Include="src\testBuilder\ModuleBuilder.h">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\cpp\UnitTest.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\model\cpp\Test.cpp">
+    <ClCompile Include="src\testBuilder\TestTreeBuilder.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\service\assertion\AssertBuilder.h">
@@ -45,9 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\controller\AtlController.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\model\Test.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\presenter\output\ConsoleOutputWriter.h">
@@ -80,16 +74,7 @@
     <ClInclude Include="src\model\TestData.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\UnitTest.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\model\AllTest.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\model\TestClass.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\model\Path.h">
+    <ClInclude Include="src\testBuilder\TestClassBuilder.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\model\Result.h">
@@ -111,6 +96,27 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\presenter\views\AssertResultView.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testBuilder\AllTestBuilder.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testBuilder\UnitTestBuilder.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testBuilder\TestTreeBuilder.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\service\TestRunner.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\Model.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testBuilder\TestBuilder.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\presenter\views\Views.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

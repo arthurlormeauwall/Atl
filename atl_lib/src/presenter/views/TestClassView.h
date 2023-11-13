@@ -1,16 +1,15 @@
 #pragma once
 #include "../../template.h"
-#include "../../model/StackMap.h"
+#include "../../model/Model.h"
 
 class TestClassView {
 public:
 	Result result;
-	Path path;
-	vector<sharedptr<TestInterface>> children;
-	TestClassView(sharedptr<TestInterface> test) {
-		result = test->getData().result;
-		path = test->getData().path;
-		children = test->getAllChildren();
-
+	string path;
+	vector<TestData> children;
+	TestClassView(const TestData& test) {
+		result = test.result;
+		path = test.path;
+		children = test.children.getAllAsVector();
 	}
 };
