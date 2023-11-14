@@ -5,14 +5,14 @@
 #include "../service/AtlService.h"
 
 
-class AtlController 
-{
-protected: 
-	sharedptr<AtlService> m_atlService;
-
-public :
+class AtlController {
+public:
 	AtlController(sharedptr<OutputWriter>);
 	AtlController();
 	void runAllTest(sharedptr<AllTestBuilder> allTests);
+	void runSomeTests(sharedptr<AllTestBuilder> allTests, vector<string> name);
+
+protected:
+	sharedptr<AtlService> m_atlService;
 };
 

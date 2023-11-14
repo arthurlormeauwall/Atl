@@ -39,6 +39,9 @@
     <ClCompile Include="src\presenter\views\ModuleView.h">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="src\service\TestRunner.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\controller\AtlController.h">

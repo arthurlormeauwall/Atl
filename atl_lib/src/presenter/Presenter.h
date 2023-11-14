@@ -4,31 +4,36 @@
 #include "../testBuilder/TestBuilder.h"
 #include "views/Views.h"
 
-class AssertPresenter {
+class ResultPresenter {
 public:
-	string getString(AssertResultView);
+	string getStringForAssert(ResultView);
+	string getStringForResult(ResultView,string);
 };
 
 class UnitTestPresenter {
-	AssertPresenter m_assertPresenter;
+	ResultPresenter m_resultPresenter;
+	ResultPresenter m_assertPresenter;
 public:
-	string getString(UnitTestView);
+	string getStringForAssert(UnitTestView);
 };
 
 class TestClassPresenter {
+	ResultPresenter m_resultPresenter;
 	UnitTestPresenter m_UnitTestInitPresenter;
 public:
-	string getString(TestClassView);
+	string getStringForAssert(TestClassView);
 };
 
 class ModulePresenter {
+	ResultPresenter m_resultPresenter;
 	TestClassPresenter m_TestClassInitPresenter;
 public:
-	string getString(ModuleView);
+	string getStringForAssert(ModuleView);
 };
 
 
 class Presenter {
+	ResultPresenter m_resultPresenter;
 	ModulePresenter m_ModuleInitPresenter;
 public:
 	string getStringFromTestResult(const TestData&);

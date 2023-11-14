@@ -2,13 +2,18 @@
 
 
 AtlController::AtlController(sharedptr<OutputWriter> testOutput) {
-	m_atlService = std::make_shared<AtlService> (testOutput);
+	m_atlService = std::make_shared<AtlService>(testOutput);
 }
 
 AtlController::AtlController() {
-	m_atlService = std::make_shared<AtlService>(); 
+	m_atlService = std::make_shared<AtlService>();
 }
 
-void AtlController::runAllTest(sharedptr<AllTestBuilder> allTests){
+void AtlController::runAllTest(sharedptr<AllTestBuilder> allTests) {
 	m_atlService->runAllTests(*allTests->init());
+}
+
+
+void AtlController::runSomeTests(sharedptr<AllTestBuilder> allTests, vector<string> name) {
+	m_atlService->runSomeTests(*allTests->init(), name);
 }
