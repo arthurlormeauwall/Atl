@@ -2,8 +2,7 @@
 #include "../../template.h"
 #include "../../model/Model.h"
 
-class AssertResultView {
-public:
+struct AssertResultView {
 	bool pass;
 	string message;
 	AssertResultView(Result result) {

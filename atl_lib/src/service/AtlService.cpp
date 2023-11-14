@@ -7,9 +7,9 @@ void AtlService::runAllTests(TestData& allTests){
 	write(allTests);
 }
 
-void AtlService::runSomeTests(TestData& allTests, vector<string> path) {
+void AtlService::runSomeTests(TestData& allTests, vector<string> name) {
 	TestRunner testRunner;
-	testRunner.runSomeTests(allTests, path);
+	testRunner.runSomeTests(allTests, name);
 	write(allTests);
 }
 

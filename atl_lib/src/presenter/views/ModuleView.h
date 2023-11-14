@@ -3,14 +3,13 @@
 #include "../../model/Model.h"
 
 
-class ModuleView {
-public:
+struct ModuleView {
 	Result result;
-	string path;
+	string name;
 	vector<TestData> children;
 	ModuleView(const TestData& test) {
 		result= test.result;
-		path = test.path;
+		name = test.name;
 		children = test.children.getAllAsVector();
 	}
 };

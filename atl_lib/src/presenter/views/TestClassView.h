@@ -5,11 +5,11 @@
 class TestClassView {
 public:
 	Result result;
-	string path;
+	string name;
 	vector<TestData> children;
 	TestClassView(const TestData& test) {
 		result = test.result;
-		path = test.path;
+		name = test.name;
 		children = test.children.getAllAsVector();
 	}
 };

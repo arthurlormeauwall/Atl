@@ -14,6 +14,6 @@ void AtlController::runAllTest(sharedptr<AllTestBuilder> allTests) {
 }
 
 
-void AtlController::runSomeTests(sharedptr<AllTestBuilder> allTests, vector<string> path) {
-	m_atlService->runSomeTests(*allTests->init(), path);
+void AtlController::runSomeTests(sharedptr<AllTestBuilder> allTests, vector<string> name) {
+	m_atlService->runSomeTests(*allTests->init(), name);
 }

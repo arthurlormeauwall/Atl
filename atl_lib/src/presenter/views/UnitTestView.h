@@ -2,14 +2,13 @@
 #include "../../template.h"
 #include "../../model/Model.h"
 
-class UnitTestView {
-public:
+struct UnitTestView {
 	Result result;
-	string path;
+	string name;
 	vector<Result> childrenResult;
 	UnitTestView(const TestData& test) {
 		result = test.result;
-		path = test.path;
+		name = test.name;
 		childrenResult = test.childrenResult.result;
 	}
 };
