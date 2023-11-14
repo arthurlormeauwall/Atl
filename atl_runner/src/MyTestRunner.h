@@ -4,16 +4,24 @@
 #include "MyModule.h"
 #include "AnotherModule.h"
 
-class MyTests  : public AllTestBuilder {
-public:
-	MyTests() {}
-	void addChildren() override {
-		add(createModuleBuilder<MyModule>("My Module"));
-		add(createModuleBuilder<AnotherModule>("Another Module"));
-	}
-};
+#define ADD_MODULE(name) add(createModuleBuilder<name>(#name))
+#define DECLARE_TEST_BUILDER(name, content) class name  : public AllTestBuilder {\
+public:\
+	name() {}\
+	void addChildren() override {\
+		content\
+	}\
+}\
 
-class MyRunner : public AtlController {
-public:
-	MyRunner() : AtlController(std::make_shared<ConsoleOutputWriter>()) {}
-};
+#define DECLARE_CONTROLLER(name, output) class name : public AtlController {\
+public:\
+	name() : AtlController(std::make_shared<output>()) {}\
+}\
+
+DECLARE_TEST_BUILDER(MyTests,
+	ADD_MODULE(MyModule);
+    ADD_MODULE(AnotherModule);
+);
+
+DECLARE_CONTROLLER(MyRunner, ConsoleOutputWriter);
+

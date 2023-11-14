@@ -5,11 +5,7 @@
 #include <memory>
 #include <vector>
 
-class MyModule: public ModuleBuilder {
-public:
+DECLARE_MODULE(MyModule,
+	ADD_TEST_CLASS(MyTestClass);
+);
 
-	MyModule(TestData td) : ModuleBuilder(td) {}
-	virtual void addChildren() override {
-		add(createTestClassBuilder<MyTestClass>("My Test class"));
-	}
-};

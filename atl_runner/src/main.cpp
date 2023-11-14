@@ -1,7 +1,11 @@
 #include "MyTestRunner.h"
 
+#define RUN_ALL_TEST(builder, controller) controller c = controller();\
+	c.runAllTest(std::make_shared<builder>())\
+
+
+
 int main() {
-	MyRunner testRunner = MyRunner();
-	testRunner.runSomeTests(std::make_shared<MyTests>(), vector<string>{"Another Module", "Another test klass"});
+	RUN_ALL_TEST(MyTests, MyRunner);
 	std::cin.get();
 }
