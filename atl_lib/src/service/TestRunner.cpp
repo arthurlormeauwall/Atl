@@ -73,23 +73,32 @@ void TestRunner::run(TestData& tests) {
 
 void TestRunner::runSomeTests(TestData& tests, vector<string> name) {
 	if (tests.hasChildren == true) {
-		TestData* targetedTest = tests.children.getByOrder(tests.children.getByName(name[0]));
-		TestRunner runner;
-		if (name.size() > 1) {
-			vector<string> newPath;
-			for (int i = 0; i < name.size() - 1; i++) {
-				newPath.push_back(name.at(i + 1));
+		int testOrder = tests.children.getByName(name[0]);
+		if (testOrder >= 0) {
+			TestData* targetedTest = tests.children.getByOrder(testOrder);
+			TestRunner runner;
+			if (name.size() > 1) {
+				vector<string> newPath;
+				for (int i = 0; i < name.size() - 1; i++) {
+					newPath.push_back(name.at(i + 1));
+				}
+				runner.runSomeTests(*targetedTest, newPath);
 			}
-			runner.runSomeTests(*targetedTest, newPath);
+			else {
+				runner.run(*targetedTest);
+			}
+			computeChildrenResult(tests);
+			updateResult(tests);
 		}
 		else {
-			runner.run(*targetedTest);
+			tests.result = Result(false, string(name[0] + " : NOT FOUND !"));
+			tests.result.exist = false;
 		}
-		computeChildrenResult(tests);
 	}
 	else {
 		tests.childrenResult.result = tests.runner();
 		tests.childrenResult.pass = areChildrenPassing(tests.childrenResult.result);
+		updateResult(tests);
 	}
-	updateResult(tests);
+	
 }

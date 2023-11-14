@@ -3,6 +3,7 @@
 #include "../template.h"
 
 struct Result {
+	bool exist = true;
 	bool executed;
 	bool pass;
 	string message;

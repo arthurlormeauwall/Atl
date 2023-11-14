@@ -8,7 +8,7 @@ struct ModuleView {
 	string name;
 	vector<TestData> children;
 	ModuleView(const TestData& test) {
-		result= test.result;
+		result = test.result;
 		name = test.name;
 		children = test.children.getAllAsVector();
 	}

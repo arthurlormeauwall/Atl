@@ -2,6 +2,6 @@
 
 int main() {
 	MyRunner testRunner = MyRunner();
-	testRunner.runAllTest(std::make_shared<MyTests>());
+	testRunner.runSomeTests(std::make_shared<MyTests>(), vector<string>{"Another Module", "Another test klass"});
 	std::cin.get();
 }

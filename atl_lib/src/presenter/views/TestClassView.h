@@ -2,8 +2,7 @@
 #include "../../template.h"
 #include "../../model/Model.h"
 
-class TestClassView {
-public:
+struct TestClassView {
 	Result result;
 	string name;
 	vector<TestData> children;
