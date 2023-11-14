@@ -13,3 +13,8 @@ public:
 	virtual Result getResult() = 0;
 };
 
+class AssertionInterface {
+public:
+	virtual Result getResult() = 0;
+};
+
