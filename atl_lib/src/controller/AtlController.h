@@ -14,5 +14,6 @@ public :
 	AtlController(sharedptr<OutputWriter>);
 	AtlController();
 	void runAllTest(sharedptr<AllTestBuilder> allTests);
+	void runSomeTests(sharedptr<AllTestBuilder> allTests, vector<string> path);
 };
 

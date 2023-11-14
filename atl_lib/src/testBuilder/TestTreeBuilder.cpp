@@ -3,7 +3,7 @@
 
 void TestTreeBuilder::initChildrenTest(vector<sharedptr<TestTreeBuilder>> children) {
 	for (sharedptr<TestTreeBuilder> t : children) {
-		m_testData.children.add(*t->init());
+		m_testData.children.add(*t->init(), t->m_testData.path);
 	}
 }
 
@@ -17,6 +17,6 @@ void TestTreeBuilder::addChildren() {
 }
 
 void TestTreeBuilder::add(sharedptr<TestTreeBuilder> t) {
-	m_children.add(t);
+	m_children.add(t,t->m_testData.path);
 }
 

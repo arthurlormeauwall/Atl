@@ -28,7 +28,6 @@ AssertBuilder<T> assertThat(T actual) {
 	return builder;
 }
 
-
 template<typename T>
 void AssertBuilder<T>::setValueToTest(T actual)
 {

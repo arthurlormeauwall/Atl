@@ -19,7 +19,7 @@ string AssertPresenter::getString(AssertResultView assertResult) {
 
 string UnitTestPresenter::getString(UnitTestView UnitTestInit) {
 	string out;
-	string tab ="                  "; 
+	string tab = "                  ";
 	out.append(format(tab, UnitTestInit.result.pass));
 	out.append(UnitTestInit.path).append("\n");
 
@@ -34,26 +34,30 @@ string UnitTestPresenter::getString(UnitTestView UnitTestInit) {
 
 string TestClassPresenter::getString(TestClassView TestClassInit) {
 	string out;
-	string tab ="         "; 
+	string tab = "         ";
 	out.append(format(tab, TestClassInit.result.pass));
 	out.append(TestClassInit.path).append("\n");
 
 	auto UnitTestInits = TestClassInit.children;
-	for (auto ut :  UnitTestInits) {
-		out.append(m_UnitTestInitPresenter.getString(UnitTestView(ut)));
+	for (auto ut : UnitTestInits) {
+		if (ut.result.message != "Not executed yet") {
+			out.append(m_UnitTestInitPresenter.getString(UnitTestView(ut)));
+		}
 	}
 	return out;
 }
 
 string ModulePresenter::getString(ModuleView moduleView) {
 	string out;
-	string tab =""; 
+	string tab = "";
 	out.append(format(tab, moduleView.result.pass));
 	out.append(moduleView.path).append("\n");
 
 	auto TestClassInit = moduleView.children;
 	for (auto tc : TestClassInit) {
-		out.append(m_TestClassInitPresenter.getString(TestClassView(tc)));
+		if (tc.result.message != "Not executed yet") {
+			out.append(m_TestClassInitPresenter.getString(TestClassView(tc)));
+		}
 	}
 	out.append("\n");
 	return out;
@@ -66,7 +70,9 @@ string Presenter::getStringFromTestResult(const TestData& testData)
 
 	auto module = testData.children.getAllAsVector();
 	for (const TestData m : module) {
-		out.append(m_ModuleInitPresenter.getString(ModuleView(m)));
+		if (m.result.message != "Not executed yet") {
+			out.append(m_ModuleInitPresenter.getString(ModuleView(m)));
+		}
 	}
 	out.append(commonViews::goodBye);
 	return out;

@@ -71,5 +71,28 @@ public:
 		}
 		updateResult(tests);
 	}
+
+	void runSomeTests(TestData& tests, vector<string> path) {
+		if (tests.hasChildren == true) {
+			TestData* targetedTest = tests.children.getByOrder(tests.children.getByName(path[0]));
+			TestRunner runner;
+			if (path.size() > 1) {
+				vector<string> newPath;
+				for (int i = 0; i < path.size() - 1; i++) {
+					newPath.push_back(path.at(i + 1));
+				}
+				runner.runSomeTests(*targetedTest, newPath);
+			}
+			else {
+				runner.run(*targetedTest);
+			}
+			computeChildrenResult(tests);
+		}
+		else {
+			tests.childrenResult.result = tests.runner();
+			tests.childrenResult.pass = areChildrenPassing(tests.childrenResult.result);
+		}
+		updateResult(tests);
+	}
 };
 
