@@ -33,9 +33,6 @@
     <ClCompile Include="src\testBuilder\TestTreeBuilder.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\service\assertion\AssertBuilder.h">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="src\presenter\views\ModuleView.h">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\presenter\Presenter.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\service\assertion\Assertion.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\service\AtlService.h">

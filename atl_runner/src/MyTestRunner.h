@@ -9,7 +9,7 @@ public:
 	MyTests() {}
 	void addModules() override {
 		createModule<MyModule>("My Module");
-		//createModule<AnotherModule>("Another Module");
+		createModule<AnotherModule>("Another Module");
 	}
 };
 

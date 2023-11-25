@@ -131,7 +131,6 @@
     <ClCompile Include="src\testBuilder\TestTreeBuilder.cpp" />
     <ClCompile Include="src\testBuilder\ModuleBuilder.h" />
     <ClCompile Include="src\presenter\views\ModuleView.h" />
-    <ClCompile Include="src\service\assertion\AssertBuilder.h" />
     <ClCompile Include="src\controller\AtlController.cpp" />
     <ClCompile Include="src\presenter\output\ConsoleOutputWriter.cpp" />
     <ClCompile Include="src\presenter\Presenter.cpp" />
@@ -163,7 +162,6 @@
     <ClInclude Include="src\presenter\Presenter.h" />
     <ClInclude Include="src\presenter\views\CommonViews.h" />
     <ClInclude Include="src\service\AtlService.h" />
-    <ClInclude Include="src\service\assertion\Assertion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
