@@ -9,17 +9,17 @@ private:
 	T m_actual;
 public:
 	void setValueToTest(T);
-	sharedptr<Assertion<T>> isEqualTo(T);
+	//sharedptr<Assertion<T>> isEqualTo(T);
 };
 
 template<typename T>
 AssertBuilder<T> assertThat(T actual);
 
-template<typename T>
-sharedptr<Assertion<T>> AssertBuilder<T>::isEqualTo(T expected)
-{
-	return std::make_shared<IsEqualTo<T>>(m_actual, expected);
-}
+//template<typename T>
+//sharedptr<Assertion<T>> AssertBuilder<T>::isEqualTo(T expected)
+//{
+//	return std::make_shared<IsEqualTo<T>>(m_actual, expected);
+//}
 
 template<typename T>
 AssertBuilder<T> assertThat(T actual) {

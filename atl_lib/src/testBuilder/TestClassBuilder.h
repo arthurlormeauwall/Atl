@@ -6,9 +6,13 @@
 class TestClassBuilder : public TestTreeBuilder {
 public:
 	TestClassBuilder(TestData td) : TestTreeBuilder(td) {}
-	sharedptr<UnitTestBuilder> createUnitTestBuilder(string name, vector<Result>(*f)()) {
+	virtual void addUnitTests()=0;
+	void addChildren() {
+		addUnitTests();
+	}
+	void createUnitTest(string name, vector<Result>(*f)()) {
 		m_testData.hasChildren = true;
-		return std::make_shared<UnitTestBuilder>(TestData(name), f);
+		add(std::make_shared<UnitTestBuilder>(TestData(name), f));
 	}
 };
 

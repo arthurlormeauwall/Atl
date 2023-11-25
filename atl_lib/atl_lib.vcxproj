@@ -140,7 +140,6 @@
   <ItemGroup>
     <ClInclude Include="src\model\Model.h" />
     <ClInclude Include="src\presenter\views\Views.h" />
-    <ClInclude Include="src\service\assertion\Comparable.h" />
     <ClInclude Include="src\testBuilder\AllTestBuilder.h" />
     <ClInclude Include="src\model\ChildrenResult.h" />
     <ClInclude Include="src\model\Result.h" />

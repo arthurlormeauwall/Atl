@@ -7,9 +7,9 @@
 class MyTests  : public AllTestBuilder {
 public:
 	MyTests() {}
-	void addChildren() override {
-		add(createModuleBuilder<MyModule>("My Module"));
-		add(createModuleBuilder<AnotherModule>("Another Module"));
+	void addModules() override {
+		createModule<MyModule>("My Module");
+		//createModule<AnotherModule>("Another Module");
 	}
 };
 
