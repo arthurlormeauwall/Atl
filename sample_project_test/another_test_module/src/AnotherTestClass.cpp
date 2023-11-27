@@ -5,7 +5,7 @@ void AnotherTestClass::addUnitTests() {
 	createUnitTest("A test that should succeed",
 		[]()->Assertions {
 			Assertions assertions;
-			//assertions.addAssertion(IsEqualTo<float>(1,1).getResult());
+			assertions.addAssertion(IsEqualTo<float>(1,1).getResult());
 			return assertions;
 		}
 	);

@@ -7,8 +7,7 @@ template<typename T>
 class ResultResolver {
 public:
 	virtual bool getPass(T& expected, T& actual) = 0;
-	virtual string* getSuccessMessage(const T& expected, const T& actual) = 0;
-	virtual sharedptr<string> getFailedMessage(const T& expected, const T& actual) = 0;
+	virtual sharedptr<map<MessageTokenType, string>> getFailedMessageTokens(const T& expected, const T& actual) = 0;
 };
 
 template<typename T>
@@ -35,12 +34,8 @@ public:
 		}
 		return pass;
 	}
-	string* getSuccessMessage(const T& expected, const T& actual) override {
-		string	message = "expected is equal to actual";
-		return &message;
-	}
 
-	sharedptr<string> getFailedMessage(const T& expected, const T& actual) override {
+	sharedptr<map<MessageTokenType, string>> getFailedMessageTokens(const T& expected, const T& actual) override {
 		string expectedString, actualString;
 		if (toString != NULL) {
 			expectedString = toString(expected);
@@ -50,8 +45,8 @@ public:
 			expectedString = to_string<T>::toString(expected);
 			actualString = to_string<T>::toString(actual);
 		}
-		auto message = std::make_shared<string>(string("expected to be equal to: \"" + expectedString
-			+ "\" but was equal to: \"" + actualString + "\""));
+		auto message = std::make_shared<map<MessageTokenType, string>>(
+			map<MessageTokenType, string>({ {EXPECTED, expectedString}, {ACTUAL, actualString} }));
 		return message;
 	}
 };
@@ -90,13 +85,10 @@ Result IsEqualTo<T>::getResult() {
 
 template<typename T>
 Result IsEqualTo<T>::createResult(sharedptr<ResultResolver<T>> resultResolver) {
-	string message;
+	map<MessageTokenType, string>messages;
 	bool pass = resultResolver->getPass(m_actual, m_expected);
-	if (pass) {
-		message = *resultResolver->getSuccessMessage(m_actual, m_expected);
+	if (!pass) {
+		messages = *(resultResolver->getFailedMessageTokens(m_actual, m_expected));
 	}
-	else {
-		message = *resultResolver->getFailedMessage(m_actual, m_expected);
-	}
-	return Result(pass, message);
+	return Result(pass, messages);
 }

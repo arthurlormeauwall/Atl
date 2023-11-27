@@ -2,23 +2,29 @@
 
 #include "../template.h"
 
+enum MessageTokenType {
+	NAME,
+	MESSAGE,
+	ACTUAL,
+	EXPECTED
+};
+
 struct Result {
 	bool exist = true;
 	bool executed;
 	bool pass;
-	string message;
+	map<MessageTokenType, string> messageTokens;
 	Result() :
 		executed(false),
-		pass(false),
-		message("Not executed yet") {}
-	Result(bool p, string m) :
+		pass(false){}
+	Result(bool p, map<MessageTokenType, string> m) :
 		executed(true),
 		pass(p),
-		message(m) {}
+		messageTokens(m) {}
 	Result(const Result& result) {
 		executed = result.executed;
 		pass = result.pass;
-		message = result.message;
+		messageTokens = result.messageTokens;
 	}
 };
 

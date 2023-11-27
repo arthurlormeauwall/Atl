@@ -5,8 +5,8 @@
 struct ResultView {
 	bool pass;
 	string message;
-	ResultView(Result result) {
-		pass = result.pass;
-		message = result.message;
+	ResultView(bool pass, string message) {
+		this->pass = pass;
+		this->message = message;
 	}
 };

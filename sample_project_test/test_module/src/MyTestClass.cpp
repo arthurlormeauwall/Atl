@@ -18,7 +18,7 @@ struct Item {
 };
 
 void MyTestClass::addUnitTests() {
-	createUnitTest("A test that should succeed",
+	createUnitTest("A test that should fail",
 		[]()->std::vector<Result>
 		{
 			Assertions assertions;
