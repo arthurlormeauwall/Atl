@@ -132,7 +132,10 @@ string ModulePresenter::getStringForAssert(ModuleView moduleView) {
 
 struct AllTestResultViewBuilder {
 	static ResultView getResultView(Result result) {
-		return ResultView(result.pass, findToken(NAME, result.messageTokens));
+		auto message = findToken(NAME,result.messageTokens)
+		.append(" ")
+		.append(findToken(MESSAGE, result.messageTokens));
+		return ResultView(result.pass, message);
 	}
 };
 
