@@ -12,8 +12,3 @@ public:
 		createModule<AnotherModule>("Another Module");
 	}
 };
-
-class MyRunner : public AtlController {
-public:
-	MyRunner() : AtlController(std::make_shared<ConsoleOutputWriter>()) {}
-};

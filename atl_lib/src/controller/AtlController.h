@@ -7,9 +7,8 @@
 
 class AtlController {
 public:
-	AtlController(sharedptr<OutputWriter>);
 	AtlController();
-	void runAllTest(sharedptr<AllTestBuilder> allTests);
+	void runAllTests(sharedptr<AllTestBuilder> allTests);
 	void runSomeTests(sharedptr<AllTestBuilder> allTests, vector<string> name);
 
 protected:

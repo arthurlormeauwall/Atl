@@ -7,7 +7,7 @@ template<typename T>
 class ResultResolver {
 public:
 	virtual bool getPass(T& expected, T& actual) = 0;
-	virtual sharedptr<map<MessageTokenType, string>> getFailedMessageTokens(const T& expected, const T& actual) = 0;
+	virtual sharedptr<vector<string>> getFailedMessageTokens(const T& expected, const T& actual) = 0;
 };
 
 template<typename T>
@@ -35,7 +35,7 @@ public:
 		return pass;
 	}
 
-	sharedptr<map<MessageTokenType, string>> getFailedMessageTokens(const T& expected, const T& actual) override {
+	sharedptr<vector<string>> getFailedMessageTokens(const T& expected, const T& actual) override {
 		string expectedString, actualString;
 		if (toString != NULL) {
 			expectedString = toString(expected);
@@ -45,8 +45,9 @@ public:
 			expectedString = to_string<T>::toString(expected);
 			actualString = to_string<T>::toString(actual);
 		}
-		auto message = std::make_shared<map<MessageTokenType, string>>(
-			map<MessageTokenType, string>({ {EXPECTED, expectedString}, {ACTUAL, actualString} }));
+		auto message = std::make_shared<vector<string>>(vector<string>({
+		string("expected :       ==> \"").append(actualString).append("\""),
+		string("to be equal to : ==> \"").append(expectedString).append("\"")}));
 		return message;
 	}
 };
@@ -63,7 +64,6 @@ public:
 	Result getResult();
 };
 
-
 template<typename T>
 IsEqualTo<T>::IsEqualTo(T actual, T expected) : m_actual(actual), m_expected(expected) {
 }
@@ -78,6 +78,7 @@ template<typename T>
 Result IsEqualTo<T>::getResultWithCustomToString(string(*toString)(T it)) {
 	return createResult(std::make_shared<ComparatorResultResolver<T>>(toString));
 }
+
 template<typename T>
 Result IsEqualTo<T>::getResult() {
 	return createResult(std::make_shared<ComparatorResultResolver<T>>());
@@ -85,10 +86,10 @@ Result IsEqualTo<T>::getResult() {
 
 template<typename T>
 Result IsEqualTo<T>::createResult(sharedptr<ResultResolver<T>> resultResolver) {
-	map<MessageTokenType, string>messages;
+	vector<string>messageTokens;
 	bool pass = resultResolver->getPass(m_actual, m_expected);
 	if (!pass) {
-		messages = *(resultResolver->getFailedMessageTokens(m_actual, m_expected));
+		messageTokens = *(resultResolver->getFailedMessageTokens(m_actual, m_expected));
 	}
-	return Result(pass, messages);
+	return Result(pass, messageTokens);
 }

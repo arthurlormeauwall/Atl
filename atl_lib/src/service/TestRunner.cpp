@@ -89,9 +89,11 @@ void TestRunner::runSomeTests(TestData& tests, vector<string> name) {
 			updateResult(tests);
 		}
 		else {
-			tests.result = Result(false, map<MessageTokenType, string> {
-				{NAME, string(name[0])},
-				{MESSAGE, "NOT FOUND !" }
+			tests.result = Result(false, vector<string> {
+				string("\"")
+					.append(name[0])
+					.append("\"")
+					.append(" NOT FOUND ! (maybe a typo in the name ?)")
 			});
 			tests.result.exist = false;
 		}

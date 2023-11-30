@@ -2,17 +2,17 @@
 
 void AThirdTestClass::addUnitTests() {
 	createUnitTest("A test that should fail",
-		[]()->Assertions {
-			Assertions assertions;
-			assertions.addAssertion(IsEqualTo<string>("actual", "expected").getResult());
+		[]()->vector<Result> {
+			vector<Result> assertions;
+			assertions.push_back(IsEqualTo<string>("actual", "expected").getResult());
 			return assertions;
 		}
 	);
 	createUnitTest("Another test that should succeed",
-		[]()->Assertions
+		[]()->vector<Result>
 		{
-			Assertions assertions;
-			assertions.addAssertion(IsEqualTo<int>(2, 2).getResult());
+			vector<Result> assertions;
+			assertions.push_back(IsEqualTo<int>(2, 2).getResult());
 			return assertions;
 		}
 	);

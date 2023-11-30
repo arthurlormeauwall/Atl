@@ -154,7 +154,6 @@
     <ClInclude Include="src\service\assertion\IsEqualTo.h" />
     <ClInclude Include="src\atl_includes.h" />
     <ClInclude Include="src\controller\AtlController.h" />
-    <ClInclude Include="src\macros\macros.h" />
     <ClInclude Include="src\testBuilder\TestTreeBuilder.h" />
     <ClInclude Include="src\service\TestRunner.h" />
     <ClInclude Include="src\template.h" />

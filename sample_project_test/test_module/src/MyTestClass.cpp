@@ -21,10 +21,10 @@ void MyTestClass::addUnitTests() {
 	createUnitTest("A test that should fail",
 		[]()->std::vector<Result>
 		{
-			Assertions assertions;
+			vector<Result> assertions;
 			Item item1("item_1", 1);
 			Item item2("item_2", 2);
-			assertions.addAssertion(IsEqualTo<Item>(item1, item2).getResultWithCustomToString(item1.toString));
+			assertions.push_back(IsEqualTo<Item>(item1, item2).getResultWithCustomToString(item1.toString));
 			return assertions;
 		}
 	);

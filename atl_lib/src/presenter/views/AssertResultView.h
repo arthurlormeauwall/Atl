@@ -4,9 +4,9 @@
 
 struct ResultView {
 	bool pass;
-	string message;
-	ResultView(bool pass, string message) {
+	vector<string> messages;
+	ResultView(bool pass, vector<string> messages) {
 		this->pass = pass;
-		this->message = message;
+		this->messages = messages;
 	}
 };

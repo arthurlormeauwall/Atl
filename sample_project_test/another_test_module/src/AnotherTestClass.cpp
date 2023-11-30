@@ -3,9 +3,9 @@
 
 void AnotherTestClass::addUnitTests() {
 	createUnitTest("A test that should succeed",
-		[]()->Assertions {
-			Assertions assertions;
-			assertions.addAssertion(IsEqualTo<float>(1,1).getResult());
+		[]()->vector<Result> {
+			vector<Result> assertions;
+			assertions.push_back(IsEqualTo<float>(1,1).getResult());
 			return assertions;
 		}
 	);
