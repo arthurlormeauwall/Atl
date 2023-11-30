@@ -14,6 +14,6 @@ public:
 
 private:
 	std::shared_ptr<OutputWriter> m_outputWriter;
-	Presenter m_presenter;
+	AllTestPresenter m_presenter;
 	void write(const TestData& allTests); 
 };

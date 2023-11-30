@@ -138,6 +138,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\model\Model.h" />
+    <ClInclude Include="src\presenter\color\colorHelpers.h" />
+    <ClInclude Include="src\presenter\ResultStringWriter.h" />
     <ClInclude Include="src\presenter\views\Views.h" />
     <ClInclude Include="src\service\assertion\ToStringTemplate.h" />
     <ClInclude Include="src\testBuilder\AllTestBuilder.h" />
