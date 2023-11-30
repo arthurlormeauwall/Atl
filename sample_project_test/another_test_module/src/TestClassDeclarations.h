@@ -4,12 +4,12 @@
 class AnotherTestClass : public TestClassBuilder {
 public:
 	AnotherTestClass(TestData td) : TestClassBuilder(td) {}
-	void addChildren();
+	void addUnitTests() override;
 };
 
-class AThirdTestClass : public TestClassBuilder{
+class AThirdTestClass : public TestClassBuilder {
 public:
 	AThirdTestClass(TestData td) : TestClassBuilder(td) {}
-	void addChildren();
+	void addUnitTests() override;
 };
 

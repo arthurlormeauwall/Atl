@@ -1,41 +1,48 @@
 #pragma once
 #include "../template.h"
 #include "../model/Model.h"
-#include "../testBuilder/TestBuilder.h"
 #include "views/Views.h"
+#include "views/CommonViews.h"
+#include "ResultStringWriter.h"
+#include "color/colorHelpers.h"
+
 
 class ResultPresenter {
 public:
-	string getStringForAssert(ResultView);
-	string getStringForResult(ResultView,string);
+	void writeResult(const ResultView&, ResultStringWriter&);
 };
 
+class AssertPresenter {
+public:
+	void writeResult(const ResultView&, ResultStringWriter&);
+};
 class UnitTestPresenter {
 	ResultPresenter m_resultPresenter;
-	ResultPresenter m_assertPresenter;
+	AssertPresenter m_assertPresenter;
 public:
-	string getStringForAssert(UnitTestView);
+	void writeResult(const UnitTestView&, ResultStringWriter&);
 };
 
 class TestClassPresenter {
 	ResultPresenter m_resultPresenter;
-	UnitTestPresenter m_UnitTestInitPresenter;
+	UnitTestPresenter m_UnitTestPresenter;
 public:
-	string getStringForAssert(TestClassView);
+	void writeResult(const TestClassView&, ResultStringWriter&);
 };
 
 class ModulePresenter {
 	ResultPresenter m_resultPresenter;
-	TestClassPresenter m_TestClassInitPresenter;
+	TestClassPresenter m_testClassPresenter;
 public:
-	string getStringForAssert(ModuleView);
+	void writeResult(const ModuleView&, ResultStringWriter&);
 };
 
 
-class Presenter {
+class AllTestPresenter {
 	ResultPresenter m_resultPresenter;
-	ModulePresenter m_ModuleInitPresenter;
+	ModulePresenter m_modulePresenter;
 public:
 	string getStringFromTestResult(const TestData&);
+	void writeResult(const AllTestView&, ResultStringWriter&);
 };
 

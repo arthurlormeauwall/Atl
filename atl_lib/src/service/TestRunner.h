@@ -1,4 +1,5 @@
 #pragma once
+#include "../model/Result.h"
 #include "../model/TestData.h"
 
 class TestRunner {

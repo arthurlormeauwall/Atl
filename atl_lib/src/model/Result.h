@@ -6,19 +6,20 @@ struct Result {
 	bool exist = true;
 	bool executed;
 	bool pass;
-	string message;
+	vector<string> messages;
 	Result() :
 		executed(false),
-		pass(false),
-		message("Not executed yet") {}
-	Result(bool p, string m) :
+		pass(false) {}
+
+	Result(bool p, vector<string> msgs) :
 		executed(true),
 		pass(p),
-		message(m) {}
+		messages(msgs) {}
+
 	Result(const Result& result) {
 		executed = result.executed;
 		pass = result.pass;
-		message = result.message;
+		messages = result.messages;
 	}
 };
 

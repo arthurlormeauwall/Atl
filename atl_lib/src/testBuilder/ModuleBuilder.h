@@ -7,9 +7,13 @@
 class ModuleBuilder : public TestTreeBuilder {
 public:
 	ModuleBuilder(TestData td) : TestTreeBuilder(td) {}
+	void addChildren() override {
+		addTestClasses();
+	}
+	virtual void addTestClasses() = 0;
 	template<typename T>
-	sharedptr<TestClassBuilder> createTestClassBuilder(string name) {
+	void createTestClass(string name) {
 		m_testData.hasChildren = true;
-		return std::make_shared<T>(TestData(name));
+		add(std::make_shared<T>(TestData(name)));
 	}
 };

@@ -5,5 +5,5 @@
 class MyTestClass: public TestClassBuilder {
 public:
 	MyTestClass(TestData td) : TestClassBuilder(td) {}
-	virtual void addChildren() override;
+	virtual void addUnitTests() override;
 };

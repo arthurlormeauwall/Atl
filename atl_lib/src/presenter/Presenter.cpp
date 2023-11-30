@@ -1,94 +1,115 @@
 #include "../template.h"
 #include "Presenter.h"
 
-string format(string tab, bool pass) {
+
+
+string addSucceedOrFailed(bool pass, string content) {
 	string out;
-	string resultToken = pass ? "[success]" : "[failed]";
+	string succeed = color(F_GREEN, "[succeed]");
+	string failed = color(F_RED, "[failed]");
+	string resultToken = pass ? succeed : failed;
 	string blank = " ";
-	out.append(tab).append(resultToken).append(blank);
+	out.append(resultToken).append(blank).append(content);
 	return out;
 }
 
-string ResultPresenter::getStringForAssert(ResultView assertResult) {
-	string out;
-	string tab = "                           ";
-	out.append(format(tab, assertResult.pass));
-	out.append(assertResult.message).append("\n");
-	return out;
+void AssertPresenter::writeResult(const ResultView& resultView,
+	ResultStringWriter& stringWriter) {
+	vector<string> messages = vector<string>({ "* failed assertion : " });
+	vector<string> resultMessages = resultView.messages;
+	int resultMessagesSize = resultMessages.size();
+	if (resultMessagesSize > 0) {
+		for (string m : resultMessages) {
+			messages.push_back(m);
+		}
+	}
+	else {
+		messages = resultMessages;
+	}
+	stringWriter.writeBloc(messages);
 }
 
-string ResultPresenter::getStringForResult(ResultView assertResult, string tab) {
-	string out;
-	out.append(format(tab, assertResult.pass));
-	out.append(assertResult.message).append("\n");
-	return out;
+void ResultPresenter::writeResult(const ResultView& resultView, ResultStringWriter& stringWriter) {
+	vector<string> messages = resultView.messages;
+	int messagesSize = messages.size();
+	if (messagesSize > 0) {
+		stringWriter.writeSingleLine(addSucceedOrFailed(resultView.pass, messages.at(0)));
+	}
+	if (messagesSize > 1) {
+		vector<string> messages_minus_first = { messages.begin() + 1, messages.end() };
+		stringWriter.writeBloc(messages_minus_first);
+	}
 }
 
-string UnitTestPresenter::getStringForAssert(UnitTestView unitTestView) {
-	string out;
-	string tab = "                  ";
-	out.append(format(tab, unitTestView.result.pass));
-	out.append(unitTestView.name).append("\n");
-
+void UnitTestPresenter::writeResult(const UnitTestView& unitTestView, ResultStringWriter& stringWriter)
+{
+	stringWriter.setTab(5);
+	stringWriter.writeSingleLine(addSucceedOrFailed(unitTestView.result.pass, unitTestView.name));
 	if (!unitTestView.result.exist)
-		out.append(m_resultPresenter.getStringForResult(ResultView(unitTestView.result), string("")));
-	auto assertResults = unitTestView.childrenResult;
-	for (auto assertResult : assertResults) {
-		if (!assertResult.pass) {
-			out.append(m_assertPresenter.getStringForAssert(ResultView(assertResult)));
-		}
+		m_resultPresenter.writeResult(ResultView(unitTestView.result.pass, unitTestView.result.messages), stringWriter);
+
+	stringWriter.setTab(7);
+	for (const ResultView assertView : unitTestView.children) {
+		m_assertPresenter.writeResult(assertView, stringWriter);
 	}
-	return out;
 }
-
-string TestClassPresenter::getStringForAssert(TestClassView testClassView) {
-	string out;
-	string tab = "         ";
-	out.append(format(tab, testClassView.result.pass));
-	out.append(testClassView.name).append("\n");
-
+void TestClassPresenter::writeResult(const TestClassView& testClassView, ResultStringWriter& stringWriter)
+{
+	stringWriter.setTab(2);
+	stringWriter.writeSingleLine(addSucceedOrFailed(testClassView.result.pass, testClassView.name));
 	if (!testClassView.result.exist)
-		out.append(m_resultPresenter.getStringForResult(ResultView(testClassView.result), string("")));
-	auto UnitTestInits = testClassView.children;
-	for (auto ut : UnitTestInits) {
-		if (ut.result.executed) {
-			out.append(m_UnitTestInitPresenter.getStringForAssert(UnitTestView(ut)));
+		m_resultPresenter.writeResult(ResultView(testClassView.result.pass, testClassView.result.messages), stringWriter);
+
+	if (!testClassView.result.pass) {
+		for (const UnitTestView unitTestView : testClassView.children) {
+			m_UnitTestPresenter.writeResult(unitTestView, stringWriter);
 		}
 	}
-	return out;
 }
 
-string ModulePresenter::getStringForAssert(ModuleView moduleView) {
-	string out;
-	string tab = "";
-	out.append(format(tab, moduleView.result.pass));
-	out.append(moduleView.name).append("\n");
+void ModulePresenter::writeResult(const ModuleView& moduleView, ResultStringWriter& stringWriter)
+{
+	stringWriter.setTab(0);
+	stringWriter.writeSingleLine(addSucceedOrFailed(moduleView.result.pass, moduleView.name));
 
 	if (!moduleView.result.exist)
-		out.append(m_resultPresenter.getStringForResult(ResultView(moduleView.result), string("")));
-	auto TestClassInit = moduleView.children;
-	for (auto tc : TestClassInit) {
-		if (tc.result.executed) {
-			out.append(m_TestClassInitPresenter.getStringForAssert(TestClassView(tc)));
+		m_resultPresenter.writeResult(ResultView(moduleView.result.pass, moduleView.result.messages), stringWriter);
+
+	if (!moduleView.result.pass) {
+		for (const TestClassView testClassView : moduleView.children) {
+			m_testClassPresenter.writeResult(testClassView, stringWriter);
 		}
 	}
-	out.append("\n");
-	return out;
+
+	// break line at the end of each module to separate each module results with blanck line
+	stringWriter.breakLine();
 }
 
-string Presenter::getStringFromTestResult(const TestData& testData)
+void AllTestPresenter::writeResult(const AllTestView& allTestView, ResultStringWriter& stringWriter)
 {
-	string out;
-	out.append(commonViews::welcome);
-
-	if (!testData.result.exist)
-		out.append(m_resultPresenter.getStringForResult(ResultView(testData.result), string("")));
-	auto module = testData.children.getAllAsVector();
-	for (const TestData m : module) {
-		if (m.result.executed) {
-			out.append(m_ModuleInitPresenter.getStringForAssert(ModuleView(m)));
+	stringWriter.setTab(6);
+	stringWriter.writeSingleLine(commonViews::welcome);
+	stringWriter.setTab(0);
+	stringWriter.writeBloc(commonViews::atl_ascii);
+	stringWriter.setTab(6);
+	stringWriter.breakLine();
+	stringWriter.writeSingleLine(commonViews::presentation);
+	stringWriter.setTab(0);
+	stringWriter.breakLine();
+	stringWriter.breakLine();
+	for (const ModuleView moduleView : allTestView.children) {
+		if (moduleView.result.executed) {
+			m_modulePresenter.writeResult(moduleView, stringWriter);
 		}
 	}
-	out.append(commonViews::goodBye);
-	return out;
+	stringWriter.writeSingleLine(commonViews::goodBye);
+}
+
+string AllTestPresenter::getStringFromTestResult(const TestData& testData)
+{
+	ResultStringWriter stringWriter;
+
+	writeResult(AllTestView(testData), stringWriter);
+
+	return stringWriter.getStringResult();
 }

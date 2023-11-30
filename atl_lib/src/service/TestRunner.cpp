@@ -12,12 +12,10 @@ void TestRunner::updateResult(TestData& tests) {
 	if (!tests.childrenResult.pass) {
 		tests.result.executed = true;
 		tests.result.pass = false;
-		tests.result.message = "Some tests failed";
 	}
 	else {
 		tests.result.executed = true;
 		tests.result.pass = true;
-		tests.result.message = "Succeed";
 	}
 }
 
@@ -91,7 +89,12 @@ void TestRunner::runSomeTests(TestData& tests, vector<string> name) {
 			updateResult(tests);
 		}
 		else {
-			tests.result = Result(false, string(name[0] + " : NOT FOUND !"));
+			tests.result = Result(false, vector<string> {
+				string("\"")
+					.append(name[0])
+					.append("\"")
+					.append(" NOT FOUND ! (maybe a typo in the name ?)")
+			});
 			tests.result.exist = false;
 		}
 	}
@@ -100,5 +103,5 @@ void TestRunner::runSomeTests(TestData& tests, vector<string> name) {
 		tests.childrenResult.pass = areChildrenPassing(tests.childrenResult.result);
 		updateResult(tests);
 	}
-	
+
 }

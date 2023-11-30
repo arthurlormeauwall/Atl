@@ -1,20 +1,19 @@
 #include "TestClassDeclarations.h"
 
-void AThirdTestClass::addChildren() {
-	add(createUnitTestBuilder("A test that should fail",
-		[]()->std::vector<Result>
-		{
-			Assertions assertions;
-			assertions.push_back(assertThat<float>(0.3F).isEqualTo(49.0F)->getResult());
+void AThirdTestClass::addUnitTests() {
+	createUnitTest("A test that should fail",
+		[]()->vector<Result> {
+			vector<Result> assertions;
+			assertions.push_back(IsEqualTo<string>("expected", "expected").getResult());
 			return assertions;
 		}
-	));
-	add(createUnitTestBuilder("Another test that should fail",
-		[]()->std::vector<Result>
+	);
+	createUnitTest("Another test that should succeed",
+		[]()->vector<Result>
 		{
-			Assertions assertions;
-			assertions.push_back(assertThat<float>(0.3F).isEqualTo(49.0F)->getResult());
+			vector<Result> assertions;
+			assertions.push_back(IsEqualTo<int>(2, 2).getResult());
 			return assertions;
 		}
-	));
+	);
 }

@@ -9,7 +9,7 @@ class MyModule: public ModuleBuilder {
 public:
 
 	MyModule(TestData td) : ModuleBuilder(td) {}
-	virtual void addChildren() override {
-		add(createTestClassBuilder<MyTestClass>("My Test class"));
+	virtual void addTestClasses() override {
+		createTestClass<MyTestClass>("My Test class");
 	}
 };

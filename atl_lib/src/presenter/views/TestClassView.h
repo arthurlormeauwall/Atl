@@ -1,14 +1,18 @@
 #pragma once
 #include "../../template.h"
 #include "../../model/Model.h"
+#include "UnitTestView.h"
 
 struct TestClassView {
 	Result result;
 	string name;
-	vector<TestData> children;
+	vector<UnitTestView> children;
 	TestClassView(const TestData& test) {
 		result = test.result;
 		name = test.name;
-		children = test.children.getAllAsVector();
+		for (auto unitTestTestData : test.children.getAllAsVector()) {
+			if(unitTestTestData.result.executed)
+				children.push_back(UnitTestView(unitTestTestData));
+		}
 	}
 };

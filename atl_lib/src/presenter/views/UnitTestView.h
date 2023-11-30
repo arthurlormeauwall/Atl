@@ -1,14 +1,18 @@
 #pragma once
 #include "../../template.h"
 #include "../../model/Model.h"
+#include "AssertResultView.h"
 
 struct UnitTestView {
 	Result result;
 	string name;
-	vector<Result> childrenResult;
+	vector<ResultView> children;
 	UnitTestView(const TestData& test) {
 		result = test.result;
 		name = test.name;
-		childrenResult = test.childrenResult.result;
+		for (auto assertResult : test.childrenResult.result) {
+			if(assertResult.executed)
+				children.push_back(ResultView(assertResult.pass, assertResult.messages));
+		}
 	}
 };

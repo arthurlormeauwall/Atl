@@ -1,17 +1,31 @@
 #include "MyTestClass.h"
-#include "MyClass.h"
 #include "atl_includes.h"
 
-void MyTestClass::addChildren() {
-	add(createUnitTestBuilder("should add two number",
+struct Item {
+	string name;
+	int value;
+	bool operator==(Item& rhs) {
+		return name == rhs.name && value == rhs.value;
+	}
+	string(*toString)(Item it) =
+		[](Item it)->string { return string("Name : ")
+		.append(it.name)
+		.append(" and value : ")
+		.append(std::to_string(it.value));
+	};
+
+	Item(string n, int v) :name(n), value(v) {}
+};
+
+void MyTestClass::addUnitTests() {
+	createUnitTest("A test that should succeed",
 		[]()->std::vector<Result>
 		{
-			Assertions assertions;
-			MyClass<float> obj;
-			float expected = 5.;
-			float actual = obj.add(2., 3.);
-			assertions.push_back(assertThat<float>(actual).isEqualTo(expected)->getResult());
+			vector<Result> assertions;
+			Item item1("item_1", 4);
+			Item item2("item_1", 4);
+			assertions.push_back(IsEqualTo<Item>(item1, item2).getResultWithCustomToString(item1.toString));
 			return assertions;
 		}
-	));
+	);
 }

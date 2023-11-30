@@ -33,13 +33,13 @@
     <ClCompile Include="src\testBuilder\TestTreeBuilder.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\service\assertion\AssertBuilder.h">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="src\presenter\views\ModuleView.h">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\service\TestRunner.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\presenter\color\colorHelpers.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,9 +59,6 @@
     <ClInclude Include="src\presenter\Presenter.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\service\assertion\Assertion.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="src\service\AtlService.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -69,9 +66,6 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\template.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\macros\macros.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\model\TestData.h">
@@ -122,7 +116,13 @@
     <ClInclude Include="src\presenter\views\Views.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\service\assertion\Comparable.h">
+    <ClInclude Include="src\service\assertion\ToStringTemplate.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\presenter\ResultStringWriter.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="src\presenter\color\colorHelpers.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
