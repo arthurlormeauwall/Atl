@@ -18,13 +18,20 @@ public:
 	void breakLine() {
 		m_stringResult.append("\n");
 	}
-	void setTab(string tab) {
-		m_currentTab = tab;
+	void setTab(int tab) {
+		string tabstr_template = "    ";
+		string tabstr="";
+		for (int i = 0; i < tab; i++) {
+			tabstr.append(tabstr_template);
+		}
+		m_currentTab = tabstr;
 	}
+
 	void writeSingleLine(string lineContent) {
 		writeLine(lineContent);
 		breakLine();
 	}
+
 	void writeBloc(vector<string> lineContents) {
 		for (string lineContent : lineContents) {
 			writeLine(lineContent);

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "../../template.h"
 
 #define F_BLACK "30"
@@ -11,9 +12,9 @@
 #define F_WHITE "37"
 
 #define B_BLACK "40"
-#define B_GREEN "41"
-#define B_YELLOW "42"
-#define B_RED "43"
+#define B_RED "41"
+#define B_GREEN "42"
+#define B_YELLOW "43"
 #define B_BLUE "44"
 #define B_MAGENTA "45"
 #define B_CYAN "46"
@@ -21,8 +22,11 @@
 
 #define RESET_COLOR "\x1b[0m"
 
-#define COLOR(v) string("\x1b[").append(v).append("m")
+#define COLOR_(v) string("\x1b[").append(v)
+#define END_COLOR .append("m")
 
-string color(string c, string content) {
-	return COLOR(c).append(content).append(RESET_COLOR);
-}
+#define COLOR(v) COLOR_(v)END_COLOR
+#define COLOR_F_B(f, b) COLOR_(f).append(";").append(b)END_COLOR
+
+string color(string color, string content);
+string colorForeGroundAndBackGround(string colorF, string colorB, string content);

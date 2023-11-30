@@ -18,12 +18,12 @@ struct Item {
 };
 
 void MyTestClass::addUnitTests() {
-	createUnitTest("A test that should fail",
+	createUnitTest("A test that should succeed",
 		[]()->std::vector<Result>
 		{
 			vector<Result> assertions;
-			Item item1("item_1", 1);
-			Item item2("item_2", 2);
+			Item item1("item_1", 4);
+			Item item2("item_1", 4);
 			assertions.push_back(IsEqualTo<Item>(item1, item2).getResultWithCustomToString(item1.toString));
 			return assertions;
 		}

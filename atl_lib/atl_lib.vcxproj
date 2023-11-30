@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\presenter\color\colorHelpers.cpp" />
     <ClCompile Include="src\service\TestRunner.cpp" />
     <ClCompile Include="src\testBuilder\TestTreeBuilder.cpp" />
     <ClCompile Include="src\testBuilder\ModuleBuilder.h" />

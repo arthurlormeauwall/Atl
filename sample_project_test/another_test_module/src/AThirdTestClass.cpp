@@ -4,7 +4,7 @@ void AThirdTestClass::addUnitTests() {
 	createUnitTest("A test that should fail",
 		[]()->vector<Result> {
 			vector<Result> assertions;
-			assertions.push_back(IsEqualTo<string>("actual", "expected").getResult());
+			assertions.push_back(IsEqualTo<string>("expected", "expected").getResult());
 			return assertions;
 		}
 	);
