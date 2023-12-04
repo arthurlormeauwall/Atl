@@ -564,3 +564,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+bin/
+bin-int/
