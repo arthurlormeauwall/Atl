@@ -97,8 +97,6 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
-*.sln
-*.vcxproj
 
 # Chutzpah Test files
 _Chutzpah*
@@ -566,15 +564,3 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-
-bin/
-bin-int/
-*.sln
-*.vcxproj
-*.vcxproj.user
-*.vcxproj.filters
-/sample_project_test/test_module/src/ItemTest.cpp
-/sample_project_test/test_module/src/ItemTest.h
-/sample_project_test/test_module/src/MyTestClass.cpp
-/.gitignore
-/.gitignore
