@@ -1,0 +1,7 @@
+C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\atl_lib_core\src\controller\AtlController.cpp;C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\bin-int\Debug-windows-Atl_core\AtlController.obj
+C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\atl_lib_core\src\presenter\Presenter.cpp;C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\bin-int\Debug-windows-Atl_core\Presenter.obj
+C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\atl_lib_core\src\presenter\color\colorHelpers.cpp;C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\bin-int\Debug-windows-Atl_core\colorHelpers.obj
+C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\atl_lib_core\src\presenter\output\ConsoleOutputWriter.cpp;C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\bin-int\Debug-windows-Atl_core\ConsoleOutputWriter.obj
+C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\atl_lib_core\src\service\AtlService.cpp;C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\bin-int\Debug-windows-Atl_core\AtlService.obj
+C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\atl_lib_core\src\service\TestRunner.cpp;C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\bin-int\Debug-windows-Atl_core\TestRunner.obj
+C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\atl_lib_core\src\testBuilder\TestTreeBuilder.cpp;C:\Users\Arthur\dev\visualStudio\ATL_lib\Atl\bin-int\Debug-windows-Atl_core\TestTreeBuilder.obj
