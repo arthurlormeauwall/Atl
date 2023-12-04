@@ -130,10 +130,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\MyModule.h" />
-    <ClInclude Include="src\MyTestClass.h" />
+    <ClInclude Include="src\ItemTest.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\MyTestClass.cpp" />
+    <ClCompile Include="src\ItemTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\sample_project\sample_project.vcxproj">

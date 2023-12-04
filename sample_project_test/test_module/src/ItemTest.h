@@ -1,4 +1,4 @@
-#include "MyTestClass.h"
+#pragma once
 #include "atl_includes.h"
 
 struct Item {
@@ -17,15 +17,9 @@ struct Item {
 	Item(string n, int v) :name(n), value(v) {}
 };
 
-void MyTestClass::addUnitTests() {
-	createUnitTest("A test that should succeed",
-		[]()->std::vector<Result>
-		{
-			vector<Result> assertions;
-			Item item1("item_1", 4);
-			Item item2("item_1", 4);
-			assertions.push_back(IsEqualTo<Item>(item1, item2).getResultWithCustomToString(item1.toString));
-			return assertions;
-		}
-	);
-}
+
+class ItemTest: public TestClassBuilder {
+public:
+	ItemTest(TestData td) : TestClassBuilder(td) {}
+	virtual void addUnitTests() override;
+};

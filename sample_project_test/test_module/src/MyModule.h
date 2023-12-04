@@ -1,6 +1,6 @@
 #pragma once
 #include "atl_includes.h"
-#include "MyTestClass.h"
+#include "ItemTest.h"
 #include <string>
 #include <memory>
 #include <vector>
@@ -10,6 +10,6 @@ public:
 
 	MyModule(TestData td) : ModuleBuilder(td) {}
 	virtual void addTestClasses() override {
-		createTestClass<MyTestClass>("My Test class");
+		createTestClass<ItemTest>("Test of item class");
 	}
 };
