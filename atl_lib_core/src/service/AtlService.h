@@ -1,7 +1,6 @@
 #pragma once
 #include "../template.h"
-#include "../presenter/Presenter.h"
-#include "../presenter/output/ConsoleOutputWriter.h"
+#include "../out/consoleOutput/ConsoleOutputWriter.h"
 #include "../testBuilder/TestBuilder.h"
 #include "TestRunner.h"
 
@@ -14,6 +13,5 @@ public:
 
 private:
 	std::shared_ptr<OutputWriter> m_outputWriter;
-	AllTestPresenter m_presenter;
 	void write(const TestData& allTests); 
 };

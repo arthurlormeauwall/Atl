@@ -1,5 +1,5 @@
-#include "../template.h"
-#include "Presenter.h"
+#include "../../template.h"
+#include "ConsolePresenter.h"
 
 
 
@@ -13,7 +13,7 @@ string addSucceedOrFailed(bool pass, string content) {
 	return out;
 }
 
-void AssertPresenter::writeResult(const ResultView& resultView,
+void ConsoleAssertPresenter::addResultToStringWriter(const ResultView& resultView,
 	ResultStringWriter& stringWriter) {
 	vector<string> messages = vector<string>({ "* failed assertion : " });
 	vector<string> resultMessages = resultView.messages;
@@ -29,7 +29,7 @@ void AssertPresenter::writeResult(const ResultView& resultView,
 	stringWriter.writeBloc(messages);
 }
 
-void ResultPresenter::writeResult(const ResultView& resultView, ResultStringWriter& stringWriter) {
+void ConsoleResultPresenter::addResultToStringWriter(const ResultView& resultView, ResultStringWriter& stringWriter) {
 	vector<string> messages = resultView.messages;
 	int messagesSize = messages.size();
 	if (messagesSize > 0) {
@@ -41,43 +41,43 @@ void ResultPresenter::writeResult(const ResultView& resultView, ResultStringWrit
 	}
 }
 
-void UnitTestPresenter::writeResult(const UnitTestView& unitTestView, ResultStringWriter& stringWriter)
+void ConsoleUnitTestPresenter::addResultToStringWriter(const UnitTestView& unitTestView, ResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(5);
 	stringWriter.writeSingleLine(addSucceedOrFailed(unitTestView.result.pass, unitTestView.name));
 	if (!unitTestView.result.exist)
-		m_resultPresenter.writeResult(ResultView(unitTestView.result.pass, unitTestView.result.messages), stringWriter);
+		m_consoleResultPresenter.addResultToStringWriter(ResultView(unitTestView.result.pass, unitTestView.result.messages), stringWriter);
 
 	stringWriter.setTab(7);
 	for (const ResultView assertView : unitTestView.children) {
-		m_assertPresenter.writeResult(assertView, stringWriter);
+		m_consoleAssertPresenter.addResultToStringWriter(assertView, stringWriter);
 	}
 }
-void TestClassPresenter::writeResult(const TestClassView& testClassView, ResultStringWriter& stringWriter)
+void ConsoleTestClassPresenter::addResultToStringWriter(const TestClassView& testClassView, ResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(2);
 	stringWriter.writeSingleLine(addSucceedOrFailed(testClassView.result.pass, testClassView.name));
 	if (!testClassView.result.exist)
-		m_resultPresenter.writeResult(ResultView(testClassView.result.pass, testClassView.result.messages), stringWriter);
+		m_consoleResultPresenter.addResultToStringWriter(ResultView(testClassView.result.pass, testClassView.result.messages), stringWriter);
 
 	if (!testClassView.result.pass) {
 		for (const UnitTestView unitTestView : testClassView.children) {
-			m_UnitTestPresenter.writeResult(unitTestView, stringWriter);
+			m_consoleUnitTestPresenter.addResultToStringWriter(unitTestView, stringWriter);
 		}
 	}
 }
 
-void ModulePresenter::writeResult(const ModuleView& moduleView, ResultStringWriter& stringWriter)
+void ConsoleModulePresenter::addResultToStringWriter(const ModuleView& moduleView, ResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(0);
 	stringWriter.writeSingleLine(addSucceedOrFailed(moduleView.result.pass, moduleView.name));
 
 	if (!moduleView.result.exist)
-		m_resultPresenter.writeResult(ResultView(moduleView.result.pass, moduleView.result.messages), stringWriter);
+		m_consoleResultPresenter.addResultToStringWriter(ResultView(moduleView.result.pass, moduleView.result.messages), stringWriter);
 
 	if (!moduleView.result.pass) {
 		for (const TestClassView testClassView : moduleView.children) {
-			m_testClassPresenter.writeResult(testClassView, stringWriter);
+			m_consoleTestClassPresenter.addResultToStringWriter(testClassView, stringWriter);
 		}
 	}
 
@@ -85,7 +85,7 @@ void ModulePresenter::writeResult(const ModuleView& moduleView, ResultStringWrit
 	stringWriter.breakLine();
 }
 
-void AllTestPresenter::writeResult(const AllTestView& allTestView, ResultStringWriter& stringWriter)
+void ConsoleAllTestPresenter::addResultToStringWriter(const AllTestView& allTestView, ResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(6);
 	stringWriter.writeSingleLine(commonViews::welcome);
@@ -99,17 +99,17 @@ void AllTestPresenter::writeResult(const AllTestView& allTestView, ResultStringW
 	stringWriter.breakLine();
 	for (const ModuleView moduleView : allTestView.children) {
 		if (moduleView.result.executed) {
-			m_modulePresenter.writeResult(moduleView, stringWriter);
+			m_consoleModulePresenter.addResultToStringWriter(moduleView, stringWriter);
 		}
 	}
 	stringWriter.writeSingleLine(commonViews::goodBye);
 }
 
-string AllTestPresenter::getStringFromTestResult(const TestData& testData)
+string ConsoleAllTestPresenter::getStringFromTestResult(const TestData& testData)
 {
 	ResultStringWriter stringWriter;
 
-	writeResult(AllTestView(testData), stringWriter);
+	addResultToStringWriter(AllTestView(testData), stringWriter);
 
 	return stringWriter.getStringResult();
 }

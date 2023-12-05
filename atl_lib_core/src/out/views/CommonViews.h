@@ -1,6 +1,6 @@
 #pragma once
 #include "../../template.h"
-#include "../color/colorHelpers.h"
+#include "../consoleOutput/color/ConsoleColorHelpers.h"
 namespace commonViews {
 	const vector<string> atl_ascii =vector<string>({
 		 color(F_YELLOW,"        _      _____   _         _       ___   ____    ____       _      ____   __   __"),

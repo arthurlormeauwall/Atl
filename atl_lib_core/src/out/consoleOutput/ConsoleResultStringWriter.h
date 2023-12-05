@@ -1,5 +1,5 @@
 #pragma once
-#include "../template.h"
+#include "../../template.h"
 
 class ResultStringWriter {
 

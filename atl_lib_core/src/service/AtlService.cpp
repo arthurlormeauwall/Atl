@@ -14,6 +14,5 @@ void AtlService::runSomeTests(TestData& allTests, vector<string> name) {
 }
 
 void AtlService::write(const TestData& allTests) {
-	string out = m_presenter.getStringFromTestResult(allTests);
-	m_outputWriter->write(out);
+	m_outputWriter->write(allTests);
 }
