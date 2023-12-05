@@ -1,7 +1,7 @@
 #pragma once
 #include "../../template.h"
 #include "../../model/Model.h"
-#include "AssertResultView.h"
+#include "ResultView.h"
 
 struct UnitTestView {
 	Result result;

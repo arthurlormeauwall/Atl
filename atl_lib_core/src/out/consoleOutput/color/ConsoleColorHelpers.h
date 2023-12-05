@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../template.h"
+#include "../../../template.h"
 
 #define F_BLACK "30"
 #define F_RED "31"

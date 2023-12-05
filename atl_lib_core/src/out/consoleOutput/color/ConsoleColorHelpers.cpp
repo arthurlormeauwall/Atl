@@ -1,4 +1,4 @@
-#include "colorHelpers.h"
+#include "ConsoleColorHelpers.h"
 
 string color(string color, string content) {
 	return COLOR(color).append(content).append(RESET_COLOR);
