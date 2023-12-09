@@ -7,6 +7,9 @@
 class ConsoleOutputWriter : public OutputWriter{
 	ConsoleAllTestPresenter m_presenter;
 public: 
+	ConsoleOutputWriter(bool ansiColorEnabled) : m_presenter(ConsoleAllTestPresenter(ansiColorEnabled))
+	{}
+
 	void write(const TestData& allTests);
 };
 

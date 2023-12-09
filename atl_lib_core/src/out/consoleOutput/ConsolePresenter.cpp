@@ -1,12 +1,13 @@
 #include "../../template.h"
 #include "ConsolePresenter.h"
+#include "style/color/ConsolecolorHelpers.h"
 
 
 
-string addSucceedOrFailed(bool pass, string content) {
+string addSucceedOrFailed(bool pass, string content, bool m_ansiColorEnabled) {
 	string out;
-	string succeed = color(F_GREEN, "[succeed]");
-	string failed = color(F_RED, "[failed]");
+	string succeed = color(F_GREEN, "[succeed]", m_ansiColorEnabled);
+	string failed = color(F_RED, "[failed]", m_ansiColorEnabled);
 	string resultToken = pass ? succeed : failed;
 	string blank = " ";
 	out.append(resultToken).append(blank).append(content);
@@ -33,7 +34,7 @@ void ConsoleResultPresenter::addResultToStringWriter(const ResultView& resultVie
 	vector<string> messages = resultView.messages;
 	int messagesSize = messages.size();
 	if (messagesSize > 0) {
-		stringWriter.writeSingleLine(addSucceedOrFailed(resultView.pass, messages.at(0)));
+		stringWriter.writeSingleLine(addSucceedOrFailed(resultView.pass, messages.at(0), m_ansiColorEnabled));
 	}
 	if (messagesSize > 1) {
 		vector<string> messages_minus_first = { messages.begin() + 1, messages.end() };
@@ -44,7 +45,7 @@ void ConsoleResultPresenter::addResultToStringWriter(const ResultView& resultVie
 void ConsoleUnitTestPresenter::addResultToStringWriter(const UnitTestView& unitTestView, ResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(5);
-	stringWriter.writeSingleLine(addSucceedOrFailed(unitTestView.result.pass, unitTestView.name));
+	stringWriter.writeSingleLine(addSucceedOrFailed(unitTestView.result.pass, unitTestView.name, m_ansiColorEnabled));
 	if (!unitTestView.result.exist)
 		m_consoleResultPresenter.addResultToStringWriter(ResultView(unitTestView.result.pass, unitTestView.result.messages), stringWriter);
 
@@ -56,7 +57,7 @@ void ConsoleUnitTestPresenter::addResultToStringWriter(const UnitTestView& unitT
 void ConsoleTestClassPresenter::addResultToStringWriter(const TestClassView& testClassView, ResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(2);
-	stringWriter.writeSingleLine(addSucceedOrFailed(testClassView.result.pass, testClassView.name));
+	stringWriter.writeSingleLine(addSucceedOrFailed(testClassView.result.pass, testClassView.name, m_ansiColorEnabled));
 	if (!testClassView.result.exist)
 		m_consoleResultPresenter.addResultToStringWriter(ResultView(testClassView.result.pass, testClassView.result.messages), stringWriter);
 
@@ -70,7 +71,7 @@ void ConsoleTestClassPresenter::addResultToStringWriter(const TestClassView& tes
 void ConsoleModulePresenter::addResultToStringWriter(const ModuleView& moduleView, ResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(0);
-	stringWriter.writeSingleLine(addSucceedOrFailed(moduleView.result.pass, moduleView.name));
+	stringWriter.writeSingleLine(addSucceedOrFailed(moduleView.result.pass, moduleView.name, m_ansiColorEnabled));
 
 	if (!moduleView.result.exist)
 		m_consoleResultPresenter.addResultToStringWriter(ResultView(moduleView.result.pass, moduleView.result.messages), stringWriter);
@@ -88,12 +89,18 @@ void ConsoleModulePresenter::addResultToStringWriter(const ModuleView& moduleVie
 void ConsoleAllTestPresenter::addResultToStringWriter(const AllTestView& allTestView, ResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(6);
-	stringWriter.writeSingleLine(commonViews::welcome);
+	stringWriter.writeSingleLine(color(F_YELLOW, commonViews::welcome, m_ansiColorEnabled));
 	stringWriter.setTab(0);
-	stringWriter.writeBloc(commonViews::atl_ascii);
+	if (m_ansiColorEnabled) {
+
+	stringWriter.writeBlocWithColor(commonViews::atl_ascii, F_YELLOW);
+	}
+	else {
+		stringWriter.writeBloc(commonViews::atl_ascii);
+	}
 	stringWriter.setTab(6);
 	stringWriter.breakLine();
-	stringWriter.writeSingleLine(commonViews::presentation);
+	stringWriter.writeSingleLine(color(F_YELLOW, commonViews::presentation, m_ansiColorEnabled));
 	stringWriter.setTab(0);
 	stringWriter.breakLine();
 	stringWriter.breakLine();
@@ -102,7 +109,7 @@ void ConsoleAllTestPresenter::addResultToStringWriter(const AllTestView& allTest
 			m_consoleModulePresenter.addResultToStringWriter(moduleView, stringWriter);
 		}
 	}
-	stringWriter.writeSingleLine(commonViews::goodBye);
+	stringWriter.writeSingleLine(color(F_YELLOW, commonViews::goodBye, m_ansiColorEnabled));
 }
 
 string ConsoleAllTestPresenter::getStringFromTestResult(const TestData& testData)

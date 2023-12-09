@@ -1,5 +1,6 @@
 #pragma once
 #include "../../template.h"
+#include "style/color/ConsolecolorHelpers.h"
 
 class ResultStringWriter {
 
@@ -35,6 +36,13 @@ public:
 	void writeBloc(vector<string> lineContents) {
 		for (string lineContent : lineContents) {
 			writeLine(lineContent);
+			breakLine();
+		}
+	}
+
+	void writeBlocWithColor(vector<string> lineContents, string c) {
+		for (string lineContent : lineContents) {
+			writeLine(color(c, lineContent, true));
 			breakLine();
 		}
 	}

@@ -6,7 +6,6 @@
 
 class AtlService {
 public:
-	AtlService(): m_outputWriter(std::make_shared<ConsoleOutputWriter>()){}
 	AtlService(std::shared_ptr<OutputWriter> outputWriter): m_outputWriter(outputWriter) {}
 	void runAllTests(TestData& allTests);
 	void runSomeTests(TestData& allTests, vector<string>);
