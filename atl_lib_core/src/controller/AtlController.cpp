@@ -5,7 +5,7 @@ AtlController::AtlController(char* argv[]) {
 	if (argv[1] && string(argv[1]) == "c") {
 		withAnsiConsoleColorEnabled = true;
 	}
-	m_atlService = std::make_shared<AtlService>(std::make_shared<ConsoleOutputWriter>(ansiColorEnabled));
+	m_atlService = std::make_shared<AtlService>(std::make_shared<ConsoleOutputWriter>(withAnsiConsoleColorEnabled));
 }
 
 void AtlController::runAllTests(sharedptr<AllTestBuilder> allTests) {
