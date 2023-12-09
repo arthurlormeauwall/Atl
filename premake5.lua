@@ -2,7 +2,6 @@
 workspace "Atl_Lib"
    configurations { "Debug", "Release" }
    startproject "Atl_app"
-   architecture("x64")
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
