@@ -1,8 +1,8 @@
 #include "AtlController.h"
 
 
-AtlController::AtlController() {
-	m_atlService = std::make_shared<AtlService>(std::make_shared<ConsoleOutputWriter>());
+AtlController::AtlController(bool ansiColorEnabled) {
+	m_atlService = std::make_shared<AtlService>(std::make_shared<ConsoleOutputWriter>(ansiColorEnabled));
 }
 
 void AtlController::runAllTests(sharedptr<AllTestBuilder> allTests) {
