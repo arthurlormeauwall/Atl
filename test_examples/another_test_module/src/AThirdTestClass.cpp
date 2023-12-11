@@ -9,8 +9,7 @@ void AThirdTestClass::addUnitTests() {
 		}
 	);
 	createUnitTest("Another test that should succeed",
-		[]()->vector<Result>
-		{
+		[]()->vector<Result> {
 			vector<Result> assertions;
 			assertions.push_back(IsEqualTo<int>(2, 2).getResult());
 			return assertions;

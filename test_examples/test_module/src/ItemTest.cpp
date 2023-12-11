@@ -5,7 +5,7 @@
 
 void ItemTest::addUnitTests() {
 	createUnitTest("Item should be equal",
-		[]()->std::vector<Result>
+		[]()->vector<Result>
 		{
 			vector<Result> assertions;
 			Item item1("item_1", 4);
