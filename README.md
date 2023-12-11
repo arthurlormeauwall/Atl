@@ -24,7 +24,7 @@ Atl_lib_core directory.
 You can consider ATL as consisting of 4 parts
 
 * **Your production code**
-* **Your tests** : *module, test classes, unit tests*
+* **Your tests** : *modules, test classes, unit tests*
 * **Atl app** : *console application that output test results in the console*
 * **Atl core** : *the library per se ; you don't have to touch anything in that* 
  
@@ -83,7 +83,7 @@ public:
 
 	MyModule(TestData td) : ModuleBuilder(td) {}
 	virtual void addTestClasses() override {
-		createTestClass<TestClass>("Test of item class");
+		createTestClass<TestClass>("Test of a class");
 	}
 };
 ``` 
@@ -94,19 +94,14 @@ public:
 class TestClass: public TestClassBuilder {
 public:
 	TestClass(TestData td) : TestClassBuilder(td) {}
-	virtual void addUnitTests() override;
+	virtual void addUnitTests() {
+		createUnitTest(<a unit test>);
+	}
 };
 ``` 
 
-``` cpp
-void TestClass::addUnitTests() {
-	createUnitTest(<a unit test>);
-}
-```
-
 ### Unit test
 ``` cpp
-void TestClass::addUnitTests() {
 	createUnitTest("Should something",
 		[]()->vector<Result>
 		{ 
@@ -115,14 +110,10 @@ void TestClass::addUnitTests() {
 			return assertions;
 		}
 	);
-}
 ```
-#### Assertion
-
-##### Is Equal to 
+####  Is Equal to 
 
 ```cpp
-void TestClass::addUnitTests() {
 	createUnitTest("A test that should succeed",
 		[]()->vector<Result> {
 			vector<Result> assertions;
@@ -130,10 +121,9 @@ void TestClass::addUnitTests() {
 			return assertions;
 		}
 	);
-}
 ```
 
-##### Is Equal to with custom to_string 
+#### Is Equal to with custom to_string 
 ``` cpp
 struct Item {
 	string name;
