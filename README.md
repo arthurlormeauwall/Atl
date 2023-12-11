@@ -56,5 +56,128 @@ For **mac** and **linux**, please refer to the website (premake documentation is
 
 ## How to use ATL 
 
+### Main.cpp 
+``` cpp 
+int main(int argc, char* argv[]) {
+	auto testRunner = AtlController(argv);;
+	testRunner.runAllTests(std::make_shared<MyTests>());
+}
+``` 
 
+### AllTest
+``` cpp 
+class MyTests  : public AllTestBuilder {
+public:
+	MyTests() {}
+	void addModules() override {
+		createModule<MyModule>("My Module");
+		createModule<AnotherModule>("Another Module");
+	}
+};
+``` 
+
+### Module
+``` cpp 
+class MyModule: public ModuleBuilder {
+public:
+
+	MyModule(TestData td) : ModuleBuilder(td) {}
+	virtual void addTestClasses() override {
+		createTestClass<TestClass>("Test of item class");
+	}
+};
+``` 
+
+### Test class
+
+``` cpp 
+class TestClass: public TestClassBuilder {
+public:
+	TestClass(TestData td) : TestClassBuilder(td) {}
+	virtual void addUnitTests() override;
+};
+``` 
+
+``` cpp
+void TestClass::addUnitTests() {
+	createUnitTest(<a unit test>);
+}
+```
+
+### Unit test
+``` cpp
+void TestClass::addUnitTests() {
+	createUnitTest("Should something",
+		[]()->vector<Result>
+		{ 
+			vector<Result> assertions;
+			assertions.push_back(<your assertion>);
+			return assertions;
+		}
+	);
+}
+```
+#### Assertion
+
+##### Is Equal to 
+
+```cpp
+void TestClass::addUnitTests() {
+	createUnitTest("A test that should succeed",
+		[]()->vector<Result> {
+			vector<Result> assertions;
+			assertions.push_back(IsEqualTo<float>(3,3).getResult());
+			return assertions;
+		}
+	);
+}
+```
+
+##### Is Equal to with custom to_string 
+``` cpp
+struct Item {
+	string name;
+	int value;
+	bool operator==(Item& rhs) {
+		return name == rhs.name && value == rhs.value;
+	}
+	string(*toString)(Item it) =
+		[](Item it)->string { return string("Name : ")
+		.append(it.name)
+		.append(" and value : ")
+		.append(std::to_string(it.value));
+	};
+	Item(string n, int v) :name(n), value(v) {}
+};
+
+void TestClass::addUnitTests() {
+	createUnitTest("Should be equal",
+		[]()->vector<Result>
+		{
+			vector<Result> assertions;
+			Item item1("item_1", 4);
+			Item item2("item_1", 4);
+
+			assertions.push_back(IsEqualTo<Item>(item1, item2)
+				.getResultWithCustomToString(item1.toString));
+
+			return assertions;
+		} 
+```
+
+##### Custom assertion 
+
+``` cpp
+void TestClass::addUnitTests() {
+	createUnitTest("Should fail",
+		[]()->std::vector<Result>
+		{
+			vector<Result> assertions;
+			assertions.push_back(Result(false,
+				vector<string>({ "This is a custom assert","this test do not pass" })));
+			return assertions;
+		}
+	);
+}
+```
 
