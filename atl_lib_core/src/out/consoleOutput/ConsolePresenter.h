@@ -2,7 +2,6 @@
 #include "../../template.h"
 #include "../../model/Model.h"
 #include "../views/Views.h"
-#include "../views/CommonViews.h"
 #include "ConsoleResultStringWriter.h"
 
 class ConsoleResultPresenter {
@@ -11,7 +10,7 @@ public:
 	explicit ConsoleResultPresenter(bool ansiColorEnabled) :
 		m_ansiColorEnabled(ansiColorEnabled)
 	{}
-	void addResultToStringWriter(const ResultView&, ResultStringWriter&);
+	void addResultToStringWriter(const ResultView&, ConsoleResultStringWriter&);
 };
 
 class ConsoleAssertPresenter {
@@ -20,7 +19,7 @@ public:
 	explicit ConsoleAssertPresenter(bool ansiColorEnabled) :
 		m_ansiColorEnabled(ansiColorEnabled)
 	{}
-	void addResultToStringWriter(const ResultView&, ResultStringWriter&);
+	void addResultToStringWriter(const ResultView&, ConsoleResultStringWriter&);
 };
 
 class ConsoleUnitTestPresenter {
@@ -33,7 +32,7 @@ public:
 		m_consoleResultPresenter(ConsoleResultPresenter(ansiColorEnabled)),
 		m_consoleAssertPresenter(ConsoleAssertPresenter(ansiColorEnabled))
 	{}
-	void addResultToStringWriter(const UnitTestView&, ResultStringWriter&);
+	void addResultToStringWriter(const UnitTestView&, ConsoleResultStringWriter&);
 };
 
 class ConsoleTestClassPresenter {
@@ -46,7 +45,7 @@ public:
 		m_consoleResultPresenter(ConsoleResultPresenter(ansiColorEnabled)),
 		m_consoleUnitTestPresenter(ConsoleUnitTestPresenter(ansiColorEnabled))
 	{}
-	void addResultToStringWriter(const TestClassView&, ResultStringWriter&);
+	void addResultToStringWriter(const TestClassView&, ConsoleResultStringWriter&);
 };
 
 class ConsoleModulePresenter {
@@ -59,7 +58,7 @@ public:
 		m_consoleResultPresenter(ConsoleResultPresenter(ansiColorEnabled)),
 		m_consoleTestClassPresenter(ConsoleTestClassPresenter(ansiColorEnabled))
 	{}
-	void addResultToStringWriter(const ModuleView&, ResultStringWriter&);
+	void addResultToStringWriter(const ModuleView&, ConsoleResultStringWriter&);
 };
 
 
@@ -74,6 +73,6 @@ public:
 		m_consoleModulePresenter(ConsoleModulePresenter(ansiColorEnabled))
 	{}
 	string getStringFromTestResult(const TestData&);
-	void addResultToStringWriter(const AllTestView&, ResultStringWriter&);
+	void addResultToStringWriter(const AllTestView&, ConsoleResultStringWriter&);
 };
 

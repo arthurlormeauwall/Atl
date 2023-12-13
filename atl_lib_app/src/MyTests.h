@@ -1,6 +1,5 @@
 #pragma once
 #include "atl_includes.h" 
-#include "AnotherModule.h"
 #include "MyModule.h"
 #include "AnotherModule.h"
 

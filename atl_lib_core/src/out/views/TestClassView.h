@@ -7,12 +7,5 @@ struct TestClassView {
 	Result result;
 	string name;
 	vector<UnitTestView> children;
-	TestClassView(const TestData& test) {
-		result = test.result;
-		name = test.name;
-		for (auto unitTestTestData : test.children.getAllAsVector()) {
-			if(unitTestTestData.result.executed)
-				children.push_back(UnitTestView(unitTestTestData));
-		}
-	}
+	TestClassView(const TestData& test);
 };

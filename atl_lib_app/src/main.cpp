@@ -1,4 +1,4 @@
-#include "MyTestRunner.h"
+#include "MyTests.h"
 
 int main(int argc, char* argv[]) {
 	auto atlController = AtlController(argv);;
