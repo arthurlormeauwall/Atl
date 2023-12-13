@@ -8,7 +8,7 @@
 class MyModule: public ModuleBuilder {
 public:
 
-	MyModule(TestData td) : ModuleBuilder(td) {}
+	MyModule(string name) : ModuleBuilder(name) {}
 	virtual void addTestClasses() override {
 		createTestClass<ItemTest>("Test of item class");
 	}

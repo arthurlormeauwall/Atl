@@ -9,7 +9,6 @@ protected:
 	StackMap<sharedptr<TestTreeBuilder>> m_children;
 
 public:
-	TestTreeBuilder(TestData data) : m_testData(data) {}
 	TestTreeBuilder(string name) : m_testData(name) {}
 	TestTreeBuilder() {}
 

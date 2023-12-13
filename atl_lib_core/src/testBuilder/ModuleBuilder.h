@@ -6,7 +6,7 @@
 
 class ModuleBuilder : public TestTreeBuilder {
 public:
-	ModuleBuilder(TestData td) : TestTreeBuilder(td) {}
+	ModuleBuilder(string name) : TestTreeBuilder(name) {}
 	void addChildren() override {
 		addTestClasses();
 	}
@@ -14,6 +14,6 @@ public:
 	template<typename T>
 	void createTestClass(string name) {
 		m_testData.hasChildren = true;
-		add(std::make_shared<T>(TestData(name)));
+		add(std::make_shared<T>(name));
 	}
 };

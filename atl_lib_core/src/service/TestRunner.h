@@ -8,7 +8,7 @@ public:
 	void runSomeTests(TestData& tests, vector<string> name);
 
 private:
-	void runChildrenTest(StackMap<TestData>* children);
+	void runChildrenTest(StackMap<TestData>& children);
 	void updateResult(TestData& tests);
 	bool areChildrenPassing(vector<TestData> children);
 	bool areChildrenPassing(vector<Result> children);

@@ -15,7 +15,7 @@ string addSucceedOrFailed(bool pass, string content, bool m_ansiColorEnabled) {
 }
 
 void ConsoleAssertPresenter::addResultToStringWriter(const ResultView& resultView,
-	ResultStringWriter& stringWriter) {
+	ConsoleResultStringWriter& stringWriter) {
 	vector<string> messages = vector<string>({ "* failed assertion : " });
 	vector<string> resultMessages = resultView.messages;
 	int resultMessagesSize = resultMessages.size();
@@ -30,7 +30,7 @@ void ConsoleAssertPresenter::addResultToStringWriter(const ResultView& resultVie
 	stringWriter.writeBloc(messages);
 }
 
-void ConsoleResultPresenter::addResultToStringWriter(const ResultView& resultView, ResultStringWriter& stringWriter) {
+void ConsoleResultPresenter::addResultToStringWriter(const ResultView& resultView, ConsoleResultStringWriter& stringWriter) {
 	vector<string> messages = resultView.messages;
 	int messagesSize = messages.size();
 	if (messagesSize > 0) {
@@ -42,7 +42,7 @@ void ConsoleResultPresenter::addResultToStringWriter(const ResultView& resultVie
 	}
 }
 
-void ConsoleUnitTestPresenter::addResultToStringWriter(const UnitTestView& unitTestView, ResultStringWriter& stringWriter)
+void ConsoleUnitTestPresenter::addResultToStringWriter(const UnitTestView& unitTestView, ConsoleResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(5);
 	stringWriter.writeSingleLine(addSucceedOrFailed(unitTestView.result.pass, unitTestView.name, m_ansiColorEnabled));
@@ -54,7 +54,7 @@ void ConsoleUnitTestPresenter::addResultToStringWriter(const UnitTestView& unitT
 		m_consoleAssertPresenter.addResultToStringWriter(assertView, stringWriter);
 	}
 }
-void ConsoleTestClassPresenter::addResultToStringWriter(const TestClassView& testClassView, ResultStringWriter& stringWriter)
+void ConsoleTestClassPresenter::addResultToStringWriter(const TestClassView& testClassView, ConsoleResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(2);
 	stringWriter.writeSingleLine(addSucceedOrFailed(testClassView.result.pass, testClassView.name, m_ansiColorEnabled));
@@ -68,7 +68,7 @@ void ConsoleTestClassPresenter::addResultToStringWriter(const TestClassView& tes
 	}
 }
 
-void ConsoleModulePresenter::addResultToStringWriter(const ModuleView& moduleView, ResultStringWriter& stringWriter)
+void ConsoleModulePresenter::addResultToStringWriter(const ModuleView& moduleView, ConsoleResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(0);
 	stringWriter.writeSingleLine(addSucceedOrFailed(moduleView.result.pass, moduleView.name, m_ansiColorEnabled));
@@ -86,7 +86,7 @@ void ConsoleModulePresenter::addResultToStringWriter(const ModuleView& moduleVie
 	stringWriter.breakLine();
 }
 
-void ConsoleAllTestPresenter::addResultToStringWriter(const AllTestView& allTestView, ResultStringWriter& stringWriter)
+void ConsoleAllTestPresenter::addResultToStringWriter(const AllTestView& allTestView, ConsoleResultStringWriter& stringWriter)
 {
 	stringWriter.setTab(6);
 	stringWriter.writeSingleLine(color(F_YELLOW, commonViews::welcome, m_ansiColorEnabled));
@@ -114,7 +114,7 @@ void ConsoleAllTestPresenter::addResultToStringWriter(const AllTestView& allTest
 
 string ConsoleAllTestPresenter::getStringFromTestResult(const TestData& testData)
 {
-	ResultStringWriter stringWriter;
+	ConsoleResultStringWriter stringWriter;
 
 	addResultToStringWriter(AllTestView(testData), stringWriter);
 

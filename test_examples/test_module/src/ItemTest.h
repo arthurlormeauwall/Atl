@@ -20,6 +20,6 @@ struct Item {
 
 class ItemTest: public TestClassBuilder {
 public:
-	ItemTest(TestData td) : TestClassBuilder(td) {}
+	ItemTest(string name) : TestClassBuilder(name) {}
 	virtual void addUnitTests() override;
 };

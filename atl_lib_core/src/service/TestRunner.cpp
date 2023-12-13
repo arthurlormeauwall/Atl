@@ -1,7 +1,7 @@
 #include "TestRunner.h"
 
-void TestRunner::runChildrenTest(StackMap<TestData>* children) {
-	auto test = children->getAllAsVector();
+void TestRunner::runChildrenTest(StackMap<TestData>& children) {
+	auto test = children.getAllAsVector();
 	for (auto i = 0; i < test.size(); i++) {
 		TestRunner runner;
 		runner.run(test.at(i));

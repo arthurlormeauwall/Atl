@@ -1,7 +1,7 @@
-#include "MyTestRunner.h"
+#include "MyTests.h"
 
 int main(int argc, char* argv[]) {
-	auto testRunner = AtlController(argv);;
-	testRunner.runAllTests(std::make_shared<MyTests>());
+	auto atlController = AtlController(argv);;
+	atlController.runAllTests(std::make_shared<MyTests>());
 	std::cin.get();
 }

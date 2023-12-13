@@ -19,8 +19,5 @@
 #define B_WHITE "47"
 
 #define RESET_COLOR "\x1b[0m"
+#define COLOR(v) string("\x1b[").append(v).append("m")
 
-#define COLOR_BEGIN(v) string("\x1b[").append(v)
-#define END_COLOR .append("m")
-
-#define COLOR(v) COLOR_BEGIN(v)END_COLOR

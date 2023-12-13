@@ -3,13 +3,13 @@
 
 class AnotherTestClass : public TestClassBuilder {
 public:
-	AnotherTestClass(TestData td) : TestClassBuilder(td) {}
+	AnotherTestClass(string name) : TestClassBuilder(name) {}
 	void addUnitTests() override;
 };
 
 class AThirdTestClass : public TestClassBuilder {
 public:
-	AThirdTestClass(TestData td) : TestClassBuilder(td) {}
+	AThirdTestClass(string name) : TestClassBuilder(name) {}
 	void addUnitTests() override;
 };
 

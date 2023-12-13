@@ -3,7 +3,7 @@
 #include "ConsoleResultStringWriter.h"
 
 void ConsoleOutputWriter::write(const TestData& allTests){
-	ResultStringWriter stringWriter;
+	ConsoleResultStringWriter stringWriter;
 
 	m_presenter.addResultToStringWriter(AllTestView(allTests), stringWriter);
 

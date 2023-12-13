@@ -6,7 +6,7 @@
 
 class UnitTestBuilder : public TestTreeBuilder {
 public:
-	UnitTestBuilder(TestData td, vector<Result>(*runner)()) : TestTreeBuilder(td) {
+	UnitTestBuilder(string name, vector<Result>(*runner)()) : TestTreeBuilder(name) {
 		m_testData.runner = runner;
 	}
 	virtual void addChildren() {}

@@ -13,6 +13,6 @@ public:
 	template<typename T>
 	void createModule(string name) {
 		m_testData.hasChildren = true;
-		add(std::make_shared<T>(TestData(name))); 
+		add(std::make_shared<T>(name)); 
 	}
 };

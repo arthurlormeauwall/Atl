@@ -7,12 +7,5 @@ struct UnitTestView {
 	Result result;
 	string name;
 	vector<ResultView> children;
-	UnitTestView(const TestData& test) {
-		result = test.result;
-		name = test.name;
-		for (auto assertResult : test.childrenResult.result) {
-			if(assertResult.executed)
-				children.push_back(ResultView(assertResult.pass, assertResult.messages));
-		}
-	}
+	UnitTestView(const TestData& test);
 };
