@@ -1,7 +1,6 @@
 #include "ItemTest.h"
 #include "atl_includes.h"
-
-
+#include "Item.h"
 
 void ItemTest::addUnitTests() {
 	createUnitTest("Item should be equal",
@@ -13,7 +12,7 @@ void ItemTest::addUnitTests() {
 
 			// an example that use custom toString
 			assertions.push_back(IsEqualTo<Item>(item1, item2)
-				.getResultWithCustomToString(item1.toString));
+				.getResultWithCustomToString(ItemtoString));
 
 			return assertions;
 		}

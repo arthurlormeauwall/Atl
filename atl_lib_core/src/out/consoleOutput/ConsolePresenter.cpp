@@ -92,8 +92,7 @@ void ConsoleAllTestPresenter::addResultToStringWriter(const AllTestView& allTest
 	stringWriter.writeSingleLine(color(F_YELLOW, commonViews::welcome, m_ansiColorEnabled));
 	stringWriter.setTab(0);
 	if (m_ansiColorEnabled) {
-
-	stringWriter.writeBlocWithColor(commonViews::atl_ascii, F_YELLOW);
+		stringWriter.writeBlocWithColor(commonViews::atl_ascii, F_YELLOW);
 	}
 	else {
 		stringWriter.writeBloc(commonViews::atl_ascii);
@@ -104,6 +103,10 @@ void ConsoleAllTestPresenter::addResultToStringWriter(const AllTestView& allTest
 	stringWriter.setTab(0);
 	stringWriter.breakLine();
 	stringWriter.breakLine();
+
+	if (!allTestView.result.exist)
+		m_consoleResultPresenter.addResultToStringWriter(ResultView(allTestView.result.pass, allTestView.result.messages), stringWriter);
+
 	for (const ModuleView moduleView : allTestView.children) {
 		if (moduleView.result.executed) {
 			m_consoleModulePresenter.addResultToStringWriter(moduleView, stringWriter);
