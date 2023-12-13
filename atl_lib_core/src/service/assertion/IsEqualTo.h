@@ -12,12 +12,8 @@ public:
 
 template<typename T>
 class ComparatorResultResolver : public ResultResolver<T> {
-	bool (*compare)(T, T) = NULL;
 	string(*toString)(T) = NULL;
 public:
-	ComparatorResultResolver(bool (*c)(T, T), string(*ts)(T)) : compare(c), toString(ts) {
-	}
-
 	ComparatorResultResolver(string(*ts)(T)) : toString(ts) {
 	}
 
@@ -25,14 +21,7 @@ public:
 	}
 
 	bool getPass(T& expected, T& actual) override {
-		bool pass = false;
-		if (compare != NULL) {
-			pass = compare(actual, expected);
-		}
-		else {
-			pass = actual == expected;
-		}
-		return pass;
+		return actual == expected;
 	}
 
 	sharedptr<vector<string>> getFailedMessageTokens(const T& expected, const T& actual) override {
@@ -56,22 +45,15 @@ template<typename T>
 class IsEqualTo {
 	T m_expected;
 	T m_actual;
+	Result createResult(sharedptr<ResultResolver<T>> resultResolver);
 public:
 	IsEqualTo(T, T);
-	Result getResult(bool (*compare)(T a, T b), string(*toString)(T it));
-	Result createResult(sharedptr<ResultResolver<T>> resultResolver);
 	Result getResultWithCustomToString(string(*toString)(T it));
 	Result getResult();
 };
 
 template<typename T>
 IsEqualTo<T>::IsEqualTo(T actual, T expected) : m_actual(actual), m_expected(expected) {
-}
-
-template<typename T>
-Result IsEqualTo<T>::getResult(bool (*compare)(T a, T b), string(*toString)(T it)) {
-	return createResult(std::make_shared<ComparatorResultResolver<T>>(compare,
-		toString));
 }
 
 template<typename T>

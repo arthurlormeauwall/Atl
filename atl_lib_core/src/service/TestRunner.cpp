@@ -70,8 +70,8 @@ void TestRunner::run(TestData& tests) {
 }
 
 void TestRunner::runSomeTests(TestData& tests, vector<string> name) {
-	if (tests.hasChildren == true) {
-		int testOrder = tests.children.getByName(name[0]);
+	if (name.size() > 0) {
+		int	testOrder = tests.children.getByName(name[0]);
 		if (testOrder >= 0) {
 			TestData* targetedTest = tests.children.getByOrder(testOrder);
 			TestRunner runner;
@@ -97,11 +97,12 @@ void TestRunner::runSomeTests(TestData& tests, vector<string> name) {
 			});
 			tests.result.exist = false;
 		}
+
 	}
 	else {
-		tests.childrenResult.result = tests.runner();
-		tests.childrenResult.pass = areChildrenPassing(tests.childrenResult.result);
-		updateResult(tests);
+		tests.result = Result(false, vector<string> {
+			"No test name provide"
+		});
+		tests.result.exist = false;
 	}
-
 }
