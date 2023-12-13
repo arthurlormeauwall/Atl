@@ -2,7 +2,7 @@
 
 A minimal C++ unit test library
 <p align="center">
-  <img src="./resources/Capture.png" width="1000" title="hover text">
+  <img src="./resources/Capture.PNG" width="1000" title="hover text">
 </p>
 
 * C++ 17
