@@ -2,7 +2,7 @@
 
 A minimal C++ unit test library
 <p align="center">
-  <img src="./resources/capture.png" width="1000" title="hover text">
+  <img src="./resources/Capture.png" width="1000" title="hover text">
 </p>
 
 * C++ 17
@@ -208,6 +208,7 @@ void TestClass::addUnitTests() {
 
 			return assertions;
 		} 
+	}
 ```
 
 ##### Custom assertion 
