@@ -1,4 +1,4 @@
-project(atlApp)
+project(atlRunner)
 
 add_executable(${PROJECT_NAME}
 	src/main.cpp

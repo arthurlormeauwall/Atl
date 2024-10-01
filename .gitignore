@@ -571,3 +571,5 @@ bin-int/
 *.vcxproj
 *.vcxproj.user
 *.vcxproj.filters
+
+.vscode/

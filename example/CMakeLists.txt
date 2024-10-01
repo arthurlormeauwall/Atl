@@ -3,8 +3,7 @@ project(exampleApp)
 
 set (CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(atlCoreLib)
-add_subdirectory(libs)
-add_subdirectory(atlApp)
+add_subdirectory(aLib)
+add_subdirectory(atlRunner)
 add_subdirectory(app)
 
