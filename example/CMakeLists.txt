@@ -6,5 +6,8 @@ project(exampleApp)
 set (CMAKE_CXX_STANDARD 11)
 
 # This project consist of 3 components, each in one directory, so add each of them
-add_subdirectory(app)
+add_subdirectory(atlCoreLib)
 add_subdirectory(libs)
+add_subdirectory(atlApp)
+add_subdirectory(app)
+

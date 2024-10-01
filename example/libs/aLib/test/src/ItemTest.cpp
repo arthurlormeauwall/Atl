@@ -12,7 +12,7 @@ void ItemTest::addUnitTests() {
 
 			// an example that use custom toString
 			assertions.push_back(IsEqualTo<Item>(item1, item2)
-				.getResultWithCustomToString(ItemtoString));
+				.getResultWithCustomToString(item1.ItemtoString));
 
 			return assertions;
 		}
