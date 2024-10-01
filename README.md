@@ -6,18 +6,15 @@ A minimal C++ unit test library
 </p>
 
 * C++ 17
-* Premake 5 
+* CMake 3.25.1
 
-This repo contains a example of ATL usage. You can find the code of the library per se in
-"Atl_lib_core" directory.
+This repo contains ATL library in "atl" directory and an usage example in "example" directory.
 
 - [Overview] : overview of ATL archicture and how you can use the library in your project.
-- [Building the example] : how to use premake to build the example
 - [How to use ATL] : how to create and run your tests
 
 
 ## Overview
-
 
 ---
 
@@ -31,34 +28,24 @@ ATL project has 4 parts
 
 * **Your production code**
 * **Your tests** : *modules, test classes, unit tests*
-* **ATL app** : *console application that output test results in the console*
-* **ATL core** : *the library per se ; you don't have to touch anything in that* 
+* **ATLRunner** : *console application that output test results in the console*
+* **ATL** : *the static library* 
  
-Note that your tests need to have access to your production code. 
+In this repo you will find the ATL lib in "atl" directory.
+"example" directory provide sample of an app, a lib used by the app, test of this lib and atlRunner
 
-So you can have all your tests with
-your application and use main method of your application to run ATL. 
-
-Or you can separate tests from your code. It requires that the code under test is linked to the tests as a library.
-
-In this repo ATL app and modules are kept in their own projects. 
-This method give you the most flexibility. 
 
 ## Building the example
-Those example projects use premake 5 as build system. https://premake.github.io/
 
-Premake5 uses Lua as script langage and lets you generate solution and projects files, 
-for visual studio, xcode etc. 
+```
+	cmake -S . -B build/ ; cmake --build build/
+```
 
+To run the test runner : 
 
-If you're on **Windows**, you can directly use **premake5.exe** at the root of the repo.
-
-``` console
-> .\premake5.exe [action] 
-``` 
-**see here for list of supported IDE https://premake.github.io/docs/Using-Premake* 
-
-For **mac** and **linux**, please refer to the doc 
+```
+	cd build/example/atlRunner ; ./atlRunner
+```
 
 
 ## How to use ATL 
