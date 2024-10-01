@@ -1,6 +1,0 @@
-#include "ResultView.h"
-#include "AllTestView.h"
-#include "ModuleView.h"
-#include "TestClassView.h"
-#include "CommonViews.h"
-#include "UnitTestView.h"
