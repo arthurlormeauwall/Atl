@@ -26,11 +26,8 @@ ATL project has 4 parts
 
 * **Your production code**
 * **Your tests** : *modules, test classes, unit tests*
-* **ATLRunner** : *console application that output test results in the console*
+* **ATL runner** : *console application that output test results in the console*
 * **ATL** : *the static library* 
- 
-In this repo you will find the ATL lib in "atl" directory.
-"example" directory provide sample of an app, a lib used by the app, test of this lib and atlRunner
 
 
 ## Building the example
