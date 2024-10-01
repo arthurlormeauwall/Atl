@@ -8,7 +8,9 @@ A minimal C++ unit test library
 * C++ 17
 * CMake 3.25.1
 
-This repo contains ATL library in "atl" directory and an usage example in "example" directory.
+This repo contains 2 directories :
+- atl : ATL library
+- example : example usage containing an app, a static lib linked to the app, test of this lib and atl runner.
 
 - [Overview] : overview of ATL archicture and how you can use the library in your project.
 - [How to use ATL] : how to create and run your tests
