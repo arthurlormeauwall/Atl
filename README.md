@@ -65,7 +65,7 @@ void AtlController::runSomeTests(std::make_shared<T>(), vector<string> path)
 path is typically created directly when calling this method :
 
 ```cpp
-vector<strin>{<moduleName>,<testClassName>,<unitTestName>}
+vector<string>{<moduleName>,<testClassName>,<unitTestName>}
 ```
 If you only provide one name, ATL app will run all the tests of a module ;
 2 names : all the tests of the test class of the module ; 
