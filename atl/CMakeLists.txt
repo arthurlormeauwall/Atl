@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25.1)
 
-project(atl_core)
+project(atl)
 
 set(SOURCE_FOLDER "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(CONTROLLER_FOLDER "${SOURCE_FOLDER}/controller")
@@ -64,6 +64,8 @@ target_include_directories(${PROJECT_NAME}
 	PUBLIC
 		${SOURCE_FOLDER}
 )
+
+add_library(libs::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 target_compile_features(${PROJECT_NAME}
 	PRIVATE
