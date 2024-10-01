@@ -8,11 +8,9 @@ A minimal C++ unit test library
 * C++ 17
 * CMake 3.25.1
 
-This repo contains ATL library in "atl" directory and an usage example in "example" directory.
-
-- [Overview] : overview of ATL archicture and how you can use the library in your project.
-- [How to use ATL] : how to create and run your tests
-
+This repo contains 2 directories :
+- atl : ATL library
+- example : example usage containing an app, a static lib linked to the app, test of this lib and atl runner
 
 ## Overview
 
@@ -28,11 +26,8 @@ ATL project has 4 parts
 
 * **Your production code**
 * **Your tests** : *modules, test classes, unit tests*
-* **ATLRunner** : *console application that output test results in the console*
+* **ATL runner** : *console application that output test results in the console*
 * **ATL** : *the static library* 
- 
-In this repo you will find the ATL lib in "atl" directory.
-"example" directory provide sample of an app, a lib used by the app, test of this lib and atlRunner
 
 
 ## Building the example
@@ -70,7 +65,7 @@ void AtlController::runSomeTests(std::make_shared<T>(), vector<string> path)
 path is typically created directly when calling this method :
 
 ```cpp
-vector<strin>{<moduleName>,<testClassName>,<unitTestName>}
+vector<string>{<moduleName>,<testClassName>,<unitTestName>}
 ```
 If you only provide one name, ATL app will run all the tests of a module ;
 2 names : all the tests of the test class of the module ; 
@@ -91,7 +86,6 @@ public:
 	MyTests() {}
 	void addModules() override {
 		createModule<MyModule>("My Module");
-		createModule<AnotherModule>("Another Module");
 	}
 };
 ``` 
