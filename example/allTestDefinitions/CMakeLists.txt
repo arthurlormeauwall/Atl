@@ -1,7 +1,7 @@
-project(aLibTest)
+project(allTestDefinition)
 
-add_library(${PROJECT_NAME}
-	src/ItemTest.cpp
+add_library(${PROJECT_NAME} STATIC
+	src/AllTests.h
 )
 
 add_library(libs::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
@@ -17,8 +17,5 @@ target_link_libraries(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
 	PUBLIC
-		libs::aLib
+		libs::aLibTest
 )
-
-
-

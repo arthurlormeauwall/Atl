@@ -2,9 +2,9 @@
 #include "atl_includes.h" 
 #include "ALibTest.h"
 
-class MyTests  : public AllTestBuilder {
+class AllTests  : public AllTestBuilder {
 public:
-	MyTests() {}
+	AllTests() {}
 	void addModules() override {
 		createModule<ALibTest>("My Module");
 	}
