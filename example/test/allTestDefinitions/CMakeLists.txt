@@ -17,5 +17,5 @@ target_link_libraries(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
 	PUBLIC
-		libs::aLibTest
+		libs::someLibTest
 )

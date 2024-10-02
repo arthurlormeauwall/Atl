@@ -1,4 +1,4 @@
-project(aLib)
+project(someLib)
 
 add_library(${PROJECT_NAME}
 	src/Item.cpp

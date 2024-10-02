@@ -1,6 +1,6 @@
 #pragma once
 #include "atl_includes.h" 
-#include "ALibTest.h"
+#include "someLibTest.h"
 
 class AllTests  : public AllTestBuilder {
 public:

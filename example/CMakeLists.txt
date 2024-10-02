@@ -3,6 +3,6 @@ project(exampleApp)
 
 set (CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(aLib)
+add_subdirectory(someLib)
 add_subdirectory(app)
 add_subdirectory(test)

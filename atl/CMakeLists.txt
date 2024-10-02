@@ -67,6 +67,7 @@ target_include_directories(${PROJECT_NAME}
 
 add_library(libs::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
+set_target_properties(atl PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
 
 target_compile_features(${PROJECT_NAME}
