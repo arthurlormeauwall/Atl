@@ -17,7 +17,7 @@ This repo contains 2 directories :
 ---
 
 <p align="center">
-  <img src="./resources/architectureOverview.jpg" width="1000" title="hover text">
+  <img src="./resources/architectureOverview.pdf" width="1000" title="hover text">
 </p>
 
  **you can create as many modules, test classes and unit tests as you want*
