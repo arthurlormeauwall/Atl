@@ -38,7 +38,7 @@ To build the example :
 	cmake -S . -B build/ ; cmake --build build/
 ```
 
-It builds the Atl static lib that you will find under "atl/lib" directory, but also the example app (bin/app) and the test to run (bin/test)
+It builds the Atl static lib, that you will find under "atl/lib/libatl.a" directory, but also the example app (bin/app/app) and the test to run (bin/test/atlRunner)
 To run the test  : 
 
 ```
