@@ -6,6 +6,6 @@ class AllTests  : public AllTestBuilder {
 public:
 	AllTests() {}
 	void addModules() override {
-		createModule<ALibTest>("My Module");
+		createModule<SomeLibTest>("My Module");
 	}
 };
