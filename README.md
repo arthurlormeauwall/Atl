@@ -25,9 +25,9 @@ This repo contains 2 directories :
 ATL project has 4 parts
 
 * **Your production code** : app and libs
-* **Your tests** : *modules, test classes, unit tests ; you can put them along the lib under test directly*
-* **ATL runner and AllTestDefinition** : *AtlRunner is a console app that run the test and output result in the console, you don't need to edit any of the code inside, on only need to build it, linked to Atl library and AllTest definition *
-* **AllTestDefinition** : *used by Atl runner to know which test exist and add them*.
+* **Your tests** : *modules, test classes, unit tests ; you can put them in the libs under test directly*
+* **ATL runner** : *AtlRunner is a console app that run the test and output result in the console, you don't need to edit any of the code inside, on only need to build it, linked to Atl library and AllTest definition*
+* **AllTestDefinition** : *used by Atl runner to know which test exist and add them ; you only need to add your module in the addMolue method (cf How to use ATL section below)*.
 * **ATL** : *the library* 
 
 
