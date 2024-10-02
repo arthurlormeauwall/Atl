@@ -1,10 +1,10 @@
 #pragma once
 #include "ItemTest.h"
 
-class ALibTest: public ModuleBuilder {
+class SomeLibTest: public ModuleBuilder {
 public:
 
-	ALibTest(string name) : ModuleBuilder(name) {}
+	SomeLibTest(string name) : ModuleBuilder(name) {}
 	virtual void addTestClasses() override {
 		createTestClass<ItemTest>("Test of item class");
 	}
