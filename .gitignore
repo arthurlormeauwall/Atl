@@ -573,3 +573,4 @@ bin-int/
 *.vcxproj.filters
 
 .vscode/
+lib/

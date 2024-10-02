@@ -6,7 +6,7 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} 
 	PUBLIC
-		libs::atlCore
+		libs::atl
 )
 
 target_link_libraries(${PROJECT_NAME}

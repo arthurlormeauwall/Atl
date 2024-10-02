@@ -3,6 +3,5 @@ project(exampleApp)
 
 set (CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(aLib)
-add_subdirectory(app)
-add_subdirectory(test)
+add_subdirectory(atlRunner)
+add_subdirectory(allTestDefinitions)
