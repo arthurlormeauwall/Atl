@@ -32,16 +32,18 @@ ATL project has 4 parts
 
 ## Building the example
 
+To build the example : 
+
 ```
 	cmake -S . -B build/ ; cmake --build build/
 ```
 
-To run the test runner : 
+It builds the Atl static lib that you will find under "atl/lib" directory, but also the example app (bin/app) and the test to run (bin/test)
+To run the test  : 
 
 ```
-	cd build/example/atlRunner ; ./atlRunner
+	cd bin/test ; ./atlRunner
 ```
-
 
 ## How to use ATL 
 
