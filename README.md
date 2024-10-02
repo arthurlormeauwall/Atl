@@ -26,7 +26,7 @@ ATL project has 4 parts
 
 * **Your production code** : app and libs
 * **Your tests** : *modules, test classes, unit tests ; you can put them in the libs under test directly*
-* **ATL runner** : *AtlRunner is a console app that run the test and output result in the console, you don't need to edit any of the code inside, on only need to build it, linked to Atl library and AllTest definition*
+* **ATL runner** : *AtlRunner is a console app that run the test and output result in the console, you don't need to edit any of the code inside, you only need to build it, linked to Atl library and AllTest definition*
 * **AllTestDefinition** : *used by Atl runner to know which test exist and add them ; you only need to add your module in the addMolue method (cf How to use ATL section below)*.
 * **ATL** : *the library* 
 
@@ -49,9 +49,7 @@ To run the test  :
 ## How to use ATL 
 
 You have to create at least one module and one test class to be able to add a unit test.
-
-Modules and test classes are only containers that give you a way to run only certain tests.
-It also lets you separate modules in different projects so you can re compile only the tests you're working on.
+Module lets you separate them in different libs so you can re compile only the tests you're working on.
 
 ### Construct the test tree (module and test classes)
 
@@ -80,7 +78,7 @@ public:
 
 	MyModule(string name) : ModuleBuilder(name) {}
 	virtual void addTestClasses() override {
-		createTestClass<ItemTest>("Test of a class");
+		createTestClass<ItemTest>("Test of Item class");
 	}
 };
 ``` 
