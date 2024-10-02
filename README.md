@@ -24,10 +24,11 @@ This repo contains 2 directories :
 
 ATL project has 4 parts
 
-* **Your production code**
-* **Your tests** : *modules, test classes, unit tests*
-* **ATL runner** : *console application that output test results in the console*
-* **ATL** : *the static library* 
+* **Your production code** : app and libs
+* **Your tests** : *modules, test classes, unit tests ; you can put them in the libs under test directly*
+* **ATL runner** : *AtlRunner is a console app that run the test and output result in the console, you don't need to edit any of the code inside, you only need to build it, linked to Atl library and AllTest definition*
+* **AllTestDefinition** : *used by Atl runner to know which test exist and add them ; you only need to add your module in the addMolue method (cf How to use ATL section below)*.
+* **ATL** : *the library* 
 
 
 ## Building the example
@@ -48,34 +49,11 @@ To run the test  :
 ## How to use ATL 
 
 You have to create at least one module and one test class to be able to add a unit test.
-
-Modules and test classes are only containers that give you a way to run only certain tests.
-It also lets you separate modules in different projects so you can re compile only the tests you're working on.
-### Main.cpp 
-``` cpp 
-int main(int argc, char* argv[]) {
-	auto atlController = AtlController(argv);;
-	atlController.runAllTests(std::make_shared<MyTests>());
-}
-``` 
-Your can also use
-
-``` cpp
-void AtlController::runSomeTests(std::make_shared<T>(), vector<string> path)
-```
-
-path is typically created directly when calling this method :
-
-```cpp
-vector<string>{<moduleName>,<testClassName>,<unitTestName>}
-```
-If you only provide one name, ATL app will run all the tests of a module ;
-2 names : all the tests of the test class of the module ; 
-3 names : just one unit test. 
+Module lets you separate them in different libs so you can re compile only the tests you're working on.
 
 ### Construct the test tree (module and test classes)
 
-In the main, calling ```runAllTest```, first argument is a shared pointer to a AllTestBuilder object.
+In the main function of AtlRunner (which you dont to modify), first argument of ```runAllTest``` is a shared pointer to a AllTestBuilder object.
 You have to create your own class that inherit from AllTestBuilder.
 This class have to override ```addModules``` method.
 
@@ -83,11 +61,11 @@ This method is used to add modules, with ```createModule<ModuleBuilder>(string n
 method. 
 
 ``` cpp 
-class MyTests  : public AllTestBuilder {
+class AllTests  : public AllTestBuilder {
 public:
 	MyTests() {}
 	void addModules() override {
-		createModule<MyModule>("My Module");
+		createModule<SomeLibTest>("SomeLib test");
 	}
 };
 ``` 
@@ -95,18 +73,18 @@ public:
 Same pattern is used to create modules and test classes
 
 ``` cpp 
-class MyModule: public ModuleBuilder {
+class SomeLibTest: public ModuleBuilder {
 public:
 
 	MyModule(string name) : ModuleBuilder(name) {}
 	virtual void addTestClasses() override {
-		createTestClass<TestClass>("Test of a class");
+		createTestClass<ItemTest>("Test of Item class");
 	}
 };
 ``` 
 
 ``` cpp 
-class TestClass: public TestClassBuilder {
+class ItemTest: public TestClassBuilder {
 public:
 	TestClass(string name) : TestClassBuilder(name) {}
 	virtual void addUnitTests() {
